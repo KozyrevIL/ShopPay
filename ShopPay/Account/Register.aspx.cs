@@ -17,8 +17,13 @@ namespace ShopPay.Account
             var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
             var user = new ApplicationUser() { UserName = Email.Text, Email = Email.Text };
             IdentityResult result = manager.Create(user, Password.Text);
+            
             if (result.Succeeded)
             {
+                // Добавляем Client по умолчанию ***********************************
+                var IUser = manager.FindByName(Email.Text);
+                manager.AddToRole(IUser.Id, "Client");
+                //******************************************************************
                 // Дополнительные сведения о включении подтверждения учетной записи и сброса пароля см. на странице https://go.microsoft.com/fwlink/?LinkID=320771.
                 //string code = manager.GenerateEmailConfirmationToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
