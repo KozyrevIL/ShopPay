@@ -30,7 +30,7 @@ namespace ShopPay.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("AccountsConnection", throwIfV1Schema: false)
         {
         }
 
