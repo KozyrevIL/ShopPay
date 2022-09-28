@@ -16,7 +16,7 @@ namespace ShopPay.Admin
 
         }
 
-        protected void AddTag_Click(object sender, EventArgs e)
+        protected void AddDoc_Click(object sender, EventArgs e)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
@@ -25,13 +25,13 @@ namespace ShopPay.Admin
                 {
                     SqlCommand cmd = new SqlCommand("insert into Docs_tags (tag_name,tag_note) values (@tag_name,@tag_note)", con);
                     cmd.Parameters.AddWithValue("tag_name", DocName.Text);
-                    cmd.Parameters.AddWithValue("tag_note", TagNote.Text);
+//                    cmd.Parameters.AddWithValue("tag_note", TagNote.Text);
                     cmd.ExecuteNonQuery();
                 }
                 finally
                 {
                     DocName.Text = string.Empty;
-                    TagNote.Text = string.Empty;
+                    //TagNote.Text = string.Empty;
                     con.Close();
                 }
                 GridViewTags.DataBind();

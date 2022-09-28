@@ -51,22 +51,13 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.TextBox DocIssue;
 
         /// <summary>
-        /// TagNote элемент управления.
+        /// DocScan элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TagNote;
-
-        /// <summary>
-        /// AddTag элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddTag;
+        protected global::System.Web.UI.WebControls.FileUpload DocScan;
 
         /// <summary>
         /// GridViewTags элемент управления.
@@ -78,6 +69,24 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.GridView GridViewTags;
 
         /// <summary>
+        /// AddDoc элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddDoc;
+
+        /// <summary>
+        /// GridViewDocs элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewDocs;
+
+        /// <summary>
         /// SqlDataSourceDocs элемент управления.
         /// </summary>
         /// <remarks>
@@ -85,5 +94,14 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDocs;
+
+        /// <summary>
+        /// SqlDataSourceTags элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTags;
     }
 }

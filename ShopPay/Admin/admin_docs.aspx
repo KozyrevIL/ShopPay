@@ -12,13 +12,24 @@
     <br />
     <asp:Label runat="server">Документ выдан</asp:Label><asp:TextBox ID="DocIssue" runat="server"></asp:TextBox>
     <br />
-    <asp:Label runat="server">Описание тэга</asp:Label><asp:TextBox ID="TagNote" runat="server" TextMode="MultiLine"></asp:TextBox>
+    <asp:Label runat="server">Образ документа</asp:Label><asp:FileUpload ID="DocScan" runat="server"></asp:FileUpload>
     <br />
-    <asp:Button ID="AddTag" runat="server" Text="Добавить" OnClick="AddTag_Click"/>
+    <asp:Label runat="server">Описание тэгов</asp:Label>
+    <br />
+    <asp:GridView ID="GridViewTags" runat="server" DataSourceID="SqlDataSourceTags" AutoGenerateColumns="false">
+        <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckTag" runat="server" /> <asp:Label ID="LabelTag" runat="server" Text='<%#Eval("tag_name") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+    </asp:GridView>
+    <asp:Button ID="AddDoc" runat="server" Text="Добавить" OnClick="AddDoc_Click"/>
     <br />
 </div>
 
-        <asp:GridView runat="server" ID="GridViewTags" DataKeyNames="id_tag" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false">
+        <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_tag" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false">
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="id_doc" ReadOnly="true" />
@@ -43,6 +54,11 @@
         <asp:Parameter Name="@id_tag" />
     </DeleteParameters>
 </asp:SqlDataSource>
+   
+    <asp:SqlDataSource ID="SqlDataSourceTags" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
+        SelectCommand="select '#'+tag_name tag_name from Docs_tags">
+
+    </asp:SqlDataSource>
 
 </asp:Content>
 
