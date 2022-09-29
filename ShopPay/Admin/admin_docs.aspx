@@ -29,7 +29,7 @@
     <br />
 </div>
 
-        <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_tag" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false">
+        <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_doc" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false">
             <Columns>
                 <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
                 <asp:BoundField DataField="id_doc" ReadOnly="true" />
@@ -43,15 +43,15 @@
 
 <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
     SelectCommand="select * from Docs_docs" 
-    UpdateCommand="update Docs_tags set tag_name=@tag_name, tag_note=@tag_note where id_tag=@id_tag" 
-    DeleteCommand="delete from Docs_tags where id_tag=@id_tag">
+    UpdateCommand="update Docs_docs set name_doc=@name_doc, description=@description where id_doc=@id_doc" 
+    DeleteCommand="delete from Docs_docs where id_doc=@id_doc">
     <UpdateParameters>
-        <asp:Parameter Name="@tag_name" />
-        <asp:Parameter Name="@tag_note" />
-        <asp:Parameter Name="@id_tag" />
+        <asp:Parameter Name="@name_doc" />
+        <asp:Parameter Name="@description" />
+        <asp:Parameter Name="@id_doc" />
     </UpdateParameters>
     <DeleteParameters>
-        <asp:Parameter Name="@id_tag" />
+        <asp:Parameter Name="@id_doc" />
     </DeleteParameters>
 </asp:SqlDataSource>
    

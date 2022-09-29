@@ -18,14 +18,22 @@ namespace ShopPay.Admin
 
         protected void AddDoc_Click(object sender, EventArgs e)
         {
+
+
+
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
                 con.Open();
                 try
                 {
-                    SqlCommand cmd = new SqlCommand("insert into Docs_tags (tag_name,tag_note) values (@tag_name,@tag_note)", con);
-                    cmd.Parameters.AddWithValue("tag_name", DocName.Text);
-//                    cmd.Parameters.AddWithValue("tag_note", TagNote.Text);
+                    SqlCommand cmd = new SqlCommand("insert into Docs_docs (name_doc,num_doc,date_doc,issue_doc,description) values (@name_doc,@num_doc,@date_doc,@issue_doc,@description)", con);
+                    cmd.Parameters.AddWithValue("name_doc", DocName.Text);
+                    cmd.Parameters.AddWithValue("num_doc", DocName.Text);
+                    cmd.Parameters.AddWithValue("date_doc", DocName.Text);
+                    cmd.Parameters.AddWithValue("issue_doc", DocName.Text);
+                    cmd.Parameters.AddWithValue("description", DocName.Text);
+                    cmd.Parameters.AddWithValue("name_doc", DocName.Text);
+                    cmd.Parameters.AddWithValue("items", DocName.Text);
                     cmd.ExecuteNonQuery();
                 }
                 finally
