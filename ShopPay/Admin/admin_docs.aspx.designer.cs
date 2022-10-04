@@ -15,6 +15,15 @@ namespace ShopPay.Admin
     {
 
         /// <summary>
+        /// LabelError элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelError;
+
+        /// <summary>
         /// DocName элемент управления.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.TextBox DocIssue;
 
         /// <summary>
+        /// DocDescription элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DocDescription;
+
+        /// <summary>
         /// DocScan элемент управления.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,33 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridViewTags;
+
+        /// <summary>
+        /// TagName элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TagName;
+
+        /// <summary>
+        /// TagNote элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TagNote;
+
+        /// <summary>
+        /// BtnAddTag элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnAddTag;
 
         /// <summary>
         /// AddDoc элемент управления.

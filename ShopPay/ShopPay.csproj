@@ -194,6 +194,7 @@
     <Content Include="Account\Web.config" />
     <Content Include="Admin\Web.config" />
     <Content Include="Admin\SiteAdmin.Master" />
+    <Content Include="ImageHandler.ashx" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Roles\UsersAndRoles.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -293,6 +294,9 @@
     </Compile>
     <Compile Include="Admin\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ImageHandler.ashx.cs">
+      <DependentUpon>ImageHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Roles\ManageRoles.aspx.cs">
       <DependentUpon>ManageRoles.aspx</DependentUpon>
