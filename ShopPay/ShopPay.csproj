@@ -163,6 +163,7 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
+    <Content Include="Docs\library_docs.aspx" />
     <Content Include="Roles\ManageRoles.aspx" />
     <Content Include="Account\ManageLogins.aspx" />
     <Content Include="Account\ManagePassword.aspx" />
@@ -195,6 +196,7 @@
     <Content Include="Admin\Web.config" />
     <Content Include="Admin\SiteAdmin.Master" />
     <Content Include="ImageHandler.ashx" />
+    <Content Include="Docs\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Roles\UsersAndRoles.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -294,6 +296,13 @@
     </Compile>
     <Compile Include="Admin\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Docs\library_docs.aspx.cs">
+      <DependentUpon>library_docs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docs\library_docs.aspx.designer.cs">
+      <DependentUpon>library_docs.aspx</DependentUpon>
     </Compile>
     <Compile Include="ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
@@ -429,7 +438,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="PersonArea\" />
   </ItemGroup>
   <ItemGroup>
