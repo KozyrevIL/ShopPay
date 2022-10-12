@@ -17,6 +17,8 @@
         <br />
         <asp:Label runat="server">Описание документа</asp:Label><asp:TextBox ID="DocDescription" runat="server" TextMode="MultiLine"></asp:TextBox>
         <br />
+        <asp:Label runat="server">Содержание документа</asp:Label><asp:TextBox ID="DocContent" runat="server" TextMode="MultiLine"></asp:TextBox>
+        <br />
         <asp:Label runat="server">Обложка документа</asp:Label>
         <asp:FileUpload ID="DocCover" runat="server"></asp:FileUpload>
         <br />
@@ -161,6 +163,14 @@
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:TextBox ID="EditDescDoc" runat="server" Text='<%# Bind("description") %>' TextMode="MultiLine"></asp:TextBox>
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Содержание документа">
+                <ItemTemplate>
+                    <asp:Label ID="LabelContentDoc" runat="server" Text='<%# Bind("doc_content") %>'></asp:Label>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="EditContentDoc" runat="server" Text='<%# Bind("doc_content") %>' TextMode="MultiLine"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
         </Columns>

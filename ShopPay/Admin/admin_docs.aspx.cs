@@ -55,12 +55,13 @@ namespace ShopPay.Admin
                     SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION", con);
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("insert into Docs_docs (id_section, name_doc,date_doc,description,items,cover) values (@id_section, @name_doc,@date_doc,@description,@items,@cover)", con);
+                    cmd = new SqlCommand("insert into Docs_docs (id_section, name_doc,date_doc,description,doc_content,items,cover) values (@id_section, @name_doc,@date_doc,@description,@doc_content, @items,@cover)", con);
 
                     cmd.Parameters.AddWithValue("id_section", id_section);
                     cmd.Parameters.AddWithValue("name_doc", DocName.Text);
                     cmd.Parameters.AddWithValue("date_doc", DocDate.Text);
                     cmd.Parameters.AddWithValue("description", DocDescription.Text);
+                    cmd.Parameters.AddWithValue("doc_content", DocContent.Text);
                     cmd.Parameters.AddWithValue("items",Path.GetFileName(FileTempDir));
                     if (FileTempDirCover == string.Empty)
                         cmd.Parameters.AddWithValue("cover", DBNull.Value);
@@ -176,6 +177,7 @@ namespace ShopPay.Admin
             string docdate = ((TextBox)grw.FindControl("EditDateDoc")).Text;
 //            string docissue = ((TextBox)grw.FindControl("EditIssueDoc")).Text;
             string docdesc = ((TextBox)grw.FindControl("EditDescDoc")).Text;
+            string doccontent = ((TextBox)grw.FindControl("EditContentDoc")).Text;
 
             string destDir = Server.MapPath("./../Upload/ImagesDocs");
             string OldfilePath = Path.Combine(destDir, filePath);
@@ -212,13 +214,14 @@ namespace ShopPay.Admin
                     SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION", con);
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("update Docs_docs set name_doc=@name_doc, id_section=@id_section, date_doc=@date_doc, description=@description, items=@items, cover=@cover where id_doc=@id_doc", con);
+                    cmd = new SqlCommand("update Docs_docs set name_doc=@name_doc, id_section=@id_section, date_doc=@date_doc, description=@description, doc_content=@doc_content, items=@items, cover=@cover where id_doc=@id_doc", con);
                     cmd.Parameters.AddWithValue("name_doc", docname);
                     cmd.Parameters.AddWithValue("id_section", id_section);
                     //                  cmd.Parameters.AddWithValue("num_doc", docnum);
                    cmd.Parameters.AddWithValue("date_doc", docdate);
                     //                  cmd.Parameters.AddWithValue("issue_doc", docissue);
                     cmd.Parameters.AddWithValue("description", docdesc);
+                    cmd.Parameters.AddWithValue("doc_content", doccontent);
                     cmd.Parameters.AddWithValue("items",Path.GetFileName(NewfilePath));
 
                     if (NewfilePathCover == string.Empty)
