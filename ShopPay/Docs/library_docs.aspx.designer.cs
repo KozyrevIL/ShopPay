@@ -51,13 +51,13 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Button ButtonSearch;
 
         /// <summary>
-        /// GridViewTags элемент управления.
+        /// GridViewFilterTags элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewTags;
+        protected global::System.Web.UI.WebControls.GridView GridViewFilterTags;
 
         /// <summary>
         /// ButtonTagSearch элемент управления.
@@ -67,6 +67,15 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonTagSearch;
+
+        /// <summary>
+        /// ButtonFilterClear элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonFilterClear;
 
         /// <summary>
         /// GridViewDocs элемент управления.

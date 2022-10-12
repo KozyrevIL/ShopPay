@@ -59,6 +59,43 @@ namespace ShopPay.Admin
 
         protected void ButtonSearch_Click(object sender, EventArgs e)
         {
+            string FilterTags = ",";
+            foreach (GridViewRow gr in GridViewFilterTags.Rows)
+            {
+                Label IDTag = (Label)gr.FindControl("LabelIdTag");
+                CheckBox cbTag = (CheckBox)gr.FindControl("CheckTag");
+                if (IDTag == null) continue;
+                if (cbTag == null) continue;
+                if (cbTag.Checked)
+                {
+                    FilterTags += IDTag.Text + ",";
+                }
+            }
+
+            SqlDataSourceDocs.SelectParameters["tags"].DefaultValue = FilterTags;
+            GridViewDocs.DataBind();
+
+        }
+
+        protected void ButtonComand_Command(object sender, CommandEventArgs e)
+        {
+
+        }
+
+        protected void ButtonFilterClear_Click(object sender, EventArgs e)
+        {
+            string FilterTags = ",";
+            DocMask.Text = string.Empty;
+            DropDownSections.SelectedIndex = 0;
+
+            foreach (GridViewRow gr in GridViewFilterTags.Rows)
+            {
+                CheckBox cbTag = (CheckBox)gr.FindControl("CheckTag");
+                if (cbTag == null) continue;
+                cbTag.Checked = false;
+            }
+            SqlDataSourceDocs.SelectParameters["tags"].DefaultValue = FilterTags;
+            GridViewDocs.DataBind();
 
         }
     }

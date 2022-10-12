@@ -35,6 +35,18 @@ namespace ShopPay.Admin
             string FileTempDir = Path.Combine(destDir, GUIDFile);
             DocScan.PostedFile.SaveAs(FileTempDir);
 
+            int fileLengthCover = DocCover.PostedFile.ContentLength;
+            string FileTempDirCover = string.Empty;
+            if (fileLengthCover != 0)
+            {
+                string destDirCover = Server.MapPath("./../Upload/ImagesCovers");
+                string GUIDFileCover = Guid.NewGuid().ToString() + Path.GetExtension(DocCover.PostedFile.FileName);
+
+                FileTempDirCover = Path.Combine(destDirCover, GUIDFileCover);
+                DocCover.PostedFile.SaveAs(FileTempDirCover);
+            }
+            string id_section = SelectSection.SelectedValue;
+
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
                 con.Open();
@@ -43,17 +55,18 @@ namespace ShopPay.Admin
                     SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION", con);
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("insert into Docs_docs (name_doc,num_doc,date_doc,issue_doc,description,items) values (@name_doc,@num_doc,@date_doc,@issue_doc,@description,@items)", con);
+                    cmd = new SqlCommand("insert into Docs_docs (id_section, name_doc,date_doc,description,items,cover) values (@id_section, @name_doc,@date_doc,@description,@items,@cover)", con);
+
+                    cmd.Parameters.AddWithValue("id_section", id_section);
                     cmd.Parameters.AddWithValue("name_doc", DocName.Text);
-                    cmd.Parameters.AddWithValue("num_doc", DocNum.Text);
-                    DateTime dDoc;
-                    if (DateTime.TryParse(DocDate.Text, out dDoc))
-                        cmd.Parameters.AddWithValue("date_doc", dDoc.ToString("dd.MM.yyyy"));
-                    else
-                        cmd.Parameters.AddWithValue("date_doc", DBNull.Value);
-                    cmd.Parameters.AddWithValue("issue_doc", DocIssue.Text);
+                    cmd.Parameters.AddWithValue("date_doc", DocDate.Text);
                     cmd.Parameters.AddWithValue("description", DocDescription.Text);
                     cmd.Parameters.AddWithValue("items",Path.GetFileName(FileTempDir));
+                    if (FileTempDirCover == string.Empty)
+                        cmd.Parameters.AddWithValue("cover", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("cover", Path.GetFileName(FileTempDirCover));
+
                     cmd.ExecuteNonQuery();
 
                     cmd = new SqlCommand("select @@IDENTITY ", con);
@@ -151,13 +164,17 @@ namespace ShopPay.Admin
             GridViewRow grw = GridViewDocs.Rows[e.RowIndex];
             GridView GVT = (GridView)grw.FindControl("GridViewEditTags");
             string id_doc = ((Label)grw.FindControl("LabelIDDoc")).Text;
+            string id_section = ((DropDownList)grw.FindControl("DropDownSection")).SelectedValue;
             string filePath = ((Label) grw.FindControl("LabelItems")).Text;
+            string filePathCover = ((Label)grw.FindControl("LabelCover")).Text;
             FileUpload FileUpload = (FileUpload)grw.FindControl("FileScan");
+            FileUpload FileCover = (FileUpload)grw.FindControl("FileCover");
+
 
             string docname = ((TextBox)grw.FindControl("EditNameDoc")).Text;
-            string docnum = ((TextBox)grw.FindControl("EditNumDoc")).Text;
+//            string docnum = ((TextBox)grw.FindControl("EditNumDoc")).Text;
             string docdate = ((TextBox)grw.FindControl("EditDateDoc")).Text;
-            string docissue = ((TextBox)grw.FindControl("EditIssueDoc")).Text;
+//            string docissue = ((TextBox)grw.FindControl("EditIssueDoc")).Text;
             string docdesc = ((TextBox)grw.FindControl("EditDescDoc")).Text;
 
             string destDir = Server.MapPath("./../Upload/ImagesDocs");
@@ -173,6 +190,19 @@ namespace ShopPay.Admin
                 FileUpload.PostedFile.SaveAs(NewfilePath);
             }
 
+            string destDirCover = Server.MapPath("./../Upload/ImagesCovers");
+            string OldfilePathCover = Path.Combine(destDirCover, filePathCover);
+            string NewfilePathCover = OldfilePathCover;
+
+            int fileLengthCover = FileCover.PostedFile.ContentLength;
+            if (fileLengthCover != 0)
+            {
+
+                string GUIDFileCover = Guid.NewGuid().ToString() + Path.GetExtension(FileCover.PostedFile.FileName);
+                NewfilePathCover = Path.Combine(destDirCover, GUIDFileCover);
+                FileCover.PostedFile.SaveAs(NewfilePathCover);
+            }
+
 
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
@@ -182,17 +212,20 @@ namespace ShopPay.Admin
                     SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION", con);
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("update Docs_docs set name_doc=@name_doc, num_doc=@num_doc,date_doc=@date_doc,issue_doc=@issue_doc,description=@description, items=@items where id_doc=@id_doc", con);
+                    cmd = new SqlCommand("update Docs_docs set name_doc=@name_doc, id_section=@id_section, date_doc=@date_doc, description=@description, items=@items, cover=@cover where id_doc=@id_doc", con);
                     cmd.Parameters.AddWithValue("name_doc", docname);
-                    cmd.Parameters.AddWithValue("num_doc", docnum);
-                    DateTime dDoc;
-                    if (DateTime.TryParse(docdate, out dDoc))
-                        cmd.Parameters.AddWithValue("date_doc", dDoc);
-                    else
-                        cmd.Parameters.AddWithValue("date_doc", DBNull.Value);
-                    cmd.Parameters.AddWithValue("issue_doc", docissue);
+                    cmd.Parameters.AddWithValue("id_section", id_section);
+                    //                  cmd.Parameters.AddWithValue("num_doc", docnum);
+                   cmd.Parameters.AddWithValue("date_doc", docdate);
+                    //                  cmd.Parameters.AddWithValue("issue_doc", docissue);
                     cmd.Parameters.AddWithValue("description", docdesc);
                     cmd.Parameters.AddWithValue("items",Path.GetFileName(NewfilePath));
+
+                    if (NewfilePathCover == string.Empty)
+                        cmd.Parameters.AddWithValue("cover", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("cover", Path.GetFileName(NewfilePathCover));
+
                     cmd.Parameters.AddWithValue("id_doc", id_doc);
 
                     cmd.ExecuteNonQuery();
@@ -223,6 +256,14 @@ namespace ShopPay.Admin
                         File.Delete(OldfilePath);
                     }
                     catch { }
+                    if (OldfilePathCover != string.Empty)
+                        try
+                        {
+                            if (OldfilePathCover != NewfilePathCover)
+
+                                File.Delete(OldfilePath);
+                        }
+                        catch { }
 
                 }
                 catch
@@ -240,5 +281,40 @@ namespace ShopPay.Admin
             }
 
         }
+        protected void ButtonSearch_Click(object sender, EventArgs e)
+        {
+            string FilterTags = ",";
+            foreach (GridViewRow gr in GridViewFilterTags.Rows)
+            {
+                Label IDTag = (Label)gr.FindControl("LabelIdTag");
+                CheckBox cbTag = (CheckBox)gr.FindControl("CheckTag");
+                if (IDTag == null) continue;
+                if (cbTag == null) continue;
+                if (cbTag.Checked)
+                {
+                    FilterTags += IDTag.Text + ",";
+                }
+            }
+            
+            SqlDataSourceDocs.SelectParameters["tags"].DefaultValue = FilterTags;
+            GridViewDocs.DataBind();
+        }
+        protected void ButtonFilterClear_Click(object sender, EventArgs e)
+        {
+            string FilterTags = ",";
+            DocMask.Text = string.Empty;
+            DropDownSections.SelectedIndex = 0;
+
+            foreach (GridViewRow gr in GridViewFilterTags.Rows)
+            {
+                CheckBox cbTag = (CheckBox)gr.FindControl("CheckTag");
+                if (cbTag == null) continue;
+                cbTag.Checked = false;
+            }
+            SqlDataSourceDocs.SelectParameters["tags"].DefaultValue = FilterTags;
+            GridViewDocs.DataBind();
+
+        }
+
     }
 }

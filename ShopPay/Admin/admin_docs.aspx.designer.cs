@@ -24,22 +24,22 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Label LabelError;
 
         /// <summary>
-        /// DocName элемент управления.
+        /// SelectSection элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DocName;
+        protected global::System.Web.UI.WebControls.DropDownList SelectSection;
 
         /// <summary>
-        /// DocNum элемент управления.
+        /// CheckActual элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DocNum;
+        protected global::System.Web.UI.WebControls.CheckBox CheckActual;
 
         /// <summary>
         /// DocDate элемент управления.
@@ -51,13 +51,13 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.TextBox DocDate;
 
         /// <summary>
-        /// DocIssue элемент управления.
+        /// DocName элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DocIssue;
+        protected global::System.Web.UI.WebControls.TextBox DocName;
 
         /// <summary>
         /// DocDescription элемент управления.
@@ -67,6 +67,15 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox DocDescription;
+
+        /// <summary>
+        /// DocCover элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload DocCover;
 
         /// <summary>
         /// DocScan элемент управления.
@@ -123,6 +132,60 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Button AddDoc;
 
         /// <summary>
+        /// DropDownSections элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownSections;
+
+        /// <summary>
+        /// DocMask элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DocMask;
+
+        /// <summary>
+        /// ButtonSearch элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSearch;
+
+        /// <summary>
+        /// GridViewFilterTags элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewFilterTags;
+
+        /// <summary>
+        /// ButtonTagSearch элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonTagSearch;
+
+        /// <summary>
+        /// ButtonFilterClear элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonFilterClear;
+
+        /// <summary>
         /// GridViewDocs элемент управления.
         /// </summary>
         /// <remarks>
@@ -148,5 +211,14 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTags;
+
+        /// <summary>
+        /// SqlDataSourceSections элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSections;
     }
 }

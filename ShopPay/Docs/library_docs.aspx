@@ -3,99 +3,97 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-                <asp:Label ID="LabelError" runat="server"></asp:Label>
-                <br />
-                Фильтр по разделу
+        <asp:Label ID="LabelError" runat="server"></asp:Label>
+        <br />
+        Фильтр по разделу
                 <br />
         <asp:DropDownList ID="DropDownSections" runat="server" AppendDataBoundItems="true" DataSourceID="SqlDataSourceSections" DataTextField="section_name" DataValueField="id_section">
             <asp:ListItem Value="-1">Все разделы</asp:ListItem>
         </asp:DropDownList>
-                <asp:TextBox ID="DocMask" runat="server"></asp:TextBox>
-        <asp:Button ID="ButtonSearch" runat="server" OnClick="ButtonSearch_Click" Text="Применить"/>
+        <asp:TextBox ID="DocMask" runat="server"></asp:TextBox>
+        <asp:Button ID="ButtonSearch" runat="server" OnClick="ButtonSearch_Click" Text="Применить" />
 
-                <br />
+        <br />
         Расширенный фильтр
                 <br />
-        
-                    <asp:GridView ID="GridViewTags" runat="server" DataSourceID="SqlDataSourceTags" AutoGenerateColumns="false" ShowHeader="false">
-                        <Columns>
-                            <asp:TemplateField>
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="CheckTag" runat="server" />
-                                    <asp:Label ID="LabelIdTag" runat="server" Text='<%#Eval("id_tag") %>' Visible="false"></asp:Label>
-                                    <asp:Label ID="LabelTag" runat="server" Text='<%#Eval("tag_name") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
-        <asp:Button ID="ButtonTagSearch" runat="server" OnClick="ButtonSearch_Click" Text="Применить"/>
+
+        <asp:GridView ID="GridViewFilterTags" runat="server" DataSourceID="SqlDataSourceTags" AutoGenerateColumns="false" ShowHeader="false">
+            <Columns>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:CheckBox ID="CheckTag" runat="server" />
+                        <asp:Label ID="LabelIdTag" runat="server" Text='<%#Eval("id_tag") %>' Visible="false"></asp:Label>
+                        <asp:Label ID="LabelTag" runat="server" Text='<%#Eval("tag_name") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+        <asp:Button ID="ButtonTagSearch" runat="server" OnClick="ButtonSearch_Click" Text="Применить" />
+        <asp:Button ID="ButtonFilterClear" runat="server" OnClick="ButtonFilterClear_Click" Text="Сбросить" />
         <br />
-        </div>
+    </div>
     <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_doc" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
-            <asp:TemplateField Visible="false">
+            <asp:TemplateField HeaderText="Обложка">
                 <ItemTemplate>
-                    <asp:Label ID="LabelIDDoc" runat="server" Text='<%# Eval("id_doc") %>'></asp:Label>
-                    <asp:Label ID="LabelItems" runat="server" Text='<%# Eval("items") %>'></asp:Label>
+                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' />
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Дата документа">
                 <ItemTemplate>
-                    <asp:HyperLink ID="DocImage" runat="server" NavigateUrl='<%# "~/ImageHandler.ashx?fn="+Eval("items") %>' >Образ документа</asp:HyperLink>
+                    <asp:Label ID="LabelDateDoc" runat="server" Text='<%# Eval("date_doc") %>'></asp:Label>
                 </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:FileUpload ID="FileScan" runat="server" />
-                </EditItemTemplate>
             </asp:TemplateField>
-            <asp:TemplateField>
+            <asp:TemplateField HeaderText="Вид раздела">
+                <ItemTemplate>
+                    <asp:Label ID="LabelSection" runat="server" Text='<%# Eval("section_name") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Наименование документа">
                 <ItemTemplate>
                     <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="EditNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Label ID="LabelNumDoc" runat="server" Text='<%# Bind("num_doc") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="EditNumDoc" runat="server" Text='<%# Bind("num_doc") %>'></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Label ID="LabelDateDoc" runat="server" Text='<%# Eval("date_doc","dd.MM.yyyy") %>' ></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="EditDateDoc" runat="server" Text='<%# Bind("date_doc") %>'></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:Label ID="LabelIssueDoc" runat="server" Text='<%# Bind("issue_doc") %>'></asp:Label>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="EditIssueDoc" runat="server" Text='<%# Bind("issue_doc") %>'></asp:TextBox>
-                </EditItemTemplate>
-            </asp:TemplateField>
-            <asp:TemplateField>
-                <ItemTemplate>
+                    <br />
+                    Краткое описание
+                    <br />
                     <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
                 </ItemTemplate>
-                <EditItemTemplate>
-                    <asp:TextBox ID="EditDescDoc" runat="server" Text='<%# Bind("description") %>' TextMode="MultiLine"></asp:TextBox>
-                </EditItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="DocIsAvailable" />
+            <asp:TemplateField HeaderText="Актуальность">
+                <ItemTemplate>
+                    <asp:Label ID="LabelActual" runat="server" Text='<%# Eval("isActual").ToString()=="True"?"Актуален":"Неактуален" %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Статус">
+                <ItemTemplate>
+                    <asp:Label ID="LabelStatus" runat="server" Text='<%# Eval("DocisAvailable").ToString()=="True"?"Оплачен":"Не доступен" %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Документ">
+                <ItemTemplate>
+                    <asp:HyperLink ID="DocImage" runat="server" NavigateUrl='<%# "~/ImageHandler.ashx?fn="+Eval("items") %>'>Образ документа</asp:HyperLink>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Действие">
+                <ItemTemplate>
+                    <asp:Button ID="ButtonComand" runat="server" CommandName="Action" CommandArgument='<%# Eval("DocisAvailable").ToString()=="True"?"pay":"archive" %>' Text='<%# Eval("DocisAvailable").ToString()=="False"?"Купить":"Убрать в архив" %>' OnCommand="ButtonComand_Command" />
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
 
     </asp:GridView>
 
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dd.*, [dbo].[Docs_DocIsAvailable](id_doc,@customer) DocIsAvailable from Docs_docs dd">
+        SelectCommand="select dd.*, ds.section_name, [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable 
+                from Docs_docs dd, Docs_DocSections ds 
+        where dd.id_section=ds.id_section 
+        and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
+        and (@section ='-1' or dd.id_section=@section)
+        and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))">
         <SelectParameters>
-            <asp:Parameter Name="customer" /> 
+            <asp:Parameter Name="customer" />
+            <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />
+            <asp:ControlParameter ControlID="DropDownSections" Name="section" PropertyName="SelectedValue" DefaultValue="-1" />
+            <asp:Parameter Name="tags" DefaultValue=","/>
         </SelectParameters>
     </asp:SqlDataSource>
 
