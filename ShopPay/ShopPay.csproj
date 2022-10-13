@@ -163,6 +163,7 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
+    <Content Include="Docs\viewer_doc.aspx" />
     <Content Include="Docs\library_docs.aspx" />
     <Content Include="Roles\ManageRoles.aspx" />
     <Content Include="Account\ManageLogins.aspx" />
@@ -296,6 +297,13 @@
     </Compile>
     <Compile Include="Admin\SiteAdmin.Master.designer.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Docs\viewer_doc.aspx.cs">
+      <DependentUpon>viewer_doc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docs\viewer_doc.aspx.designer.cs">
+      <DependentUpon>viewer_doc.aspx</DependentUpon>
     </Compile>
     <Compile Include="Docs\library_docs.aspx.cs">
       <DependentUpon>library_docs.aspx</DependentUpon>

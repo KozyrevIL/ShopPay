@@ -79,7 +79,14 @@ namespace ShopPay.Admin
 
         protected void ButtonComand_Command(object sender, CommandEventArgs e)
         {
-
+            switch (e.CommandName)
+            {
+                case "pay":
+                    Response.Redirect("viewer_doc?iddoc=" + e.CommandArgument);
+                    break;
+                case "archive":
+                    break;
+            }
         }
 
         protected void ButtonFilterClear_Click(object sender, EventArgs e)

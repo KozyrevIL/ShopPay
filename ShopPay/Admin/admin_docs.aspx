@@ -92,7 +92,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Обложка">
                 <ItemTemplate>
-                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' />
+                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+(Eval("cover").ToString()==""?Eval("cover").ToString():"empty.jpg") %>' />
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:FileUpload ID="FileCover" runat="server" />
@@ -178,7 +178,8 @@
     </asp:GridView>
 
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dd.*, (SELECT STRING_AGG(t.tag_name,CHAR(10)) FROM Docs_DocTags dt, docs_tags t where dt.id_doc=dd.id_doc and t.id_tag=dt.id_tag) tags, ds.section_name 
+        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull([dd.isActual],0) isActual,dd.description,dd.items,dd.cover,dd.doc_content
+        ,(SELECT STRING_AGG(t.tag_name,CHAR(10)) FROM Docs_DocTags dt, docs_tags t where dt.id_doc=dd.id_doc and t.id_tag=dt.id_tag) tags, ds.section_name 
         from Docs_docs dd, Docs_DocSections ds 
         where dd.id_section=ds.id_section 
         and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')

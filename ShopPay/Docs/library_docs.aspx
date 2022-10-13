@@ -75,7 +75,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Действие">
                 <ItemTemplate>
-                    <asp:Button ID="ButtonComand" runat="server" CommandName="Action" CommandArgument='<%# Eval("DocisAvailable").ToString()=="True"?"pay":"archive" %>' Text='<%# Eval("DocisAvailable").ToString()=="False"?"Купить":"Убрать в архив" %>' OnCommand="ButtonComand_Command" />
+                    <asp:Button ID="ButtonComand" runat="server" CommandName='<%# Eval("DocisAvailable").ToString()=="False"?"pay":"archive" %>' Text='<%# Eval("DocisAvailable").ToString()=="False"?"Купить":"Убрать в архив" %>' CommandArgument='<%# Eval("id_doc").ToString() %>' OnCommand="ButtonComand_Command" />
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
@@ -83,7 +83,7 @@
     </asp:GridView>
 
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dd.*, ds.section_name, [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable 
+        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name, [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable 
                 from Docs_docs dd, Docs_DocSections ds 
         where dd.id_section=ds.id_section 
         and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
