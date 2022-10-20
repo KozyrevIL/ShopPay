@@ -29,7 +29,7 @@ namespace ShopPay.Admin
                     string actualDoc = string.Empty;
                     string descDoc = string.Empty;
                     string contentDoc = string.Empty;
-                    string priceDoc = "10500";
+                    string priceDoc = string.Empty;
                     string cover = string.Empty;
 
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
@@ -37,7 +37,7 @@ namespace ShopPay.Admin
                         con.Open();
                         try
                         {
-                            SqlCommand cmd = new SqlCommand(@"SELECT id_doc,id_section,name_doc,date_doc,issue_doc,num_doc,iif(isnull(isActual,0)=1,'Актуален','Неактуален') isActual,description,items,isnull(cover,'empty.jpg') cover,doc_content FROM Docs_docs where id_doc=" + id_doc, con);
+                            SqlCommand cmd = new SqlCommand(@"SELECT id_doc,id_section,name_doc,date_doc,issue_doc,num_doc,iif(isnull(isActual,0)=1,'Актуален','Неактуален') isActual,description,items,isnull(cover,'empty.jpg') cover,doc_content,[dbo].[Docs_GetPrice](id_doc,GETDATE()) doc_price FROM Docs_docs where id_doc=" + id_doc, con);
 
                             SqlDataReader sdr = cmd.ExecuteReader();
                             if (sdr.HasRows)
@@ -50,6 +50,7 @@ namespace ShopPay.Admin
                                     descDoc = sdr["description"].ToString();
                                     contentDoc = sdr["doc_content"].ToString();
                                     cover = sdr["cover"].ToString();
+                                    priceDoc = sdr["doc_price"].ToString();
                                 }
                             }
                             sdr.Close();

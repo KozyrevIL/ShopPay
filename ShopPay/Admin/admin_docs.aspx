@@ -19,6 +19,8 @@
         <br />
         <asp:Label runat="server">Содержание документа</asp:Label><asp:TextBox ID="DocContent" runat="server" TextMode="MultiLine"></asp:TextBox>
         <br />
+        <asp:Label runat="server">Цена аренды, руб./мес.</asp:Label><asp:TextBox ID="DocPrice" runat="server"></asp:TextBox>
+        <br />
         <asp:Label runat="server">Обложка документа</asp:Label>
         <asp:FileUpload ID="DocCover" runat="server"></asp:FileUpload>
         <br />
@@ -92,7 +94,7 @@
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Обложка">
                 <ItemTemplate>
-                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+(Eval("cover").ToString()==""?Eval("cover").ToString():"empty.jpg") %>' />
+                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+(Eval("cover").ToString()!=""?Eval("cover").ToString():"empty.jpg") %>' />
                 </ItemTemplate>
                 <EditItemTemplate>
                     <asp:FileUpload ID="FileCover" runat="server" />
@@ -173,13 +175,19 @@
                     <asp:TextBox ID="EditContentDoc" runat="server" Text='<%# Bind("doc_content") %>' TextMode="MultiLine"></asp:TextBox>
                 </EditItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Цена">
+                <ItemTemplate>
+                    <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Bind("doc_price") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
 
     </asp:GridView>
 
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull([dd.isActual],0) isActual,dd.description,dd.items,dd.cover,dd.doc_content
-        ,(SELECT STRING_AGG(t.tag_name,CHAR(10)) FROM Docs_DocTags dt, docs_tags t where dt.id_doc=dd.id_doc and t.id_tag=dt.id_tag) tags, ds.section_name 
+        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,dd.cover,dd.doc_content,ds.section_name
+        ,(SELECT STRING_AGG(t.tag_name,CHAR(10)) FROM Docs_DocTags dt, docs_tags t where dt.id_doc=dd.id_doc and t.id_tag=dt.id_tag) tags 
+        ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price
         from Docs_docs dd, Docs_DocSections ds 
         where dd.id_section=ds.id_section 
         and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')

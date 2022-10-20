@@ -68,6 +68,12 @@
                     <asp:Label ID="LabelStatus" runat="server" Text='<%# Eval("DocisAvailable").ToString()=="True"?"Оплачен":"Не доступен" %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Цена">
+                <ItemTemplate>
+                    <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="Документ">
                 <ItemTemplate>
                     <asp:HyperLink ID="DocImage" runat="server" NavigateUrl='<%# "~/ImageHandler.ashx?fn="+Eval("items") %>'>Образ документа</asp:HyperLink>
@@ -83,7 +89,8 @@
     </asp:GridView>
 
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name, [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable 
+        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name, [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable
+  ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
                 from Docs_docs dd, Docs_DocSections ds 
         where dd.id_section=ds.id_section 
         and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')

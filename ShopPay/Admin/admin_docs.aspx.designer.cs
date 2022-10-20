@@ -78,6 +78,15 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.TextBox DocContent;
 
         /// <summary>
+        /// DocPrice элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox DocPrice;
+
+        /// <summary>
         /// DocCover элемент управления.
         /// </summary>
         /// <remarks>

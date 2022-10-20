@@ -72,6 +72,16 @@ namespace ShopPay.Admin
 
                     cmd = new SqlCommand("select @@IDENTITY ", con);
                     string id_doc = cmd.ExecuteScalar().ToString();
+
+                    // Добавим цену в прайс - лист
+                    int PriceArenda = 0;
+                    if (int.TryParse(DocPrice.Text, out PriceArenda))
+                    {
+                        cmd = new SqlCommand("insert into Docs_DocsPrice (id_doc,price, date_start) values (@id_doc,@price,GETDATE())", con);
+                        cmd.Parameters.AddWithValue("id_doc", id_doc);
+                        cmd.Parameters.AddWithValue("price", PriceArenda);
+                        cmd.ExecuteNonQuery();
+                    }
                     cmd = new SqlCommand("insert into Docs_DocTags (id_doc,id_tag) values (@id_doc,@id_tag)", con);
                     foreach (GridViewRow gr in GridViewTags.Rows)
                     {

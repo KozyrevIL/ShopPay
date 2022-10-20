@@ -6,7 +6,7 @@
 
         <asp:Image ID="ImageCover" runat="server" ImageUrl="" />
 
-        <h3><asp:Label ID="PriceDoc" runat="server"></asp:Label> руб.</h3>
+        <h3><asp:Label ID="PriceDoc" runat="server"></asp:Label> руб./мес.</h3>
         <asp:Button ID="ButtonFavortite" runat="server" OnClick="ButtonFavortite_Click" Text="В избранное"/>
         <asp:Button ID="ButtonBasket" runat="server" OnClick="ButtonBasket_Click" Text="В корзину"/>
         <h2>
