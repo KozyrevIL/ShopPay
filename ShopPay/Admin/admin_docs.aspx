@@ -179,6 +179,9 @@
                 <ItemTemplate>
                     <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Bind("doc_price") %>'></asp:Label>
                 </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="EditPriceDoc" runat="server" Text='<%# Bind("doc_price") %>'></asp:TextBox>
+                </EditItemTemplate>
             </asp:TemplateField>
         </Columns>
 

@@ -188,6 +188,7 @@ namespace ShopPay.Admin
 //            string docissue = ((TextBox)grw.FindControl("EditIssueDoc")).Text;
             string docdesc = ((TextBox)grw.FindControl("EditDescDoc")).Text;
             string doccontent = ((TextBox)grw.FindControl("EditContentDoc")).Text;
+            string docprice = ((TextBox)grw.FindControl("EditPriceDoc")).Text;
 
             string destDir = Server.MapPath("./../Upload/ImagesDocs");
             string OldfilePath = Path.Combine(destDir, filePath);
@@ -261,6 +262,19 @@ namespace ShopPay.Admin
                             cmd.ExecuteNonQuery();
                         }
                     }
+                    int PriceArenda = 0;
+                    if (int.TryParse(docprice, out PriceArenda))
+                    {
+                        cmd = new SqlCommand("delete from Docs_DocsPrice where id_doc=@id_doc", con);
+                        cmd.Parameters.AddWithValue("id_doc", id_doc);
+                        cmd.ExecuteNonQuery();
+
+                        cmd = new SqlCommand("insert into Docs_DocsPrice (id_doc,price, date_start) values (@id_doc,@price,GETDATE())", con);
+                        cmd.Parameters.AddWithValue("id_doc", id_doc);
+                        cmd.Parameters.AddWithValue("price", PriceArenda);
+                        cmd.ExecuteNonQuery();
+                    }
+
                     cmd = new SqlCommand("COMMIT", con);
                     cmd.ExecuteNonQuery();
                     try

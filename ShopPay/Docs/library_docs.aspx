@@ -2,6 +2,12 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script>
+        async function updateFavorite(flag, id_doc) {
+            let response = await fetch('./../updateFavorite.ashx?check='+flag+'&doc='+id_doc);
+            let text = await response.text(); // прочитать тело ответа как текст
+        }
+    </script>
     <div>
         <asp:Label ID="LabelError" runat="server"></asp:Label>
         <br />
@@ -15,7 +21,7 @@
 
         <br />
         Расширенный фильтр
-                <br />
+        <br />
 
         <asp:GridView ID="GridViewFilterTags" runat="server" DataSourceID="SqlDataSourceTags" AutoGenerateColumns="false" ShowHeader="false">
             <Columns>
@@ -73,6 +79,11 @@
                     <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
+            <asp:TemplateField HeaderText="Избранное">
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckFavorite" runat="server" Checked='<%# Eval("favorite") %>' OnClick='<%# "updateFavorite(this.checked,"+Eval("id_doc").ToString()+");" %>' ></asp:CheckBox>
+                </ItemTemplate>
+            </asp:TemplateField>
 
             <asp:TemplateField HeaderText="Документ">
                 <ItemTemplate>
@@ -89,11 +100,14 @@
     </asp:GridView>
 
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name, [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable
-  ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
-                from Docs_docs dd, Docs_DocSections ds 
-        where dd.id_section=ds.id_section 
-        and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
+        SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items
+        ,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name
+        ,[dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable
+        ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
+        ,isnull((select CONVERT(BIT,1) from Docs_Favorits df where df.id_doc=dd.id_doc and df.customer=@customer),CONVERT(BIT,0)) favorite
+        from Docs_docs dd, Docs_DocSections ds 
+        where  dd.id_section=ds.id_section and
+        (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
         and (@section ='-1' or dd.id_section=@section)
         and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))">
         <SelectParameters>
