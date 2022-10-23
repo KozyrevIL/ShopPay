@@ -87,7 +87,7 @@
 
             <asp:TemplateField HeaderText="Документ">
                 <ItemTemplate>
-                    <asp:HyperLink ID="DocImage" runat="server" NavigateUrl='<%# "~/ImageHandler.ashx?fn="+Eval("items") %>'>Образ документа</asp:HyperLink>
+                    <asp:HyperLink ID="DocImage" runat="server" NavigateUrl='<%# "~/ImageHandler.ashx?fn="+Eval("items") %>' Visible='<%# Eval("DocisAvailable") %>'>Образ документа</asp:HyperLink>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Действие">

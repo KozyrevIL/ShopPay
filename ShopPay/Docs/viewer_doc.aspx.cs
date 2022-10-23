@@ -69,6 +69,9 @@ namespace ShopPay.Admin
                     DescrDoc.Text = descDoc;
                     ContentDoc.Text = contentDoc;
                     PriceDoc.Text = priceDoc;
+
+                    ButtonFavortite.OnClientClick = "updateFavorite('true'," + id_doc + ");";
+                    ButtonCart.OnClientClick= "updateFavorite('cart'," + id_doc + ");";
                 }
             }
         }

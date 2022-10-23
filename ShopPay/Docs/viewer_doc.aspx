@@ -2,13 +2,21 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <script>
+        async function updateFavorite(flag, id_doc) {
+            let response = await fetch('./../updateFavorite.ashx?check=' + flag + '&doc=' + id_doc);
+            let text = await response.text(); // прочитать тело ответа как текст
+            alert(text);
+        }
+
+    </script>
     <div>
 
         <asp:Image ID="ImageCover" runat="server" ImageUrl="" />
 
         <h3><asp:Label ID="PriceDoc" runat="server"></asp:Label> руб./мес.</h3>
-        <asp:Button ID="ButtonFavortite" runat="server" OnClick="ButtonFavortite_Click" Text="В избранное"/>
-        <asp:Button ID="ButtonBasket" runat="server" OnClick="ButtonBasket_Click" Text="В корзину"/>
+        <asp:Button ID="ButtonFavortite" runat="server" Text="В избранное" />
+        <asp:Button ID="ButtonCart" runat="server" Text="В корзину" />
         <h2>
             <asp:Label ID="NameDoc" runat="server"></asp:Label>
         </h2>
@@ -26,5 +34,6 @@
         </h2>
         <br />
         <asp:Label ID="ContentDoc" runat="server"></asp:Label>
+        </div>
 </asp:Content>
 

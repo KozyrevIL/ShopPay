@@ -18,12 +18,26 @@ namespace ShopPay
             string _checked = context.Request.Params["check"].ToString();
             string id_doc=context.Request.Params["doc"].ToString();
             string user = context.User.Identity.Name;
-            string SqlText = "insert into Docs_Favorits (id_doc,customer) values (@id_doc, @customer)";
-            if (_checked=="false")
-            {
-                SqlText = "delete from Docs_Favorits where id_doc=@id_doc and customer=@customer";
-            }
 
+            string SqlText = string.Empty;
+            string result = string.Empty;
+
+            switch (_checked)
+            {
+                case "true":
+                    SqlText = "insert into Docs_Favorits (id_doc,customer) values (@id_doc, @customer)";
+                    result = " в Избранное";
+                    break;
+                case "false":
+                    SqlText = "delete from Docs_Favorits where id_doc=@id_doc and customer=@customer";
+                    result = " в Избранное";
+                    break;
+                case "cart":
+                    SqlText = @"IF NOT EXISTS (SELECT * FROM Docs_cart WHERE id_doc=@id_doc and customer=@customer)
+ insert into Docs_cart (id_doc,customer) values (@id_doc, @customer)";
+                    result = " в Корзину";
+                    break;
+            }
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
                 con.Open();
@@ -33,6 +47,7 @@ namespace ShopPay
                     cmd.Parameters.AddWithValue("id_doc", id_doc);
                     cmd.Parameters.AddWithValue("customer", user);
                     cmd.ExecuteNonQuery();
+                    result = "Документ добавлен " + result;
                 }
                 finally
                 {
@@ -43,7 +58,7 @@ namespace ShopPay
 
 
             context.Response.ContentType = "text/plain";
-            context.Response.Write("updated");
+            context.Response.Write(result);
         }
 
         public bool IsReusable

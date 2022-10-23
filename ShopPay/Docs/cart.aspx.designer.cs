@@ -11,88 +11,88 @@ namespace ShopPay.Admin
 {
 
 
-    public partial class viewer_doc
+    public partial class cart
     {
 
         /// <summary>
-        /// ImageCover элемент управления.
+        /// GridViewDocs элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImageCover;
+        protected global::System.Web.UI.WebControls.GridView GridViewDocs;
 
         /// <summary>
-        /// PriceDoc элемент управления.
+        /// minusMonth элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PriceDoc;
+        protected global::System.Web.UI.WebControls.Button minusMonth;
 
         /// <summary>
-        /// ButtonFavortite элемент управления.
+        /// qtyMonth элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonFavortite;
+        protected global::System.Web.UI.WebControls.Label qtyMonth;
 
         /// <summary>
-        /// ButtonCart элемент управления.
+        /// plusMonth элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCart;
+        protected global::System.Web.UI.WebControls.Button plusMonth;
 
         /// <summary>
-        /// NameDoc элемент управления.
+        /// AllPrice элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NameDoc;
+        protected global::System.Web.UI.WebControls.Label AllPrice;
 
         /// <summary>
-        /// DescrDoc элемент управления.
+        /// CreateOrder элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DescrDoc;
+        protected global::System.Web.UI.WebControls.Button CreateOrder;
 
         /// <summary>
-        /// DateDoc элемент управления.
+        /// SqlDataSourceDocs элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DateDoc;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDocs;
 
         /// <summary>
-        /// ActualDoc элемент управления.
+        /// SqlDataSourceTags элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ActualDoc;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTags;
 
         /// <summary>
-        /// ContentDoc элемент управления.
+        /// SqlDataSourceSections элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ContentDoc;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSections;
     }
 }
