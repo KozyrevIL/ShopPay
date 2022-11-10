@@ -1,25 +1,96 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="admin_tags.aspx.cs" Inherits="ShopPay.Admin.admin_tags" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/SiteAdmin.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="admin_tags.aspx.cs" Inherits="ShopPay.Admin.admin_tags" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-<div>
-    Добавить "тэг"
-    <asp:Label runat="server">Имя тэга</asp:Label><asp:TextBox ID="TagName" runat="server"></asp:TextBox>
-    <br />
-    <asp:Label runat="server">Описание тэга</asp:Label><asp:TextBox ID="TagNote" runat="server" TextMode="MultiLine"></asp:TextBox>
-    <br />
-    <asp:Button ID="AddTag" runat="server" Text="Добавить" OnClick="AddTag_Click"/>
-    <br />
-</div>
 
-        <asp:GridView runat="server" ID="GridViewTags" DataKeyNames="id_tag" DataSourceID="SqlDataSourceTags" AutoGenerateColumns="false">
-            <Columns>
-                <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
-                <asp:BoundField DataField="id_tag" ReadOnly="true" />
-                <asp:BoundField DataField="tag_name" />
-                <asp:BoundField DataField="tag_note" />
-            </Columns>
-        </asp:GridView>
+    <section id="header">
+        <div class="container-fluid text-center">
+            <h3>Администрирование.  Добавить метку документа</h3>
+        </div>
+    </section> 
+    
+
+    <section id="grid_content">
+        
+        <grid_form_imput>
+            <div class="grid_input_data">
+                <div class="form-group">
+                    <asp:Label runat="server">Имя тэга</asp:Label>
+                    <asp:TextBox ID="TagName" runat="server" CssClass="form-control" Width="250px"></asp:TextBox>
+                    <br />
+                    <asp:Label runat="server">Описание тэга</asp:Label>
+                    <asp:TextBox ID="TagNote" runat="server" TextMode="MultiLine" CssClass="form-control" Width="250px" Height="80px"></asp:TextBox>
+                    <br />
+                    <asp:Button ID="AddTag" runat="server" Text="Добавить" CssClass="btn btn-success" OnClick="AddTag_Click" />
+                </div>
+            </div>
+            <div class="grid_view_data" style="overflow:auto">
+                <asp:GridView runat="server" ID="GridViewTags" DataKeyNames="id_tag" CssClass="table table-secondary table-bordered table-hover table-striped" DataSourceID="SqlDataSourceTags" AutoGenerateColumns="false">
+                    <HeaderStyle CssClass=" table table-info" />
+                    <Columns>
+                       
+                        <asp:BoundField DataField="id_tag" ReadOnly="true"  HeaderText="N"/>
+                        <asp:BoundField DataField="tag_name" ControlStyle-CssClass="form-control"  HeaderText="Наименование"  />
+                        <asp:BoundField DataField="tag_note" ControlStyle-CssClass="form-control" HeaderText="Описание" />
+                        <asp:TemplateField ShowHeader="True" HeaderText="Действие">
+                            <ItemTemplate>
+                                <div class="btn-group">
+                                    <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-success">
+                                <i class="glyphicon glyphicon-pencil"></i>
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись?');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                    </asp:LinkButton>
+                                </div>
+
+                            </ItemTemplate>
+                            <EditItemTemplate>
+                                <div class="btn-group">
+                                    <asp:LinkButton ID="LinkButtonUpdate" runat="server" ToolTip="Обновить" CommandName="Update" CausesValidation="false" CssClass="btn btn-success">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                    </asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButtonCancel" runat="server" ToolTip="Отменить" CommandName="Cancel" CausesValidation="false" CssClass="btn btn-success">
+                                <i class="glyphicon glyphicon-remove"></i>
+                                    </asp:LinkButton>
+                                </div>
+                            </EditItemTemplate>
+                            <ItemStyle Width="100px" />
+                        </asp:TemplateField>
+
+                    </Columns>
+                </asp:GridView>
+            </div>
+        </grid_form_imput>
+        
+    </section>
+
+   <%-- <section id="content_boot">
+        <div class="container">
+            <div class="row">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="col-6 col-lg-6">
+                            
+                        </div>
+                        <div class="col-6 col-lg-6">
+                            
+                        </div>
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>--%>
+
+
+       
 
 <asp:SqlDataSource ID="SqlDataSourceTags" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
     SelectCommand="select * from Docs_tags order by tag_name" 

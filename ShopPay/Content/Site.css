@@ -1,14 +1,29 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿@font-face {
+    font-family: 'inter-black';
+    src: url('../fonts/inter/static/inter-black.ttf') format('truetype') local('inter-black');
+}
+@font-face {
+    font-family: 'inter-bold';
+    src: url('../fonts/inter/static/inter-bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'inter-regular';
+    src: url('../fonts/inter/static/inter-regular.ttf') format('truetype');
+}
+
+/* Move down content because we have a fixed navbar that is 50px tall */
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    /*padding-top: 50px;
+    padding-bottom: 20px;*/
+    font-family: inter-regular, Tahoma;
 }
 
 /* Wrapping element */
 /* Set some basic padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
+    min-height:605px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -27,12 +42,92 @@ input[type="select"] {
     max-width: 280px;
 }
 
+
+#header {
+    background: #E6B308;
+    border: 1px solid #E6B308;
+    border-radius: 5px;
+    width: 100%;
+    padding:10px 0px 10px 0px;
+
+    color:white;
+}
+
+    #header h3 {
+        margin: 0px;
+        padding: 0px;
+        font-size: 24px;
+    }
+
+
+.navbar {
+   
+    min-height: 50px;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+}
+
+.navbar-inverse {
+    background-color: #0192AC;
+    border-color: #0192AC;
+}
+    .navbar-inverse .navbar-brand {
+        color: #ffffff;
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: #ffffff;
+    }
+
+.body-content {
+    padding: 0;
+}
+
+/* Grid test stsrt */
+
+#grid_content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "form_imput";
+    justify-content: center;
+}
+
+grid_form_imput {
+    grid-area: form_imput;
+    display:grid;
+    grid-template-columns:1fr 2fr;
+
+    width: 960px;
+    box-sizing: border-box;
+    height: 367px;
+    margin-top: 12px;
+    background: #D9D9D9;
+    border: 1px solid #B4B4B4;
+    border-radius: 5px;
+    padding: 30px;
+}
+/* Grid test end */
+#content_boot {
+}
+
+    #content_boot .card-body {
+        box-sizing: border-box;
+        height: 367px;
+        margin-top: 12px;
+        background: #D9D9D9;
+        border: 1px solid #B4B4B4;
+        border-radius: 5px;
+        padding: 30px;
+    }
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-    .jumbotron {
+    /*.jumbotron {
         margin-top: 20px;
     }
     .body-content {
         padding: 0;
-    }
+    }*/
 }
+
