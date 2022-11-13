@@ -64,47 +64,23 @@
         
     </section>
 
-   <%-- <section id="content_boot">
-        <div class="container">
-            <div class="row">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="col-6 col-lg-6">
-                            
-                        </div>
-                        <div class="col-6 col-lg-6">
-                            
-                        </div>
+    <section id="data">
 
 
+        <asp:SqlDataSource ID="SqlDataSourceTags" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
+            SelectCommand="select * from Docs_tags order by tag_name"
+            UpdateCommand="update Docs_tags set tag_name=@tag_name, tag_note=@tag_note where id_tag=@id_tag"
+            DeleteCommand="delete from Docs_tags where id_tag=@id_tag">
+            <UpdateParameters>
+                <asp:Parameter Name="@tag_name" />
+                <asp:Parameter Name="@tag_note" />
+                <asp:Parameter Name="@id_tag" />
+            </UpdateParameters>
+            <DeleteParameters>
+                <asp:Parameter Name="@id_tag" />
+            </DeleteParameters>
+        </asp:SqlDataSource>
 
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </section>--%>
-
-
-       
-
-<asp:SqlDataSource ID="SqlDataSourceTags" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-    SelectCommand="select * from Docs_tags order by tag_name" 
-    UpdateCommand="update Docs_tags set tag_name=@tag_name, tag_note=@tag_note where id_tag=@id_tag" 
-    DeleteCommand="delete from Docs_tags where id_tag=@id_tag">
-    <UpdateParameters>
-        <asp:Parameter Name="@tag_name" />
-        <asp:Parameter Name="@tag_note" />
-        <asp:Parameter Name="@id_tag" />
-    </UpdateParameters>
-    <DeleteParameters>
-        <asp:Parameter Name="@id_tag" />
-    </DeleteParameters>
-</asp:SqlDataSource>
-
+    </section>
 </asp:Content>
 

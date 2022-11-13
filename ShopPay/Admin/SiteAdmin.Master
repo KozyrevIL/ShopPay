@@ -39,64 +39,61 @@
         </asp:ScriptManager>
 
 
-        <div class="container-fluid">
-            <div class="row">
-                <img src="../Images/Temp_img/temp_banner_small.jpg" width="100%" />
-            </div>
-        </div>
-        <div class="navbar navbar-inverse">
-          
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <%--<a class="navbar-brand" runat="server" href="~/">Имя приложения</a>--%>
+        <div class="global-container">
+            <div class="container-fluid banner">
+                <div class="row">
+                    <img src="../Images/Temp_img/temp_banner_small.jpg" width="100%" />
                 </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Все Документы</a></li>
-                        <li><a runat="server" href="~/#">Мои документы</a></li>
-                        <li><a runat="server" href="~/#">Консультации</a></li>
-                        <li><a runat="server" href="~/#">Договора</a></li>
-                        <li><a runat="server" href="~/#">Архив</a></li>
-                        <li><a runat="server" href="~/#">Отложено</a></li>
-                        <li><a runat="server" href="~/#">Товары</a></li>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Регистрация</a></li>
-                                <li><a runat="server" href="~/Account/Login">Вход</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+            </div>
+            <div class="navbar navbar-inverse banner-menu">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <%--<a class="navbar-brand" runat="server" href="~/">Имя приложения</a>--%>
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/">Все Документы</a></li>
+                            <li><a runat="server" href="~/#">Мои документы</a></li>
+                            <li><a runat="server" href="~/#">Консультации</a></li>
+                            <li><a runat="server" href="~/#">Договора</a></li>
+                            <li><a runat="server" href="~/#">Архив</a></li>
+                            <li><a runat="server" href="~/#">Отложено</a></li>
+                            <li><a runat="server" href="~/#">Товары</a></li>
+                        </ul>
+                        <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Register">Регистрация</a></li>
+                                    <li><a runat="server" href="~/Account/Login">Вход</a></li>
+                                </ul>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                    <li>
+                                        <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                    </li>
+                                </ul>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                    </div>
                 </div>
             </div>
 
-         
+            <div class="container-fluid body-content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <footer>
+                <img src="../Images/Temp_img/temp_footer_full.jpg" width="100%" />
+                <%--<p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>--%>
+            </footer>
         </div>
-       
-        <div class="container-fluid body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-           
-        </div>
-        <footer>
-            <img src="../Images/Temp_img/temp_footer_full.jpg" width="100%" />
-            <%--<p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>--%>
-        </footer>
     </form>
 </body>
 </html>
