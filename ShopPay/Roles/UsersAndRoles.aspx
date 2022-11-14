@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="True" CodeBehind="UsersAndRoles.aspx.cs" Inherits="Roles_UsersAndRoles" Title="Untitled Page" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Admin/SiteAdmin.Master" AutoEventWireup="True" CodeBehind="UsersAndRoles.aspx.cs" Inherits="Roles_UsersAndRoles" Title="Untitled Page" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <h2>Управление ролями пользователей</h2>

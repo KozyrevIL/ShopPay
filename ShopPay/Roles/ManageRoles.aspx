@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="True" CodeBehind="ManageRoles.aspx.cs" Inherits="ShopPay.Account.ManageRoles" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/SiteAdmin.Master" AutoEventWireup="True" CodeBehind="ManageRoles.aspx.cs" Inherits="ShopPay.Account.ManageRoles" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Управление ролями.</h2>
