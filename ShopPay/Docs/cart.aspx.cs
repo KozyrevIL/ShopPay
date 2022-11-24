@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using ShopPay.App_Code;
 
 namespace ShopPay.Admin
 {
@@ -110,7 +111,10 @@ namespace ShopPay.Admin
 
         protected void CreateOrder_Click(object sender, EventArgs e)
         {
-
+            int intMonth = 1;
+            int.TryParse(qtyMonth.Text, out intMonth);
+            Orders order = new Orders(Context.User.Identity.GetUserName(), intMonth, true);
+            if (order.idOrder > 0) Response.Redirect("~/Order.aspx?id=" + order.idOrder.ToString());
         }
     }
 }
