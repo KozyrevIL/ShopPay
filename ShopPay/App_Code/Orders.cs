@@ -11,9 +11,12 @@ namespace ShopPay.App_Code
 {
     public class Orders
     {
-        private int qtyTime;
-        private string customer;
+        private int qtyTime = 1;
+        private string customer = string.Empty;
         public int idOrder = -1;
+        public string status = string.Empty;
+        public DateTime dateOrder = DateTime.Now;
+        public float Cost=-1;
 
 
         public Orders(string customer) // Просто создаем объект
@@ -22,14 +25,6 @@ namespace ShopPay.App_Code
         }
         public Orders(int idOrder) // читаем заказ по id
         {
-
-        }
-        public Orders(string customer, int qtyTime, bool fromCart = true) // Создаем объект одновременно с созданием 
-        {
-
-            bool result = true;
-            this.qtyTime = qtyTime;
-            this.customer = customer;
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
                 con.Open();
@@ -37,11 +32,60 @@ namespace ShopPay.App_Code
                 try
                 {
                     // Создаем новый заказ
-                    SqlCommand cmd = new SqlCommand("insert into Docs_Orders (status,date_order,customer) values (@status,GETDATE(),@customer)", con);
+                    SqlCommand cmd = new SqlCommand("select * from Docs_Orders where id_order=@id", con);
+                    cmd.CommandType = CommandType.Text;
+                    cmd.Transaction = transaction;
+                    cmd.Parameters.AddWithValue("id", idOrder);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    if (sdr.Read())
+                    {
+                        this.idOrder = idOrder;
+                        dateOrder = (DateTime)sdr["date_order"];
+                        customer = sdr["customer"].ToString();
+                        status = sdr["status"].ToString();
+
+                        if (!float.TryParse(sdr["AllCost"].ToString(), out Cost)) Cost = -1f;
+                    }
+                    sdr.Close();
+                }
+                catch
+                {
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+
+        }
+        private bool CheckData()
+        {
+            if (Cost <= 0) return false;
+            if (customer == String.Empty) return false;
+            return true;
+        }
+
+        public Orders(string customer, int qtyTime, float Cost, bool fromCart = true) // Создаем объект одновременно с созданием 
+        {
+
+            bool result = true;
+            this.qtyTime = qtyTime;
+            this.customer = customer;
+            this.Cost = Cost;
+            if (!CheckData()) return;
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
+            {
+                con.Open();
+                SqlTransaction transaction = con.BeginTransaction();
+                try
+                {
+                    // Создаем новый заказ
+                    SqlCommand cmd = new SqlCommand("insert into Docs_Orders (status,date_order,customer,allCost) values (@status,GETDATE(),@customer,@allCost)", con);
                     cmd.CommandType = CommandType.Text;
                     cmd.Transaction = transaction;
                     cmd.Parameters.AddWithValue("status", "Сформирован");
                     cmd.Parameters.AddWithValue("customer", customer);
+                    cmd.Parameters.AddWithValue("allCost", Cost);
                     cmd.ExecuteNonQuery();
                     // Запоминаем ID заказа
                     this.idOrder = int.Parse(new SqlCommand("select @@IDENTITY",con,transaction).ExecuteScalar()?.ToString() ?? "0");

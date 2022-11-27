@@ -163,6 +163,8 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
+    <Content Include="Docs\listOrders.aspx" />
+    <Content Include="Docs\order.aspx" />
     <Content Include="Docs\cart.aspx" />
     <Content Include="Docs\viewer_doc.aspx" />
     <Content Include="Docs\library_docs.aspx" />
@@ -339,6 +341,20 @@
       <DependentUpon>SiteAdmin.Master</DependentUpon>
     </Compile>
     <Compile Include="App_Code\Orders.cs" />
+    <Compile Include="Docs\listOrders.aspx.cs">
+      <DependentUpon>listOrders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docs\listOrders.aspx.designer.cs">
+      <DependentUpon>listOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Docs\order.aspx.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docs\order.aspx.designer.cs">
+      <DependentUpon>order.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Docs\cart.aspx.cs">
       <DependentUpon>cart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -113,7 +113,8 @@ namespace ShopPay.Admin
         {
             int intMonth = 1;
             int.TryParse(qtyMonth.Text, out intMonth);
-            Orders order = new Orders(Context.User.Identity.GetUserName(), intMonth, true);
+            float.TryParse(AllPrice.Text, out float allCost);
+            Orders order = new Orders(Context.User.Identity.GetUserName(), intMonth, allCost, true);
             if (order.idOrder > 0) Response.Redirect("~/Order.aspx?id=" + order.idOrder.ToString());
         }
     }
