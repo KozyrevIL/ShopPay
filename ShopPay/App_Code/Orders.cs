@@ -91,7 +91,7 @@ namespace ShopPay.App_Code
                     this.idOrder = int.Parse(new SqlCommand("select @@IDENTITY",con,transaction).ExecuteScalar()?.ToString() ?? "0");
                     if (fromCart) // Если в заказ надо перенести из корзины
                     {
-                        cmd.CommandText = "insert into Docs_OrderItems (id_order,id_doc,qty_time) select @id_order, id_doc, qty_time from Docs_Cart where customer=@customer";
+                        cmd.CommandText = "insert into Docs_OrderItems (id_order,id_doc,qty_time) select @id_order, id_doc, @qtyTime from Docs_Cart where customer=@customer";
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("id_order", idOrder);
                         cmd.Parameters.AddWithValue("qtyTime", qtyTime);
