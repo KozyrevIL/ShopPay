@@ -163,7 +163,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Тэги">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="TagsList" runat="server" Text='<%# Eval("tags") %>' TextMode="MultiLine" ReadOnly="true"> </asp:TextBox>
+                                    <asp:TextBox ID="TagsList" runat="server" Text='<%# Eval("tags") %>' TextMode="MultiLine" ReadOnly="true" Enabled="false"> </asp:TextBox>
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:GridView ID="GridViewEditTags" runat="server" AutoGenerateColumns="false" ShowHeader="false">
@@ -237,7 +237,9 @@
                                 </EditItemTemplate>
                             </asp:TemplateField>
                         </Columns>
-
+                        <AlternatingRowStyle CssClass="alter_row_style" />
+                            <RowStyle CssClass="item_row_style" />
+                            <EditRowStyle CssClass="danger" />
                     </asp:GridView>
                 </div>
                 

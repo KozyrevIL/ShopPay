@@ -13,15 +13,6 @@ public partial class Roles_UsersAndRoles
 {
 
     /// <summary>
-    /// ActionStatus элемент управления.
-    /// </summary>
-    /// <remarks>
-    /// Автоматически созданное поле.
-    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-    /// </remarks>
-    protected global::System.Web.UI.WebControls.Label ActionStatus;
-
-    /// <summary>
     /// UserList элемент управления.
     /// </summary>
     /// <remarks>
@@ -74,4 +65,13 @@ public partial class Roles_UsersAndRoles
     /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
     /// </remarks>
     protected global::System.Web.UI.WebControls.Button AddUserToRoleButton;
+
+    /// <summary>
+    /// ActionStatus элемент управления.
+    /// </summary>
+    /// <remarks>
+    /// Автоматически созданное поле.
+    /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+    /// </remarks>
+    protected global::System.Web.UI.WebControls.Label ActionStatus;
 }

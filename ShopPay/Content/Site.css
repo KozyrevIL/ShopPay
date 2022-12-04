@@ -102,15 +102,19 @@ input[type="select"] {
 .navbar-nav > li > .dropdown-menu {
     padding:15px;
 }
+/* Grid For ALL BEGIN */
+#grid_content grid_form_imput {
+    background: #D9D9D9;
+    border: 1px solid #B4B4B4;
+}
+/* Grid For ALL END */
 
 /* Grid  page Admin Doc Add begin */
-
 .admin_doc #grid_content {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 258px 64px 1fr;
-    
-    margin-top:12px;
+    margin-top: 12px;
 }
     .admin_doc #grid_content .grid_input_data {
         display: grid;
@@ -158,12 +162,23 @@ input[type="select"] {
 .admin_doc #grid_content .grid_view_data {
     display: grid;
     grid-template-columns: 295px 1fr;
-    
+    border: 1px solid #585858 !important;
 }
+
+    .admin_doc #grid_content .grid_view_data .alter_row_style {
+        background: #fff;
+        border: 1px solid #B4B4B4;
+    }
+
+    .admin_doc #grid_content .grid_view_data .item_row_style {
+        background: #D4EDDA;
+        border: 1px solid #B4B4B4;
+    }
 
 /* Grid  page Admin Doc Add  end */
-/* Grid  page Admin TAG Add begin */
-#grid_content {
+
+/* Grid  page Admin TAG Add begin alter_row_style */
+.tags #grid_content {
     height: 100%;
     display: grid;
     grid-template-columns: auto;
@@ -172,48 +187,155 @@ input[type="select"] {
     justify-content: center;
 }
 
-grid_form_imput {
-    grid-area: form_imput;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    width: 960px;
-    box-sizing: border-box;
-    height: 367px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    background: #D9D9D9;
-    border: 1px solid #B4B4B4;
-    border-radius: 5px;
-    padding: 30px;
-}
-/* Grid  page Admin TAG Add  end */
+    .tags #grid_content .alter_row_style {
+        background: #fff;
+        border: 1px solid #B4B4B4;
+    }
 
-/* Grid  page Admin REGISTER  begin */
-.register_user #grid_content {
-    height: 100%;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas: "form_imput";
-    justify-content: center;
-}
+    .tags #grid_content .item_row_style {
+        background: #D4EDDA;
+        border: 1px solid #B4B4B4;
+    }
 
-.register_user grid_form_imput {
-    grid-area: form_imput;
-    display: grid;
-    grid-template-columns: auto;
-    width: 960px;
-    box-sizing: border-box;
-    height: 367px;
-    margin-top: 12px;
-    margin-bottom: 12px;
-    background: #D9D9D9;
-    border: 1px solid #B4B4B4;
-    border-radius: 5px;
-    padding: 30px;
-}
+    .tags #grid_content grid_form_imput {
+        grid-area: form_imput;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 960px;
+        box-sizing: border-box;
+        height: 367px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        /*background: #D9D9D9;
+        border: 1px solid #B4B4B4;*/
+        border-radius: 5px;
+        padding: 30px;
+    }
+
+        .tags #grid_content grid_form_imput .grid_view_data .table {
+            border: 1px solid #B4B4B4 !important;
+        }
+    /* Grid  page Admin TAG Add  end */
+
+    /* Grid  page Admin REGISTER  begin */
+    .register_user #grid_content {
+        height: 100%;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: auto;
+        grid-template-areas: "form_imput";
+        justify-content: center;
+    }
+        .register_user #grid_content grid_form_imput {
+            grid-area: form_imput;
+            display: grid;
+            grid-template-columns: auto;
+            width: 960px;
+            box-sizing: border-box;
+            height: 367px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            background: #D9D9D9;
+            border: 1px solid #B4B4B4;
+            border-radius: 5px;
+            padding: 30px;
+        }
 /* Grid  page Admin REGISTER  end */
 
+/* Grid  page Admin ManageRoles  begin */
+.manage_roles #grid_content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "form_imput";
+    justify-content: center;
+}
+
+    .manage_roles #grid_content .alter_row_style {
+        background: #fff;
+        border: 1px solid #B4B4B4;
+    }
+
+    .manage_roles #grid_content .item_row_style {
+        background: #D4EDDA;
+        border: 1px solid #B4B4B4;
+    }
+
+    .manage_roles #grid_content grid_form_imput {
+        grid-area: form_imput;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        width: 960px;
+        box-sizing: border-box;
+        height: 367px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        background: #D9D9D9;
+        border: 1px solid #B4B4B4;
+        border-radius: 5px;
+        padding: 30px;
+    }
+
+        .manage_roles #grid_content .grid_input_data .btn {
+            margin-top: 22px;
+        }
+/* Grid  page Admin ManageRoles  end */
+
+/* Grid  page Admin Users_And_Roles  begin */
+.users_and_roles #grid_content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "form_imput";
+    justify-content: center;
+}
+
+    .users_and_roles #grid_content .alter_row_style {
+        background: #fff;
+        border: 1px solid #B4B4B4;
+    }
+
+    .users_and_roles #grid_content .item_row_style {
+        background: #D4EDDA;
+        border: 1px solid #B4B4B4;
+    }
+
+    .users_and_roles #grid_content grid_form_imput {
+        grid-area: form_imput;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        width: 960px;
+        box-sizing: border-box;
+        height: 490px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+        background: #D9D9D9;
+        border: 1px solid #B4B4B4;
+        border-radius: 5px;
+        padding: 10px 30px 10px 30px;
+    }
+        .users_and_roles #grid_content grid_form_imput .grid_input_data {
+            display: grid;
+            grid-template-columns: auto;
+            /*grid-template-rows: auto;*/
+            align-items: start;
+            justify-items:start;
+             grid-template-rows: repeat(2, 45px);
+            grid-row-gap: 10px;
+        }
+        .users_and_roles #grid_content grid_form_imput .grid_view_data {
+            display: grid;
+            grid-template-columns: auto;
+            /*grid-template-rows: auto;*/
+            /*grid-template-rows: repeat(3, auto-fit);*/
+            grid-template-rows: 48px 54px 210px 45px;
+              /*  grid-auto-rows: minmax(45px,auto);*/
+            grid-row-gap: 10px;
+            align-items: start;
+        }
+/* Grid  page Admin Users_And_Roles  end */
 
 #content_boot {
 }
@@ -226,6 +348,21 @@ grid_form_imput {
         border: 1px solid #B4B4B4;
         border-radius: 5px;
         padding: 30px;
+    }
+
+#status_data {
+    background: #D9D9D9;
+    border: 1px solid #B4B4B4;
+    border-radius: 5px;
+    width: 100%;
+    padding: 10px 30px 0px 30px;
+    color: #555555;
+}
+
+    #status_data h3 {
+        margin: 0px;
+        padding: 0px;
+        font-size: 24px;
     }
 
 footer {
