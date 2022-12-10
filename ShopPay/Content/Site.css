@@ -177,7 +177,55 @@ input[type="select"] {
 
 /* Grid  page Admin Doc Add  end */
 
-/* Grid  page Admin TAG Add begin alter_row_style */
+/* Grid  page User Library_docs BEGIN */
+.library_docs {
+  /*  display: grid;
+    grid-template-columns:auto;*/
+}
+
+    .library_docs #grid_content {
+        display: grid;
+        grid-template-columns: 288px auto;
+        grid-template-rows: 115px 1fr;
+        margin-top: 12px;
+        width: 100vw;
+        
+    }
+
+        .library_docs #grid_content h3 {
+            
+            font-style: normal;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 19px;
+            color: #555555;
+        }
+
+        .library_docs #grid_content .grid_filter_data {
+            /* grid-column: 2/3;*/
+
+            background: #FFFFFF;
+            border: 1px solid #D9D9D9;
+            border-radius: 5px;
+            padding: 20px 20px 20px 20px;
+        }
+    .library_docs #grid_content .grid_view_data{
+        grid-column: 2/-1;
+        
+    }
+
+        .library_docs #grid_content .grid_view_data .filter_data_ext {
+            display: flex;
+            justify-content: space-between;
+            align-items:center;
+
+            background: #D9D9D9;
+            border-radius: 5px;
+            padding: 10px 40px 20px 20px;
+        }
+        /* Grid  page User Library_docs END */
+
+        /* Grid  page Admin TAG Add begin alter_row_style */
 .tags #grid_content {
     height: 100%;
     display: grid;
@@ -364,6 +412,8 @@ input[type="select"] {
         padding: 0px;
         font-size: 24px;
     }
+
+
 
 footer {
     flex: 0 0 auto;

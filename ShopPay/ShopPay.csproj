@@ -163,6 +163,7 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="Docs\listOrders.aspx" />
     <Content Include="Docs\order.aspx" />
     <Content Include="Docs\cart.aspx" />
@@ -212,7 +213,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
+    <Content Include="Default_old.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -341,6 +342,13 @@
       <DependentUpon>SiteAdmin.Master</DependentUpon>
     </Compile>
     <Compile Include="App_Code\Orders.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Docs\listOrders.aspx.cs">
       <DependentUpon>listOrders.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -467,12 +475,12 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Default_old.aspx.cs">
+      <DependentUpon>Default_old.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
+    <Compile Include="Default_old.aspx.designer.cs">
+      <DependentUpon>Default_old.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

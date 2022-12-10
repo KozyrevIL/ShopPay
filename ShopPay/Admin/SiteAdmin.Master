@@ -58,13 +58,15 @@
                     <div class="navbar-collapse collapse">
                         <div>
                             <ul class="nav navbar-nav">
-                                <li><a runat="server" href="~/">Все Документы</a></li>
-                                <li><a runat="server" href="~/#">Мои документы</a></li>
+                                <li><a runat="server" href="~/Default.aspx">Все Документы</a></li>
+                                <li><a runat="server" href="~/Docs/library_docs.aspx">Мои документы</a></li>
                                 <li><a runat="server" href="~/#">Консультации</a></li>
                                 <li><a runat="server" href="~/#">Договора</a></li>
                                 <li><a runat="server" href="~/#">Архив</a></li>
                                 <li><a runat="server" href="~/#">Отложено</a></li>
                                 <li><a runat="server" href="~/#">Товары</a></li>
+
+
                             </ul>
                         </div>
                         <div>
@@ -78,14 +80,30 @@
                                         <a class="dropdown-item" href="../Account/Register.aspx">Регистрация пользователя</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_docs.aspx">Добавить документ</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_tags.aspx">Добавить метку документа</a>
+
                                     </div>
+
                                 </li>
                             </ul>
+
                         </div>
                         <div>
+                            <ul class="nav navbar-nav">
+                                <li>
+<a href="../Docs/cart.aspx" style="color: white; font-size:17px; "><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                </li>
+                            </ul>
+
+
+
+                        </div>
+                        <div>
+                            
                             <asp:LoginView runat="server" ViewStateMode="Disabled">
                                 <AnonymousTemplate>
                                     <ul class="nav navbar-nav navbar-right">
+                                        
+
                                         <li><a runat="server" href="~/Account/Register">Регистрация</a></li>
                                         <li><a runat="server" href="~/Account/Login">Вход</a></li>
                                     </ul>
