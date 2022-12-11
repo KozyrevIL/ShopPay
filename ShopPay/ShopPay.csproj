@@ -164,6 +164,7 @@
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Default_primary.aspx" />
     <Content Include="Docs\listOrders.aspx" />
     <Content Include="Docs\order.aspx" />
     <Content Include="Docs\cart.aspx" />
@@ -348,6 +349,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default_primary.aspx.cs">
+      <DependentUpon>Default_primary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default_primary.aspx.designer.cs">
+      <DependentUpon>Default_primary.aspx</DependentUpon>
     </Compile>
     <Compile Include="Docs\listOrders.aspx.cs">
       <DependentUpon>listOrders.aspx</DependentUpon>
