@@ -109,16 +109,27 @@ input[type="select"] {
 }
 /* Grid For ALL END */
 
+/* Grid login BEGIN */
+.login #grid_content {
+    background: #D9D9D9;
+    border: 1px solid #B4B4B4;
+    padding:20px;
+}
+/* Grid login END */
+
 /* Grid  page Admin Doc Add begin */
 .admin_doc #grid_content {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 258px 64px 1fr;
     margin-top: 12px;
+    row-gap: 12px;
 }
     .admin_doc #grid_content .grid_input_data {
         display: grid;
         grid-template-columns: 295px 1fr;
+        column-gap:12px;
+        row-gap:12px;
     }
         .admin_doc #grid_content .grid_input_data .item1 {
             border: 1px solid #B4B4B4;
@@ -155,14 +166,18 @@ input[type="select"] {
     display: flex;
     justify-content: space-between;
     background-color: #D4EDDA;
-    align-items:center;
+    align-items: center;
     padding: 0px 25px;
+
+    margin-top:12px;
+   
 }
 
 .admin_doc #grid_content .grid_view_data {
     display: grid;
     grid-template-columns: 295px 1fr;
-    border: 1px solid #585858 !important;
+    border: 1px solid #729C3B !important;
+    row-gap: 12px;
 }
 
     .admin_doc #grid_content .grid_view_data .alter_row_style {
@@ -173,6 +188,10 @@ input[type="select"] {
     .admin_doc #grid_content .grid_view_data .item_row_style {
         background: #D4EDDA;
         border: 1px solid #B4B4B4;
+    }
+
+    .admin_doc #grid_content .grid_view_data .filter_data_ext {
+       padding:25px;
     }
 
 /* Grid  page Admin Doc Add  end */
@@ -208,6 +227,7 @@ input[type="select"] {
             border: 1px solid #D9D9D9;
             border-radius: 5px;
             padding: 20px 20px 20px 20px;
+            
         }
     .library_docs #grid_content .grid_view_data{
         grid-column: 2/-1;
@@ -225,8 +245,38 @@ input[type="select"] {
         }
         /* Grid  page User Library_docs END */
 
-        /* Grid  page Admin TAG Add begin alter_row_style */
-.tags #grid_content {
+/* Grid  page User viewer_doc BEGIN */
+
+.viewer_doc #grid_content {
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: auto 20px;
+    margin-top: 12px;
+    gap:12px;
+}
+    .viewer_doc #grid_content .grid_view_img {
+        grid-row:1/-1;
+    }
+
+    /* Grid  page User viewer_doc END */
+
+/* Grid  page User cart BEGIN */
+
+.cart #grid_content {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 20px;
+    margin-top: 12px;
+    gap: 12px;
+}
+
+   
+
+/* Grid  page User cart END */
+
+
+    /* Grid  page Admin TAG Add begin alter_row_style */
+    .tags #grid_content {
     height: 100%;
     display: grid;
     grid-template-columns: auto;

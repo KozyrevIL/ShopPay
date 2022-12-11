@@ -242,6 +242,7 @@
     <Content Include="fonts\Inter\static\Inter-Regular.ttf" />
     <Content Include="fonts\Inter\static\Inter-SemiBold.ttf" />
     <Content Include="fonts\Inter\static\Inter-Thin.ttf" />
+    <Content Include="Roles\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Roles\UsersAndRoles.aspx" />
     <Content Include="Scripts\bootstrap.js" />

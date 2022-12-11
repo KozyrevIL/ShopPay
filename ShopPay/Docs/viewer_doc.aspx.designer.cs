@@ -24,33 +24,6 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Image ImageCover;
 
         /// <summary>
-        /// PriceDoc элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PriceDoc;
-
-        /// <summary>
-        /// ButtonFavortite элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonFavortite;
-
-        /// <summary>
-        /// ButtonCart элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button ButtonCart;
-
-        /// <summary>
         /// NameDoc элемент управления.
         /// </summary>
         /// <remarks>
@@ -60,13 +33,13 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Label NameDoc;
 
         /// <summary>
-        /// DescrDoc элемент управления.
+        /// PriceDoc элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DescrDoc;
+        protected global::System.Web.UI.WebControls.Label PriceDoc;
 
         /// <summary>
         /// DateDoc элемент управления.
@@ -94,5 +67,32 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ContentDoc;
+
+        /// <summary>
+        /// DescrDoc элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DescrDoc;
+
+        /// <summary>
+        /// ButtonFavortite элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonFavortite;
+
+        /// <summary>
+        /// ButtonCart элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCart;
     }
 }

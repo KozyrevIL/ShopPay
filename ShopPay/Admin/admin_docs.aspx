@@ -79,11 +79,11 @@
                 </div>
                 <div class=" input-group">
                     <asp:TextBox ID="DocMask" runat="server" CssClass="input-group-addon" Width="265"></asp:TextBox>
-                    <asp:Button ID="ButtonSearch" runat="server" OnClick="ButtonSearch_Click" Text="Применить" CssClass="btn btn-default" />
+                    <asp:Button ID="ButtonSearch" runat="server" OnClick="ButtonSearch_Click" Text="Применить" CssClass="btn btn-info" />
 
 
                     
-                    <asp:Button ID="ButtonFilterClear" runat="server" OnClick="ButtonFilterClear_Click" Text="Сбросить" CssClass="btn btn-default" />
+                    <asp:Button ID="ButtonFilterClear" runat="server" OnClick="ButtonFilterClear_Click" Text="Сбросить" CssClass="btn btn-danger" />
                 </div>
 
 
@@ -235,6 +235,7 @@
                                 </EditItemTemplate>
                             </asp:TemplateField>
                         </Columns>
+                        <HeaderStyle BackColor="#729C3B" ForeColor="White" />
                         <AlternatingRowStyle CssClass="alter_row_style" />
                             <RowStyle CssClass="item_row_style" />
                             <EditRowStyle CssClass="danger" />

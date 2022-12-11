@@ -15,7 +15,7 @@ namespace ShopPay.Account
             RegisterHyperLink.NavigateUrl = "Register";
             // Включите, когда будет включено подтверждение учетной записи для функции сброса пароля
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+           // OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
