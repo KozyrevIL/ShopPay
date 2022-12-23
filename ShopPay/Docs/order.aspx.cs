@@ -22,6 +22,10 @@ namespace ShopPay.Admin
                 Orders order = new Orders(int.Parse(ViewState["idOrder"].ToString()));
                 SqlDataSourceDocs.SelectParameters["id"].DefaultValue = ViewState["idOrder"].ToString();
                 SqlDataSourceDocs.DataBind();
+                SqlDataSourceConsults.SelectParameters["id"].DefaultValue = ViewState["idOrder"].ToString();
+                SqlDataSourceConsults.DataBind();
+                if (GridViewDocs.Rows.Count == 0) orderDocs.Visible = false;
+                if (GridViewConsults.Rows.Count == 0) orderConsults.Visible = false;
 
                 AllPrice.Text = order.Cost.ToString();
                 PaidOrder.Visible = false;

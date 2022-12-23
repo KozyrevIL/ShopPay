@@ -12,6 +12,9 @@
         Заказ
         <asp:Label ID="LabelNumOrder" runat="server"></asp:Label> 
         <asp:Label ID="LabelDateOrder" runat="server"></asp:Label> 
+
+        <div runat="server" id="orderDocs">
+            Документы
     <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
@@ -23,7 +26,7 @@
                 <ItemTemplate>
                     <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
                     <br />
-                    Краткое описание
+                    Краткое описание:
                     <br />
                     <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
                     <br />
@@ -45,6 +48,29 @@
         </Columns>
 
     </asp:GridView>
+            </div>
+        <div runat="server" id="orderConsults">
+            Консультации
+    <asp:GridView runat="server" ID="GridViewConsults" DataKeyNames="id_order" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
+        <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
+                    <br />
+                    Обсуждаемые вопросы:
+                    <br />
+                    <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Количество">
+                <ItemTemplate>
+                    <asp:Label ID="qtyItem" runat="server" Text='<%# Eval("qty_time") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
+
+    </asp:GridView>
+            </div>
     </div>
 
     <div>
@@ -59,11 +85,12 @@
         SelectCommand="select o.id_order, oi.id_item, dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc
         ,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items
         ,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name,
-		iif(period_end is null,str(qty_time)+' мес.', 'до '+CONVERT(NVARCHAR(10),period_end)) period 
+		iif(period_end is null,str(qty_time)+' мес.', 'до '+CONVERT(NVARCHAR(10),period_end)) period, oi.qty_time 
         from Docs_docs dd, 
 		Docs_DocSections ds, Docs_Orders o, Docs_OrderItems oi     
         where  
 		o.id_order = @id
+        and dd.id_typeProduct = 1
         and oi.id_order=o.id_order
 		and dd.id_doc= oi.id_doc
         and dd.id_section = ds.id_section
@@ -73,6 +100,23 @@
         </SelectParameters>
 
     </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="SqlDataSourceConsults" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
+        SelectCommand="select o.id_order, oi.id_item, dd.id_doc,dd.name_doc
+        ,dd.description, oi.qty_time
+        from Docs_docs dd, Docs_Orders o, Docs_OrderItems oi     
+        where  
+		o.id_order = @id
+        and dd.id_typeProduct = 2
+        and oi.id_order=o.id_order
+		and dd.id_doc= oi.id_doc
+        ">
+        <SelectParameters>
+            <asp:Parameter Name="id" />
+        </SelectParameters>
+
+    </asp:SqlDataSource>
+
 
     <asp:SqlDataSource ID="SqlDataSourceTags" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
         SelectCommand="select id_tag, '#'+tag_name tag_name from Docs_tags"></asp:SqlDataSource>

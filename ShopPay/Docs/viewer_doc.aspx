@@ -13,12 +13,12 @@
     <div class="viewer_doc">
         <section id="header">
             <div class="container-fluid text-center">
-                <h3>Заказ</h3>
+                <h3><asp:Label ID="HeadLabel" runat="server" Text="Документ"></asp:Label></h3>
             </div>
         </section>
         <section id="grid_content">
 
-            <div class="grid_view_img">
+            <div runat="server" id="divImage" class="grid_view_img">
                 <asp:Image ID="ImageCover" runat="server" ImageUrl="" />
             </div>
             <div class="grid_view_data">
@@ -29,7 +29,7 @@
                     <asp:Label ID="PriceDoc" runat="server"></asp:Label>
                     руб./мес.</h3>
 
-                Дата документа:
+                <asp:Label ID="LabelDataDoc" runat="server">Дата документа:</asp:Label>
                 <asp:Label ID="DateDoc" runat="server"></asp:Label>
                 <br />
                 Статус:

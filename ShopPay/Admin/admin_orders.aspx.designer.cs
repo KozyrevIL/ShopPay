@@ -11,35 +11,62 @@ namespace ShopPay.Admin
 {
 
 
-    public partial class order
+    public partial class admin_orders
     {
 
         /// <summary>
-        /// LabelNumOrder элемент управления.
+        /// FiltrLableCustomer элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelNumOrder;
+        protected global::System.Web.UI.WebControls.Label FiltrLableCustomer;
 
         /// <summary>
-        /// LabelDateOrder элемент управления.
+        /// FiltrCustomer элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelDateOrder;
+        protected global::System.Web.UI.WebControls.TextBox FiltrCustomer;
 
         /// <summary>
-        /// orderDocs элемент управления.
+        /// FiltrLableBegDate элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl orderDocs;
+        protected global::System.Web.UI.WebControls.Label FiltrLableBegDate;
+
+        /// <summary>
+        /// FiltrBegDate элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FiltrBegDate;
+
+        /// <summary>
+        /// FiltrLableEndDate элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FiltrLableEndDate;
+
+        /// <summary>
+        /// FiltrEndDate элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FiltrEndDate;
 
         /// <summary>
         /// GridViewDocs элемент управления.
@@ -51,51 +78,6 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.GridView GridViewDocs;
 
         /// <summary>
-        /// orderConsults элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl orderConsults;
-
-        /// <summary>
-        /// GridViewConsults элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewConsults;
-
-        /// <summary>
-        /// AllPrice элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AllPrice;
-
-        /// <summary>
-        /// PayOrder элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PayOrder;
-
-        /// <summary>
-        /// PaidOrder элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PaidOrder;
-
-        /// <summary>
         /// SqlDataSourceDocs элемент управления.
         /// </summary>
         /// <remarks>
@@ -103,15 +85,6 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDocs;
-
-        /// <summary>
-        /// SqlDataSourceConsults элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsults;
 
         /// <summary>
         /// SqlDataSourceTags элемент управления.

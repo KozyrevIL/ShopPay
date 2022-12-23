@@ -55,7 +55,7 @@ namespace ShopPay.Admin
                     SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION", con);
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("insert into Docs_docs (id_section, name_doc,date_doc,description,doc_content,items,cover) values (@id_section, @name_doc,@date_doc,@description,@doc_content, @items,@cover)", con);
+                    cmd = new SqlCommand("insert into Docs_docs (id_section, id_typeProduct, name_doc,date_doc,description,doc_content,items,cover,isActual) values (@id_section, 1, @name_doc,@date_doc,@description,@doc_content, @items,@cover,@isActual)", con);
 
                     cmd.Parameters.AddWithValue("id_section", id_section);
                     cmd.Parameters.AddWithValue("name_doc", DocName.Text);
@@ -67,6 +67,8 @@ namespace ShopPay.Admin
                         cmd.Parameters.AddWithValue("cover", DBNull.Value);
                     else
                         cmd.Parameters.AddWithValue("cover", Path.GetFileName(FileTempDirCover));
+                    cmd.Parameters.AddWithValue("isActual", CheckActual.Checked);
+
 
                     cmd.ExecuteNonQuery();
 
@@ -77,7 +79,7 @@ namespace ShopPay.Admin
                     int PriceArenda = 0;
                     if (int.TryParse(DocPrice.Text, out PriceArenda))
                     {
-                        cmd = new SqlCommand("insert into Docs_DocsPrice (id_doc,price, date_start) values (@id_doc,@price,GETDATE())", con);
+                        cmd = new SqlCommand("insert into Docs_DocsPrice (id_doc,id_unit, price, date_start) values (@id_doc, 1, @price,GETDATE())", con);
                         cmd.Parameters.AddWithValue("id_doc", id_doc);
                         cmd.Parameters.AddWithValue("price", PriceArenda);
                         cmd.ExecuteNonQuery();
@@ -189,6 +191,8 @@ namespace ShopPay.Admin
             string docdesc = ((TextBox)grw.FindControl("EditDescDoc")).Text;
             string doccontent = ((TextBox)grw.FindControl("EditContentDoc")).Text;
             string docprice = ((TextBox)grw.FindControl("EditPriceDoc")).Text;
+            bool isActual = ((CheckBox)grw.FindControl("CheckisAsctual")).Checked;
+            
 
             string destDir = Server.MapPath("./../Upload/ImagesDocs");
             string OldfilePath = Path.Combine(destDir, filePath);
@@ -225,7 +229,7 @@ namespace ShopPay.Admin
                     SqlCommand cmd = new SqlCommand("BEGIN TRANSACTION", con);
                     cmd.ExecuteNonQuery();
 
-                    cmd = new SqlCommand("update Docs_docs set name_doc=@name_doc, id_section=@id_section, date_doc=@date_doc, description=@description, doc_content=@doc_content, items=@items, cover=@cover where id_doc=@id_doc", con);
+                    cmd = new SqlCommand("update Docs_docs set name_doc=@name_doc, id_section=@id_section, date_doc=@date_doc, description=@description, doc_content=@doc_content, items=@items, cover=@cover, isActual=@isActual  where id_doc=@id_doc", con);
                     cmd.Parameters.AddWithValue("name_doc", docname);
                     cmd.Parameters.AddWithValue("id_section", id_section);
                     //                  cmd.Parameters.AddWithValue("num_doc", docnum);
@@ -239,6 +243,8 @@ namespace ShopPay.Admin
                         cmd.Parameters.AddWithValue("cover", DBNull.Value);
                     else
                         cmd.Parameters.AddWithValue("cover", Path.GetFileName(NewfilePathCover));
+
+                    cmd.Parameters.AddWithValue("isActual", isActual);
 
                     cmd.Parameters.AddWithValue("id_doc", id_doc);
 
@@ -269,7 +275,7 @@ namespace ShopPay.Admin
                         cmd.Parameters.AddWithValue("id_doc", id_doc);
                         cmd.ExecuteNonQuery();
 
-                        cmd = new SqlCommand("insert into Docs_DocsPrice (id_doc,price, date_start) values (@id_doc,@price,GETDATE())", con);
+                        cmd = new SqlCommand("insert into Docs_DocsPrice (id_doc,price, id_unit, date_start) values (@id_doc,@price,1,GETDATE())", con);
                         cmd.Parameters.AddWithValue("id_doc", id_doc);
                         cmd.Parameters.AddWithValue("price", PriceArenda);
                         cmd.ExecuteNonQuery();

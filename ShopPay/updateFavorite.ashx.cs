@@ -26,16 +26,16 @@ namespace ShopPay
             {
                 case "true":
                     SqlText = "insert into Docs_Favorits (id_doc,customer) values (@id_doc, @customer)";
-                    result = " в Избранное";
+                    result = " Добавлено в Избранное";
                     break;
                 case "false":
                     SqlText = "delete from Docs_Favorits where id_doc=@id_doc and customer=@customer";
-                    result = " в Избранное";
+                    result = " Удалено из Избранного";
                     break;
                 case "cart":
                     SqlText = @"IF NOT EXISTS (SELECT * FROM Docs_cart WHERE id_doc=@id_doc and customer=@customer)
- insert into Docs_cart (id_doc,customer) values (@id_doc, @customer)";
-                    result = " в Корзину";
+ insert into Docs_cart (id_doc,customer,qty_time) values (@id_doc, @customer, 1)";
+                    result = " Добавлено в Корзину";
                     break;
             }
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
@@ -47,7 +47,11 @@ namespace ShopPay
                     cmd.Parameters.AddWithValue("id_doc", id_doc);
                     cmd.Parameters.AddWithValue("customer", user);
                     cmd.ExecuteNonQuery();
-                    result = "Документ добавлен " + result;
+//                    result = "Документ добавлен " + result;
+                }
+                catch
+                {
+                    result = "Ошибка!";
                 }
                 finally
                 {

@@ -161,10 +161,13 @@
     <Content Include="Account\Lockout.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
+    <Content Include="Admin\admin_consult.aspx" />
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
+    <Content Include="Admin\admin_orders.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Default_primary.aspx" />
+    <Content Include="Docs\library_consults.aspx" />
     <Content Include="Docs\listOrders.aspx" />
     <Content Include="Docs\order.aspx" />
     <Content Include="Docs\cart.aspx" />
@@ -322,6 +325,13 @@
     <Compile Include="Account\Manage.aspx.designer.cs">
       <DependentUpon>Manage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\admin_consult.aspx.cs">
+      <DependentUpon>admin_consult.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_consult.aspx.designer.cs">
+      <DependentUpon>admin_consult.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\admin_docs.aspx.cs">
       <DependentUpon>admin_docs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -335,6 +345,13 @@
     </Compile>
     <Compile Include="Admin\admin_tags.aspx.designer.cs">
       <DependentUpon>admin_tags.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\admin_orders.aspx.cs">
+      <DependentUpon>admin_orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\admin_orders.aspx.designer.cs">
+      <DependentUpon>admin_orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\SiteAdmin.Master.cs">
       <DependentUpon>SiteAdmin.Master</DependentUpon>
@@ -357,6 +374,13 @@
     </Compile>
     <Compile Include="Default_primary.aspx.designer.cs">
       <DependentUpon>Default_primary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Docs\library_consults.aspx.cs">
+      <DependentUpon>library_consults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Docs\library_consults.aspx.designer.cs">
+      <DependentUpon>library_consults.aspx</DependentUpon>
     </Compile>
     <Compile Include="Docs\listOrders.aspx.cs">
       <DependentUpon>listOrders.aspx</DependentUpon>

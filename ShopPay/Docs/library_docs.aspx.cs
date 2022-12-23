@@ -16,7 +16,8 @@ dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(d
         ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
         ,isnull((select CONVERT(BIT,1) from Docs_Favorits df where df.id_doc=dd.id_doc and df.customer=@customer),CONVERT(BIT,0)) favorite
 from Docs_OrderItems oi, Docs_Orders o, Docs_docs dd, Docs_DocSections ds  
-where o.id_order=oi.id_order and 
+where dd.id_typeProduct=1 and
+o.id_order=oi.id_order and 
 o.status='Оплачен' and 
 CONVERT(DATE,GETDATE()) <= oi.period_end and
 dd.id_doc = oi.id_doc and
@@ -31,7 +32,8 @@ dd.id_section = ds.id_section and
         ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
         ,isnull((select CONVERT(BIT,1) from Docs_Favorits df where df.id_doc=dd.id_doc and df.customer=@customer),CONVERT(BIT,0)) favorite
         from Docs_docs dd, Docs_DocSections ds 
-        where  dd.id_section=ds.id_section and
+        where  dd.id_typeProduct=1 and
+        dd.id_section=ds.id_section and
         (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
         and (@section ='-1' or dd.id_section=@section)
         and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))";

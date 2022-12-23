@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -24,6 +25,7 @@ namespace ShopPay.Admin
                 if (Request.Params["iddoc"] != null)
                 {
                     string id_doc = Request.Params["iddoc"].ToString();
+                    string id_typeProduct = string.Empty;
                     string nameDoc = string.Empty;
                     string dateDoc = string.Empty;
                     string actualDoc = string.Empty;
@@ -37,13 +39,14 @@ namespace ShopPay.Admin
                         con.Open();
                         try
                         {
-                            SqlCommand cmd = new SqlCommand(@"SELECT id_doc,id_section,name_doc,date_doc,issue_doc,num_doc,iif(isnull(isActual,0)=1,'Актуален','Неактуален') isActual,description,items,isnull(cover,'empty.jpg') cover,doc_content,[dbo].[Docs_GetPrice](id_doc,GETDATE()) doc_price FROM Docs_docs where id_doc=" + id_doc, con);
+                            SqlCommand cmd = new SqlCommand(@"SELECT id_doc,id_typeProduct, id_section,name_doc,date_doc,issue_doc,num_doc,iif(isnull(isActual,0)=1,'Актуален','Неактуален') isActual,description,items,isnull(cover,'empty.jpg') cover,doc_content,[dbo].[Docs_GetPrice](id_doc,GETDATE()) doc_price FROM Docs_docs where id_doc=" + id_doc, con);
 
                             SqlDataReader sdr = cmd.ExecuteReader();
                             if (sdr.HasRows)
                             {
                                 if (sdr.Read())
                                 {
+                                    id_typeProduct = sdr["id_typeProduct"].ToString();
                                     nameDoc = sdr["name_doc"].ToString();
                                     dateDoc = sdr["date_doc"].ToString();
                                     actualDoc = sdr["isActual"].ToString();
@@ -70,8 +73,22 @@ namespace ShopPay.Admin
                     ContentDoc.Text = contentDoc;
                     PriceDoc.Text = priceDoc;
 
+                    switch (id_typeProduct)
+                    {
+                        case "1":
+                            break;
+                        case "2":
+                            LabelDataDoc.Visible = false;
+                            DateDoc.Visible= false;
+                            HeadLabel.Text = "Консультация";
+                            divImage.Visible = false;
+                            ButtonFavortite.Visible= false;
+                            break;
+
+                    }
+
                     ButtonFavortite.OnClientClick = "updateFavorite('true'," + id_doc + ");";
-                    ButtonCart.OnClientClick= "updateFavorite('cart'," + id_doc + ");";
+                    ButtonCart.OnClientClick = "updateFavorite('cart'," + id_doc + ");";
                 }
             }
         }

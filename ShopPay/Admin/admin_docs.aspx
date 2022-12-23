@@ -252,7 +252,8 @@
                 SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,dd.cover,dd.doc_content,ds.section_name,(SELECT STRING_AGG(t.tag_name,CHAR(10)) 
                 FROM Docs_DocTags dt, docs_tags t where dt.id_doc=dd.id_doc and t.id_tag=dt.id_tag) tags,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price
             from Docs_docs dd, Docs_DocSections ds 
-            where dd.id_section=ds.id_section 
+            where dd.id_typeProduct=1 
+            and dd.id_section=ds.id_section 
             and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
             and (@section ='-1' or dd.id_section=@section)
             and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))"

@@ -7,6 +7,19 @@
             let response = await fetch('./../updateFavorite.ashx?check=' + flag + '&doc=' + id_doc);
             let text = await response.text(); // прочитать тело ответа как текст
         }
+        function minusFunc(elem) {
+            var eQty = elem.parentElement.querySelector(".qtyItem");
+            var qty = Number(eQty.innerText);
+            qty = qty - 1;
+            if (qty < 1) qty = 1;
+            eQty.innerText = qty.toString();
+        }
+        function plusFunc(elem) {
+            var eQty = elem.parentElement.querySelector(".qtyItem");
+            var qty = Number(eQty.innerText);
+            qty = qty + 1;
+            eQty.innerText = qty.toString();
+        }
     </script>
     <div class="cart">
         <section id="header">
@@ -15,15 +28,23 @@
             </div>
         </section>
         <section id="grid_content">
+            <div id="divCartDocs" runat="server">
+                Библиотека документов
             <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
                 <Columns>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <div  style="padding:20px">
+                            <div style="padding: 20px">
                                 <asp:Image ID="ImageCover" runat="server" Height="200px" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' />
                             </div>
                         </ItemTemplate>
                     </asp:TemplateField>
+                    <asp:TemplateField Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="id_cart" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
                     <asp:TemplateField>
                         <ItemTemplate>
                             <div style="padding: 20px">
@@ -47,47 +68,117 @@
                     <asp:TemplateField HeaderText="Цена">
                         <ItemTemplate>
                             <div style="padding: 20px">
-                                <div style="font-size:24px">
-                                <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label> руб.</div>
-                                <br />
-                                <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить документ из корзины?');" />
-                                <asp:Button ID="ButtonComand2" runat="server" CommandName="delCart" Text="Отложить" CssClass="btn btn-warning" OnCommand="ButtonComand_Command" />
+                                <div style="font-size: 24px">
+                                    <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
+                                    руб.
+                                </div>
                             </div>
                         </ItemTemplate>
-                        
                     </asp:TemplateField>
-                    
+                    <asp:TemplateField HeaderText="Количество">
+                        <ItemTemplate>
+                            <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click" />
+                            <asp:Label ID="qtyItem" runat="server" Text='<%# Eval("qty_time") %>'></asp:Label>
+                            <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+                    <asp:TemplateField HeaderText="">
+                        <ItemTemplate>
+                            <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить документ из корзины?');" />
+                            <asp:Button ID="ButtonComand2" runat="server" CommandName="delCart" Text="Отложить" CssClass="btn btn-warning" OnCommand="ButtonComand_Command" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
                 </Columns>
                 <HeaderStyle BackColor="#729C3B" ForeColor="White" />
             </asp:GridView>
+            </div>
+            <div id="divCartConsults" runat="server">
+                Консультации
+            <asp:GridView runat="server" ID="GridViewConsult" DataKeyNames="id" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false">
+                <Columns>
+                    <asp:TemplateField Visible="false">
+                        <ItemTemplate>
+                            <asp:Label ID="id_cart" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <div style="padding: 20px">
+                                <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
+                                <br />
+                                Краткое описание
+                    <br />
+                                <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
+                                <br />
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Цена">
+                        <ItemTemplate>
+                            <div style="padding: 20px">
+                                <div style="font-size: 24px">
+                                    <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
+                                    руб.
+                                </div>
+                                <br />
+                            </div>
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Количество">
+                        <ItemTemplate>
+                            <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click" />
+                            <asp:Label ID="qtyItem" runat="server" Text='<%# Eval("qty_time") %>'></asp:Label>
+                            <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="">
+                        <ItemTemplate>
+                            <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить заказ консультации из корзины?');" />
+                        </ItemTemplate>
+
+                    </asp:TemplateField>
+
+
+                </Columns>
+                <HeaderStyle BackColor="#729C3B" ForeColor="White" />
+            </asp:GridView>
+            </div>
         </section>
 
 
-    
+
     </div>
 
     <div>
         <h4><b>Стоимость</b> </h4>
-        
-        <h5>ПЕРИОД:</h5>
-       
-        <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click"/><asp:Label ID="qtyMonth" runat="server"></asp:Label> мес. <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click"/>
-       
-       <h4> <b>ИТОГО:</b></h4>
-        <div style="font-size:24px">
-        <asp:Label runat="server" ID="AllPrice" ></asp:Label> руб.</div>
-        
-        <asp:Button ID="CreateOrder" CssClass="btn btn-success"  runat="server" Text="Оформить заказ" OnClick="CreateOrder_Click"/>
+
+<%--        <h5>ПЕРИОД:</h5>
+
+        <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click" /><asp:Label ID="qtyMonth" runat="server"></asp:Label>
+        <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />--%>
+
+        <h4><b>ИТОГО:</b></h4>
+        <div style="font-size: 24px">
+            <asp:Label runat="server" ID="AllPrice"></asp:Label>
+            руб.
+        </div>
+
+        <asp:Button ID="CreateOrder" CssClass="btn btn-success" runat="server" Text="Оформить заказ" OnClick="CreateOrder_Click" />
     </div>
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-        SelectCommand="select dc.id, dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc
+        SelectCommand="select dc.id, dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dc.qty_time
         ,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items
         ,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name
         ,[dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) DocisAvailable
         ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
         from Docs_docs dd, Docs_DocSections ds, Docs_cart dc  
-        where  dd.id_section=ds.id_section
+        where  
+        dd.id_typeProduct=1
+        and dd.id_section=ds.id_section
         and dc.id_doc=dd.id_doc
         and dc.customer=@customer
         "
@@ -100,6 +191,27 @@
         </DeleteParameters>
 
     </asp:SqlDataSource>
+
+    <asp:SqlDataSource ID="SqlDataSourceConsults" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
+        SelectCommand="select dc.id,dd.id_doc,dd.name_doc,dc.qty_time
+        ,isnull(dd.isActual,0) isActual,dd.description
+        ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
+        from Docs_docs dd, Docs_cart dc  
+        where  
+        dd.id_typeProduct=2
+        and dc.id_doc=dd.id_doc
+        and dc.customer=@customer
+        "
+        DeleteCommand="delete from Docs_Cart where id=@id">
+        <SelectParameters>
+            <asp:Parameter Name="customer" />
+        </SelectParameters>
+        <DeleteParameters>
+            <asp:Parameter Name="id" />
+        </DeleteParameters>
+
+    </asp:SqlDataSource>
+
 
     <asp:SqlDataSource ID="SqlDataSourceTags" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
         SelectCommand="select id_tag, '#'+tag_name tag_name from Docs_tags"></asp:SqlDataSource>

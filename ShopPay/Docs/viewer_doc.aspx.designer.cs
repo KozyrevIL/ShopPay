@@ -15,6 +15,24 @@ namespace ShopPay.Admin
     {
 
         /// <summary>
+        /// HeadLabel элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HeadLabel;
+
+        /// <summary>
+        /// divImage элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divImage;
+
+        /// <summary>
         /// ImageCover элемент управления.
         /// </summary>
         /// <remarks>
@@ -40,6 +58,15 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label PriceDoc;
+
+        /// <summary>
+        /// LabelDataDoc элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelDataDoc;
 
         /// <summary>
         /// DateDoc элемент управления.

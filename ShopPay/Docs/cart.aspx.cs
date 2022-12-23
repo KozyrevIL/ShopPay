@@ -10,7 +10,7 @@ namespace ShopPay.Admin
 {
     public partial class cart : System.Web.UI.Page
     {
-        private int CalculateAllPrice(string sMonth)
+        private int CalculateAllPrice()
         {
             int intPrice=0;
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
@@ -19,13 +19,10 @@ namespace ShopPay.Admin
                 try
                 {
 
-                    SqlCommand cmd = new SqlCommand(@"select sum([dbo].[Docs_GetPrice](id_doc,GETDATE())) from Docs_Cart where customer=@customer", con);
+                    SqlCommand cmd = new SqlCommand(@"select sum([dbo].[Docs_GetPrice](id_doc,GETDATE()) * isnull(qty_time,1)) from Docs_Cart where customer=@customer", con);
                     cmd.Parameters.AddWithValue("customer", Context.User.Identity.GetUserName());
                     string sPrice = cmd.ExecuteScalar()?.ToString() ?? "0";
-                    int intMonth = 1;
-                    int.TryParse(sMonth, out intMonth);
                     int.TryParse(sPrice, out intPrice);
-                    intPrice =  intPrice * intMonth;
                 }
                 finally
                 {
@@ -43,9 +40,12 @@ namespace ShopPay.Admin
             {
                 SqlDataSourceDocs.SelectParameters["customer"].DefaultValue = Context.User.Identity.GetUserName();
                 SqlDataSourceDocs.DataBind();
-                qtyMonth.Text = "1";
+                SqlDataSourceConsults.SelectParameters["customer"].DefaultValue = Context.User.Identity.GetUserName();
+                SqlDataSourceConsults.DataBind();
+                if (GridViewDocs.Rows.Count == 0) divCartDocs.Visible = false;
+                if (GridViewConsult.Rows.Count == 0) divCartConsults.Visible = false;
             }
-            AllPrice.Text = CalculateAllPrice(qtyMonth.Text).ToString();
+            AllPrice.Text = CalculateAllPrice().ToString();
         }
 
 
@@ -88,14 +88,42 @@ namespace ShopPay.Admin
 
         }
 
+        private void SaveQtyItem(string qty, string id_cart)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
+            {
+                con.Open();
+                try
+                {
+                    foreach (GridViewRow grw in GridViewConsult.Rows)
+                    {
+                        SqlCommand cmd = new SqlCommand("update Docs_Cart set qty_time=@qty where id=@id", con);
+                        cmd.Parameters.AddWithValue("qty", qty);
+                        cmd.Parameters.AddWithValue("id", id_cart);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+                finally
+                {
+                    con.Close();
+                }
+
+            }
+
+        }
         protected void minusMonth_Click(object sender, EventArgs e)
         {
             int intMonth = 1;
-            int.TryParse(qtyMonth.Text, out intMonth);
+            GridViewRow grw = (GridViewRow)(((Button)sender).Parent.Parent);
+            Label idCartLabel = (Label)(((GridViewRow)(((Button)sender).Parent.Parent)).FindControl("id_cart"));
+            Label qtyItemLabel = (Label)grw.FindControl("qtyItem");
+            int.TryParse(qtyItemLabel.Text, out intMonth);
             intMonth--;
             if (intMonth < 1) intMonth = 1;
-            qtyMonth.Text = intMonth.ToString();
-            AllPrice.Text = CalculateAllPrice(intMonth.ToString()).ToString();
+            qtyItemLabel.Text = intMonth.ToString();
+            SaveQtyItem(qtyItemLabel.Text, idCartLabel.Text);
+
+            AllPrice.Text = CalculateAllPrice().ToString();
 
         }
 
@@ -103,16 +131,20 @@ namespace ShopPay.Admin
         {
 
             int intMonth = 1;
-            int.TryParse(qtyMonth.Text, out intMonth);
+            GridViewRow grw = (GridViewRow)(((Button)sender).Parent.Parent);
+            Label idCartLabel = (Label)(((GridViewRow)(((Button)sender).Parent.Parent)).FindControl("id_cart"));
+            Label qtyItemLabel = (Label)grw.FindControl("qtyItem");
+            int.TryParse(qtyItemLabel.Text, out intMonth);
             intMonth ++;
-            qtyMonth.Text = intMonth.ToString();
-            AllPrice.Text = CalculateAllPrice(intMonth.ToString()).ToString();
+            qtyItemLabel.Text = intMonth.ToString();
+            SaveQtyItem(qtyItemLabel.Text, idCartLabel.Text);
+
+            AllPrice.Text = CalculateAllPrice().ToString();
         }
 
         protected void CreateOrder_Click(object sender, EventArgs e)
         {
             int intMonth = 1;
-            int.TryParse(qtyMonth.Text, out intMonth);
             float.TryParse(AllPrice.Text, out float allCost);
             Orders order = new Orders(Context.User.Identity.GetUserName(), intMonth, allCost, true);
             if (order.idOrder > 0) Response.Redirect("Order.aspx?id=" + order.idOrder.ToString());

@@ -11,17 +11,35 @@ namespace ShopPay.Admin
 {
 
 
-    public partial class cart
+    public partial class library_consults
     {
 
         /// <summary>
-        /// divCartDocs элемент управления.
+        /// DocMask элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCartDocs;
+        protected global::System.Web.UI.WebControls.TextBox DocMask;
+
+        /// <summary>
+        /// ButtonSearch элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonSearch;
+
+        /// <summary>
+        /// ButtonFilterClear элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonFilterClear;
 
         /// <summary>
         /// GridViewDocs элемент управления.
@@ -33,40 +51,13 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.GridView GridViewDocs;
 
         /// <summary>
-        /// divCartConsults элемент управления.
+        /// LabelError элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCartConsults;
-
-        /// <summary>
-        /// GridViewConsult элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewConsult;
-
-        /// <summary>
-        /// AllPrice элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AllPrice;
-
-        /// <summary>
-        /// CreateOrder элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button CreateOrder;
+        protected global::System.Web.UI.WebControls.Label LabelError;
 
         /// <summary>
         /// SqlDataSourceDocs элемент управления.
@@ -76,32 +67,5 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceDocs;
-
-        /// <summary>
-        /// SqlDataSourceConsults элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceConsults;
-
-        /// <summary>
-        /// SqlDataSourceTags элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceTags;
-
-        /// <summary>
-        /// SqlDataSourceSections элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSections;
     }
 }

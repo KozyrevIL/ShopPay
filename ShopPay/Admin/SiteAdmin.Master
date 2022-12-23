@@ -4,7 +4,7 @@
 
 <html lang="ru">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - shop.rostot.ru</title>
@@ -12,7 +12,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -58,9 +58,9 @@
                     <div class="navbar-collapse collapse">
                         <div>
                             <ul class="nav navbar-nav">
-                                <li><a runat="server" href="~/Default.aspx">Все Документы</a></li>
-                                <li><a runat="server" href="~/Docs/library_docs.aspx">Мои документы</a></li>
-                                <li><a runat="server" href="~/#">Консультации</a></li>
+                                <li><a runat="server" href="~/Docs/library_docs.aspx">Все Документы</a></li>
+                                <li><a runat="server" href="~/Default.aspx">Мои документы</a></li>
+                                <li><a runat="server" href="~/Docs/library_consults.aspx">Консультации</a></li>
                                 <li><a runat="server" href="~/#">Договора</a></li>
                                 <li><a runat="server" href="~/#">Архив</a></li>
                                 <li><a runat="server" href="~/#">Отложено</a></li>
@@ -78,8 +78,9 @@
                                         <a class="dropdown-item" href="../Roles/UsersAndRoles.aspx">Добавить роль</a><br />
                                         <a class="dropdown-item" href="../Roles/ManageRoles.aspx">Управление ролями</a><br />
                                         <a class="dropdown-item" href="../Account/Register.aspx">Регистрация пользователя</a><br />
-                                        <a class="dropdown-item" href="../Admin/admin_docs.aspx">Добавить документ</a><br />
-                                        <a class="dropdown-item" href="../Admin/admin_tags.aspx">Добавить метку документа</a>
+                                        <a class="dropdown-item" href="../Admin/admin_docs.aspx">Библиотека документов</a><br />
+                                        <a class="dropdown-item" href="../Admin/admin_tags.aspx">Справочник меток документов</a><br />
+                                        <a class="dropdown-item" href="../Admin/admin_consult.aspx">Список консультация</a><br />
 
                                     </div>
 
@@ -90,20 +91,14 @@
                         <div>
                             <ul class="nav navbar-nav">
                                 <li>
-<a href="../Docs/cart.aspx" style="color: white; font-size:17px; "><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                    <a href="../Docs/cart.aspx" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-shopping-cart"></span></a>
                                 </li>
                             </ul>
-
-
-
                         </div>
                         <div>
-                            
                             <asp:LoginView runat="server" ViewStateMode="Disabled">
                                 <AnonymousTemplate>
                                     <ul class="nav navbar-nav navbar-right">
-                                        
-
                                         <li><a runat="server" href="~/Account/Register">Регистрация</a></li>
                                         <li><a runat="server" href="~/Account/Login">Вход</a></li>
                                     </ul>
