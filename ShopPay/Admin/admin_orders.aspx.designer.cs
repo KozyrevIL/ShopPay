@@ -33,6 +33,15 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.TextBox FiltrCustomer;
 
         /// <summary>
+        /// ListCustomers элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater ListCustomers;
+
+        /// <summary>
         /// FiltrLableBegDate элемент управления.
         /// </summary>
         /// <remarks>
@@ -69,13 +78,31 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.TextBox FiltrEndDate;
 
         /// <summary>
-        /// GridViewDocs элемент управления.
+        /// ButtonSearch элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewDocs;
+        protected global::System.Web.UI.WebControls.Button ButtonSearch;
+
+        /// <summary>
+        /// ButtonFilterClear элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonFilterClear;
+
+        /// <summary>
+        /// GridViewOrders элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridViewOrders;
 
         /// <summary>
         /// SqlDataSourceDocs элемент управления.
