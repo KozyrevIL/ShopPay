@@ -1,14 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
-using System.Linq;
-using System.Web;
-using Microsoft.Ajax.Utilities;
+using System.Data.SqlClient;
+using System.IO;
+using System.Net;
+using System.Text;
 
 namespace ShopPay.App_Code
 {
+
+    //Для интеграции по API используйте:
+    //Логин: t7203486413-api
+    //Пароль: YNI1WM5w
+
+    //Для авторизации в личном кабинете используйте:
+    //Логин: t7203486413-operator
+    //Пароль: wAUb9LAz
+
     public class Orders
     {
         private string customer = string.Empty;
@@ -16,6 +25,12 @@ namespace ShopPay.App_Code
         public string status = string.Empty;
         public DateTime dateOrder = DateTime.Now;
         public float Cost = -1;
+
+
+        private string register_do = "https://3dsec.sberbank.ru/payment/rest/register.do";
+
+        private string login_do = "t7203486413-api";
+        private string password_do = "YNI1WM5w";
 
 
         public Orders() // Просто создаем объект
@@ -187,4 +202,38 @@ namespace ShopPay.App_Code
             return result;
         }
     }
+        private string OrderPost(string url, string postData)
+        {
+            var request = (HttpWebRequest)WebRequest.Create(url);
+
+            var data = Encoding.ASCII.GetBytes(postData);
+
+            request.Method = "POST";
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentLength = data.Length;
+
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0, data.Length);
+            }
+            var response = (HttpWebResponse)request.GetResponse();
+            var responseString = new StreamReader(response.GetResponseStream()).ReadToEnd();
+            return responseString;
+        }
+
+        public string payOrderSber()
+        {
+            if (Cost > 0)
+            {
+                string param = "userName=" + login_do + "&" + "password=" + password_do + "&" + "amount=" + Cost.ToString() + "&"+ "orderNumber="+ idOrder.ToString() + "&" + "returnUrl=" + "https://shop.rostot.ru/";
+                string resp = OrderPost(register_do, param);
+                JObject jResp = JObject.Parse(resp);
+                return jResp["formUrl"].ToString();
+            }
+            return "Не указана стоимость!";
+        }
+
+
+    }
+
 }

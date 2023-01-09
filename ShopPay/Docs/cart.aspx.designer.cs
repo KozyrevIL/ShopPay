@@ -60,6 +60,33 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Label AllPrice;
 
         /// <summary>
+        /// selectCustomer элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selectCustomer;
+
+        /// <summary>
+        /// labelCustomer элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label labelCustomer;
+
+        /// <summary>
+        /// UserList элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList UserList;
+
+        /// <summary>
         /// CreateOrder элемент управления.
         /// </summary>
         /// <remarks>

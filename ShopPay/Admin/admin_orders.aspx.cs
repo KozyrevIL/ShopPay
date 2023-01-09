@@ -39,6 +39,7 @@ namespace ShopPay.Admin
 
         protected void PayOrder_Click(object sender, EventArgs e)
         {
+
         }
 
         protected void ButtonSearch_Click(object sender, EventArgs e)

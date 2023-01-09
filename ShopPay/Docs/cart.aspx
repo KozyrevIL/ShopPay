@@ -156,7 +156,7 @@
     <div>
         <h4><b>Стоимость</b> </h4>
 
-<%--        <h5>ПЕРИОД:</h5>
+        <%--        <h5>ПЕРИОД:</h5>
 
         <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click" /><asp:Label ID="qtyMonth" runat="server"></asp:Label>
         <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />--%>
@@ -166,7 +166,10 @@
             <asp:Label runat="server" ID="AllPrice"></asp:Label>
             руб.
         </div>
-
+        <div runat="server" id="selectCustomer">
+            <asp:Label runat="server" ID="labelCustomer" Text="Заказ для клиента: "></asp:Label>
+            <asp:DropDownList ID="UserList" runat="server" CssClass="form-control" DataTextField="UserName" DataValueField="UserName"></asp:DropDownList>
+        </div>
         <asp:Button ID="CreateOrder" CssClass="btn btn-success" runat="server" Text="Оформить заказ" OnClick="CreateOrder_Click" />
     </div>
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"

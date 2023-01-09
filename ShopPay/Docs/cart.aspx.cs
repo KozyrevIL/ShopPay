@@ -5,11 +5,35 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 using ShopPay.App_Code;
+using System.Web;
+using Microsoft.AspNet.Identity.Owin;
+using System.Linq;
+using ShopPay.Account;
+using System.Collections.Generic;
 
 namespace ShopPay.Admin
 {
     public partial class cart : System.Web.UI.Page
     {
+
+        private bool isRoleManager()
+        {
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            IList<string> selectedUsersRoles = manager.GetRoles(manager.FindByName(Context.User.Identity.GetUserName()).Id);
+            if (selectedUsersRoles.Contains("Curator")) return true;
+            if (selectedUsersRoles.Contains("Administrator")) return true;
+
+            return false;
+        }
+        private void BindUsersToUserList()
+        {
+            // Get all of the user accounts
+            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            UserList.DataSource = manager.Users.ToList();
+            UserList.DataBind();
+        }
+
         private int CalculateAllPrice()
         {
             int intPrice=0;
@@ -42,6 +66,14 @@ namespace ShopPay.Admin
                 SqlDataSourceDocs.DataBind();
                 SqlDataSourceConsults.SelectParameters["customer"].DefaultValue = Context.User.Identity.GetUserName();
                 SqlDataSourceConsults.DataBind();
+
+                selectCustomer.Visible = false;
+                if (isRoleManager())
+                {
+                    selectCustomer.Visible = true;
+                    BindUsersToUserList();
+                    UserList.SelectedValue = Context.User.Identity.GetUserName();
+                }
                 if (GridViewDocs.Rows.Count == 0) divCartDocs.Visible = false;
                 if (GridViewConsult.Rows.Count == 0) divCartConsults.Visible = false;
             }
@@ -146,7 +178,9 @@ namespace ShopPay.Admin
         {
             int intMonth = 1;
             float.TryParse(AllPrice.Text, out float allCost);
-            Orders order = new Orders(Context.User.Identity.GetUserName(), intMonth, allCost, true);
+            string userCustomer = Context.User.Identity.GetUserName();
+            if (isRoleManager()) userCustomer = UserList.SelectedValue;
+            Orders order = new Orders(userCustomer, intMonth, allCost, true);
             if (order.idOrder > 0) Response.Redirect("Order.aspx?id=" + order.idOrder.ToString());
         }
     }

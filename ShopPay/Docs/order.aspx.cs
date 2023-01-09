@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using ShopPay.App_Code;
 using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
 using System.Web.UI.WebControls;
-using ShopPay.App_Code;
 
 namespace ShopPay.Admin
 {
@@ -81,7 +81,12 @@ namespace ShopPay.Admin
 
         protected void PayOrder_Click(object sender, EventArgs e)
         {
-
+            Orders order = new Orders(int.Parse(ViewState["idOrder"].ToString()));
+            string s = order.payOrderSber();
+            if (s!=string.Empty)
+            {
+                Response.Redirect(s);
+            }
         }
     }
 }
