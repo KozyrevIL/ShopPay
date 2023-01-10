@@ -65,8 +65,7 @@
                                 <li><a runat="server" href="~/#">Архив</a></li>
                                 <li><a runat="server" href="~/#">Отложено</a></li>
                                 <li><a runat="server" href="~/#">Товары</a></li>
-
-
+                                <li><a runat="server" href="~/Docs/listOrders.aspx">Заказы</a></li>
                             </ul>
                         </div>
                         <div>
@@ -81,9 +80,7 @@
                                         <a class="dropdown-item" href="../Admin/admin_docs.aspx">Библиотека документов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_tags.aspx">Справочник меток документов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_consult.aspx">Список консультация</a><br />
-
                                     </div>
-
                                 </li>
                             </ul>
 
