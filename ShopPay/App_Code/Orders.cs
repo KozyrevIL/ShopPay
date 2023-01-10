@@ -25,9 +25,14 @@ namespace ShopPay.App_Code
         public string status = string.Empty;
         public DateTime dateOrder = DateTime.Now;
         public float Cost = -1;
+        public string orderInternalID = string.Empty;
+        public string orderID = string.Empty;
+        public string formURL = string.Empty;
 
 
         private string register_do = "https://3dsec.sberbank.ru/payment/rest/register.do";
+        private string orderStatus_do = "https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do";
+        public string urlPay = "https://3dsec.sberbank.ru/payment/merchants/test/payment_ru.html?mdOrder=";
 
         private string login_do = "t7203486413-api";
         private string password_do = "YNI1WM5w";
@@ -60,6 +65,9 @@ namespace ShopPay.App_Code
                         dateOrder = (DateTime)sdr["date_order"];
                         customer = sdr["customer"].ToString();
                         status = sdr["status"].ToString();
+                        orderInternalID = sdr["orderInternalId"].ToString();
+                        orderID = sdr["orderID"].ToString();
+                        formURL = sdr["formUrl"].ToString();
 
                         if (!float.TryParse(sdr["AllCost"].ToString(), out Cost)) Cost = -1f;
                     }
@@ -132,6 +140,34 @@ namespace ShopPay.App_Code
             }
             if (!result) idOrder = -1;
         }
+        public bool updateOrderInfo()
+        {
+            bool result = true;
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
+            {
+                con.Open();
+                try
+                {
+                    SqlCommand cmdOrder = new SqlCommand("update Docs_Orders set  orderInternalId=@orderInternalId, orderID=@orderID, formUrl=@formURL, status=@status where id_order=@id_order", con);
+                    cmdOrder.Parameters.AddWithValue("orderInternalId", orderInternalID);
+                    cmdOrder.Parameters.AddWithValue("orderID", orderID);
+                    cmdOrder.Parameters.AddWithValue("formURL", formURL);
+                    cmdOrder.Parameters.AddWithValue("status", status);
+                    cmdOrder.Parameters.AddWithValue("id_order", idOrder);
+                    cmdOrder.ExecuteNonQuery();
+                }
+                catch
+                {
+                    result = false;
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            return result;
+        }
+
         private bool AddDocsToOrderFromCart(SqlConnection con)
         {
             try
@@ -201,7 +237,7 @@ namespace ShopPay.App_Code
             }
             return result;
         }
-    }
+    
         private string OrderPost(string url, string postData)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -221,14 +257,36 @@ namespace ShopPay.App_Code
             return responseString;
         }
 
-        public string payOrderSber()
+        public string payOrderSber(string callBackUrl="")
         {
             if (Cost > 0)
             {
-                string param = "userName=" + login_do + "&" + "password=" + password_do + "&" + "amount=" + Cost.ToString() + "&"+ "orderNumber="+ idOrder.ToString() + "&" + "returnUrl=" + "https://shop.rostot.ru/";
+
+                if (orderID != string.Empty)
+                {
+                    string respStatus = OrderPost(orderStatus_do, "userName=" + login_do + "&" + "password=" + password_do + "&" + "orderId=" + orderID);
+                    JObject jStatus = JObject.Parse(respStatus);
+                    switch (jStatus["orderStatus"].ToString())
+                    {
+                        case "0":
+                            return string.Empty;
+                        case "1":
+                            PayOrder(idOrder);
+                            return "Оплата произведена!";
+                        case "2":
+                            PayOrder(idOrder);
+                            return "Оплата произведена!";
+                    }
+                }
+
+                orderInternalID=Guid.NewGuid().ToString().Replace("-",string.Empty);
+                string param = "userName=" + login_do + "&" + "password=" + password_do + "&" + "orderNumber=" + orderInternalID + "&" + "amount=" + (Cost * 100).ToString() + "&" + "returnUrl=" + callBackUrl; 
                 string resp = OrderPost(register_do, param);
                 JObject jResp = JObject.Parse(resp);
-                return jResp["formUrl"].ToString();
+                orderID = jResp["orderId"].ToString();
+                formURL = jResp["formUrl"].ToString();
+                updateOrderInfo();
+                return string.Empty;
             }
             return "Не указана стоимость!";
         }

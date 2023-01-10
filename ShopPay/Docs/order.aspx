@@ -79,7 +79,7 @@
         <asp:Label runat="server" ID="AllPrice" ></asp:Label> руб.
         <br />
         <asp:Button ID="PayOrder" runat="server" Text="Оплатить заказ" OnClick="PayOrder_Click"/>
-        <asp:Label ID="PaidOrder" runat="server" Text ="Заказ опалачен"></asp:Label>
+        <asp:Label ID="PaidOrder" runat="server" Text ="Заказ оплачен"></asp:Label>
     </div>
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
         SelectCommand="select o.id_order, oi.id_item, dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc

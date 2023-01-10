@@ -82,11 +82,11 @@ namespace ShopPay.Admin
         protected void PayOrder_Click(object sender, EventArgs e)
         {
             Orders order = new Orders(int.Parse(ViewState["idOrder"].ToString()));
-            string s = order.payOrderSber();
-            if (s!=string.Empty)
-            {
-                Response.Redirect(s);
-            }
+            string s = order.payOrderSber(Request.Url.ToString());
+            if (s == string.Empty)
+                Response.Redirect(order.formURL);
+            else
+                Response.Redirect(Request.RawUrl);
         }
     }
 }

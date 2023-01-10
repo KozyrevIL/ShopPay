@@ -10,7 +10,7 @@
     </script>
     <div>
         Список заказов
-    <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
+    <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound" OnRowCommand="ButtonComand_Command">
         <Columns>
             <asp:TemplateField HeaderText="Заказ">
                 <ItemTemplate>
