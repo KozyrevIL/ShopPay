@@ -96,6 +96,15 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.Button ButtonFilterClear;
 
         /// <summary>
+        /// ButtonCheckPay элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ButtonCheckPay;
+
+        /// <summary>
         /// GridViewOrders элемент управления.
         /// </summary>
         /// <remarks>

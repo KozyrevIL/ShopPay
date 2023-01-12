@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity.Owin;
 using ShopPay.App_Code;
 using System;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -64,6 +68,31 @@ namespace ShopPay.Admin
                 GridViewOrders.DataBind();
             }
 
+        }
+
+        protected void ButtonCheckPay_Click(object sender, EventArgs e)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
+            {
+                con.Open();
+                try
+                {
+                    SqlDataAdapter sa = new SqlDataAdapter("select id_order from Docs_Orders where status='Сформирован' and OrderID is not null", con);
+                    DataTable dt = new DataTable();
+                    sa.Fill(dt);
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        int id_order = int.Parse(dr["id_order"].ToString());
+                        Orders order = new Orders(id_order);
+                        order.CheckPayOrder();
+                    }
+                }
+                finally
+                {
+                    con.Close();
+                }
+            }
+            GridViewOrders.DataBind();
         }
     }
 }

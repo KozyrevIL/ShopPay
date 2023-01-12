@@ -29,11 +29,12 @@ namespace ShopPay.Admin
             if (e.CommandName == "PayOrder")
             {
                 Orders order = new Orders(int.Parse(e.CommandArgument.ToString()));
-                string s = order.payOrderSber(Request.Url.ToString());
+                string urlOrder = Request.Url.ToString().Replace("listOrders", "").Replace("listOrders.aspx", "") + "order?id=" + e.CommandArgument.ToString() + "&waitingPay";
+                string s = order.payOrderSber(urlOrder);
                 if (s == string.Empty)
                     Response.Redirect(order.formURL);
                 else
-                    Response.Redirect(Request.RawUrl);
+                    GridViewDocs.DataBind();
             }
         }
         protected void ButtonFilterClear_Click(object sender, EventArgs e)

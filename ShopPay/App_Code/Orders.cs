@@ -198,7 +198,7 @@ namespace ShopPay.App_Code
 
                     foreach (DataRow dr in dt.Rows)
                     {
-                        if (dr["id_typeProduct"].ToString()=="1")
+                        if (dr["id_typeProduct"].ToString() == "1")
                         {
                             string id_item = dr["id_item"].ToString();
                             string id_doc = dr["id_doc"].ToString();
@@ -211,7 +211,7 @@ namespace ShopPay.App_Code
                             DateTime dStartPeriod = DateTime.Parse(cmd.ExecuteScalar().ToString());
                             DateTime dEndPeriod = dStartPeriod.AddMonths(qtyTime);
                             cmd = new SqlCommand("update Docs_OrderItems set period_start=@pStart, period_end=@pEnd where id_item=@id_item", con);
-                            cmd.Parameters.AddWithValue("pStart",dStartPeriod);
+                            cmd.Parameters.AddWithValue("pStart", dStartPeriod);
                             cmd.Parameters.AddWithValue("pEnd", dEndPeriod);
                             cmd.Parameters.AddWithValue("id_item", id_item);
                             cmd.Transaction = transaction;
@@ -223,6 +223,7 @@ namespace ShopPay.App_Code
                     cmdOrder.Parameters.AddWithValue("id_order", id_order);
                     cmdOrder.Transaction = transaction;
                     cmdOrder.ExecuteNonQuery();
+                    status = "Оплачен";
                     transaction.Commit();
                 }
                 catch
@@ -237,7 +238,7 @@ namespace ShopPay.App_Code
             }
             return result;
         }
-    
+
         private string OrderPost(string url, string postData)
         {
             var request = (HttpWebRequest)WebRequest.Create(url);
@@ -257,7 +258,7 @@ namespace ShopPay.App_Code
             return responseString;
         }
 
-        public string payOrderSber(string callBackUrl="")
+        public string payOrderSber(string callBackUrl = "")
         {
             if (Cost > 0)
             {
@@ -279,8 +280,8 @@ namespace ShopPay.App_Code
                     }
                 }
 
-                orderInternalID=Guid.NewGuid().ToString().Replace("-",string.Empty);
-                string param = "userName=" + login_do + "&" + "password=" + password_do + "&" + "orderNumber=" + orderInternalID + "&" + "amount=" + (Cost * 100).ToString() + "&" + "returnUrl=" + callBackUrl; 
+                orderInternalID = Guid.NewGuid().ToString().Replace("-", string.Empty);
+                string param = "userName=" + login_do + "&" + "password=" + password_do + "&" + "orderNumber=" + orderInternalID + "&" + "amount=" + (Cost * 100).ToString() + "&" + "returnUrl=" + callBackUrl;
                 string resp = OrderPost(register_do, param);
                 JObject jResp = JObject.Parse(resp);
                 orderID = jResp["orderId"].ToString();
@@ -290,8 +291,29 @@ namespace ShopPay.App_Code
             }
             return "Не указана стоимость!";
         }
-
+        public void CheckPayOrder()
+        {
+            if (status == "Сформирован")
+            {
+                if (orderID != string.Empty)
+                {
+                    string respStatus = OrderPost(orderStatus_do, "userName=" + login_do + "&" + "password=" + password_do + "&" + "orderId=" + orderID);
+                    JObject jStatus = JObject.Parse(respStatus);
+                    switch (jStatus["orderStatus"].ToString())
+                    {
+                        case "1":
+                            PayOrder(idOrder);
+                            break;
+                        case "2":
+                            PayOrder(idOrder);
+                            break;
+                    }
+                }
+            }
+        }
 
     }
 
+
 }
+

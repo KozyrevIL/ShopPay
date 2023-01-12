@@ -20,6 +20,9 @@ namespace ShopPay.Admin
                 else
                     ViewState["idOrder"] = "7";
                 Orders order = new Orders(int.Parse(ViewState["idOrder"].ToString()));
+                // Проверим оплату заказа
+                order.CheckPayOrder();
+                //*************************
                 SqlDataSourceDocs.SelectParameters["id"].DefaultValue = ViewState["idOrder"].ToString();
                 SqlDataSourceDocs.DataBind();
                 SqlDataSourceConsults.SelectParameters["id"].DefaultValue = ViewState["idOrder"].ToString();
@@ -34,6 +37,11 @@ namespace ShopPay.Admin
                     PaidOrder.Visible = true;
                     PayOrder.Visible = false;
                 }
+                if (Request.Params["waitingPay"] != null)
+                {
+                    PaidOrder.Text = "Ожидание получения оплаты...";
+                }
+
                 LabelNumOrder.Text = " № " + order.idOrder.ToString();
                 LabelDateOrder.Text = " от " + order.dateOrder.ToString("dd.MM.yyyy");
             }
@@ -82,7 +90,7 @@ namespace ShopPay.Admin
         protected void PayOrder_Click(object sender, EventArgs e)
         {
             Orders order = new Orders(int.Parse(ViewState["idOrder"].ToString()));
-            string s = order.payOrderSber(Request.Url.ToString());
+            string s = order.payOrderSber(Request.Url.ToString()+ "&waitingPay");
             if (s == string.Empty)
                 Response.Redirect(order.formURL);
             else

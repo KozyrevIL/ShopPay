@@ -26,6 +26,9 @@
                         <asp:Button ID="ButtonFilterClear" runat="server" OnClick="ButtonFilterClear_Click1" Text="Сбросить" CssClass="btn btn-danger"  />
     </div>
     <div>
+        <asp:Button ID="ButtonCheckPay" runat="server" OnClick="ButtonCheckPay_Click" Text="Проверить оплату" CssClass="btn btn-info"  />
+    </div>
+    <div>
         Список заказов
     <asp:GridView runat="server" ID="GridViewOrders" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowCommand="GridViewOrders_RowCommand">
         <Columns>
