@@ -1,5 +1,4 @@
-﻿using Microsoft.Ajax.Utilities;
-using Microsoft.AspNet.Identity.Owin;
+﻿using Microsoft.AspNet.Identity.Owin;
 using ShopPay.App_Code;
 using System;
 using System.Configuration;

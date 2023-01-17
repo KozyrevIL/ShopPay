@@ -202,6 +202,7 @@
     <Content Include="Images\Temp_img\travma3.png" />
     <Content Include="Images\Temp_img\travma4.png" />
     <Content Include="Images\Temp_img\travma_img.png" />
+    <Content Include="InfoHandler.ashx" />
     <Content Include="Roles\ManageRoles.aspx" />
     <Content Include="Account\ManageLogins.aspx" />
     <Content Include="Account\ManagePassword.aspx" />
@@ -420,6 +421,9 @@
     </Compile>
     <Compile Include="ImageHandler.ashx.cs">
       <DependentUpon>ImageHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="InfoHandler.ashx.cs">
+      <DependentUpon>InfoHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Roles\ManageRoles.aspx.cs">
       <DependentUpon>ManageRoles.aspx</DependentUpon>

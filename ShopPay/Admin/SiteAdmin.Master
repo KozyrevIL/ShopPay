@@ -89,6 +89,7 @@
                             <ul class="nav navbar-nav">
                                 <li>
                                     <a href="../Docs/cart.aspx" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                    <label id="QtyInCart"></label>
                                 </li>
                             </ul>
                         </div>
@@ -124,5 +125,13 @@
             </footer>
         </div>
     </form>
+    <script>
+        async function getQtyInCart() {
+            let response = await fetch('/InfoHandler.ashx?info=qtyCart');
+            let text = await response.text(); // прочитать тело ответа как текст
+            document.querySelector("#QtyInCart").innerHTML = text;
+        }
+        setTimeout(() => { getQtyInCart(); }, 100);
+    </script>
 </body>
 </html>
