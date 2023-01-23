@@ -8,14 +8,20 @@
             let text = await response.text(); // прочитать тело ответа как текст
         }
     </script>
-    <div>
-        Заказ
+    <div id="order">
+        
+        <section id="header">
+            <div class="container-fluid text-center">
+                <h3>Заказ</h3>
+            </div>
+        </section>
+
         <asp:Label ID="LabelNumOrder" runat="server"></asp:Label> 
         <asp:Label ID="LabelDateOrder" runat="server"></asp:Label> 
 
         <div runat="server" id="orderDocs">
             Документы
-    <asp:GridView runat="server" ID="GridViewDocs" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
+    <asp:GridView runat="server" ID="GridViewDocs" CssClass="table table-bordered table-hover" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
@@ -46,12 +52,12 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-
+        <HeaderStyle BackColor="#729C3B" ForeColor="White" />
     </asp:GridView>
             </div>
         <div runat="server" id="orderConsults">
             Консультации
-    <asp:GridView runat="server" ID="GridViewConsults" DataKeyNames="id_order" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
+    <asp:GridView runat="server" ID="GridViewConsults" CssClass="table table-bordered table-hover" DataKeyNames="id_order" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
@@ -68,7 +74,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
         </Columns>
-
+        <HeaderStyle BackColor="#729C3B" ForeColor="White" />
     </asp:GridView>
             </div>
     </div>
@@ -78,7 +84,7 @@
         <br />
         <asp:Label runat="server" ID="AllPrice" ></asp:Label> руб.
         <br />
-        <asp:Button ID="PayOrder" runat="server" Text="Оплатить заказ" OnClick="PayOrder_Click"/>
+        <asp:Button ID="PayOrder" runat="server" Text="Оплатить заказ" CssClass="btn btn-success" OnClick="PayOrder_Click"/>
         <asp:Label ID="PaidOrder" runat="server" Text ="Заказ оплачен"></asp:Label>
     </div>
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"

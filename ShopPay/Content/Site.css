@@ -11,6 +11,11 @@
     src: url('../fonts/inter/static/inter-regular.ttf') format('truetype');
 }
 
+.badge {
+    display: inline; 
+    
+}
+
 /* Move down content because we have a fixed navbar that is 50px tall */
 html, body {
     /*padding-top: 50px;
@@ -245,6 +250,32 @@ input[type="select"] {
             padding: 10px 40px 20px 20px;
         }
         /* Grid  page User Library_docs END */
+
+
+    /* Grid  list_orders BEGIN */
+
+.list_orders #grid_content {
+    display: grid;
+    grid-template-columns: 288px auto;
+    grid-template-rows: 115px 1fr;
+    margin-top: 12px;
+    width: 100vw;
+}
+
+/* Grid  list_orders END */
+
+/* Grid  order BEGIN */
+
+.order #grid_content {
+    display: grid;
+    grid-template-columns: 288px auto;
+    grid-template-rows: 115px 1fr;
+    margin-top: 12px;
+    width: 100vw;
+}
+
+/* Grid  order END */
+
 
 /* Grid  page User viewer_doc BEGIN */
 

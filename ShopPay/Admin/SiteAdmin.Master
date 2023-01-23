@@ -87,9 +87,15 @@
                         </div>
                         <div>
                             <ul class="nav navbar-nav">
-                                <li>
+                                <li style="position:relative">
                                     <a href="../Docs/cart.aspx" style="color: white; font-size: 17px;"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-                                    <label id="QtyInCart"></label>
+
+                                    <div style="position:absolute; top:3px; right:0px;"><span class="badge badge-secondary"><label id="QtyInCart" class="bang"></label></span></div>
+
+
+
+                                   
+                                    
                                 </li>
                             </ul>
                         </div>
