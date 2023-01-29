@@ -29,8 +29,8 @@ html, body {
 .global-container {
     display: flex;
     flex-direction: column;
-    height: 100vw;
-    max-height: 100vw;
+    max-height: 780px;
+    height: 780px;
 }
 
 .banner{
@@ -46,7 +46,7 @@ html, body {
     padding-right: 15px;
     min-height:605px;*/
     padding: 0;
-    flex: 1 1 auto;
+    flex: 1 0 780px;
     
 }
 
@@ -157,9 +157,9 @@ input[type="select"] {
         grid-area: form_imput;
         display: grid;
         grid-template-columns: 1fr 2fr;
-        width: 960px;
+        /*width: 960px;*/
         box-sizing: border-box;
-        height: 367px;
+        /*height: 367px;*/
         margin-top: 12px;
         margin-bottom: 12px;
         background: #D9D9D9;
@@ -202,18 +202,64 @@ input[type="select"] {
 
 /* Grid  page Admin Doc Add  end */
 
+/* Grid  page admin_consult  Add begin */
+
+.admin_consult #grid_content {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 258px 64px 1fr;
+    margin-top: 12px;
+    row-gap: 12px;
+}
+    
+    .admin_consult #grid_content .grid_input_data {
+        display: grid;
+        grid-template-columns: 295px 1fr;
+        column-gap: 12px;
+        row-gap: 12px;
+    }
+        .admin_consult #grid_content .grid_input_data .item1 {
+            border: 1px solid #B4B4B4;
+            border-radius: 0px 5px 5px 0px;
+            padding: 25px;
+        }
+
+        .admin_consult #grid_content .grid_input_data .item2 {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: 115px 1fr;
+            gap: 20px;
+            border: 1px solid #B4B4B4;
+            border-radius: 0px 5px 5px 0px;
+            background-color: #D9D9D9;
+            padding: 25px;
+        }
+
+
+    .admin_consult #grid_content .grid_filter_data {
+        display: flex;
+        justify-content: space-between;
+        background-color: #D4EDDA;
+        align-items: center;
+        padding: 0px 25px;
+        margin-top: 12px;
+    }
+/* Grid  page admin_consult  Add  end */
+
 /* Grid  page User Library_docs BEGIN */
 .library_docs {
   /*  display: grid;
     grid-template-columns:auto;*/
+/*max-height:780px;*/
 }
 
     .library_docs #grid_content {
         display: grid;
         grid-template-columns: 288px auto;
-        grid-template-rows: 115px 1fr;
+        /*grid-template-rows: 115px 1fr;*/
         margin-top: 12px;
-        width: 100vw;
+        padding:0px 0px 20px 0px;
+        /*width: 100vw;*/
         
     }
 
@@ -235,10 +281,13 @@ input[type="select"] {
             padding: 20px 20px 20px 20px;
             
         }
-    .library_docs #grid_content .grid_view_data{
-        grid-column: 2/-1;
-        
-    }
+        .library_docs #grid_content .grid_view_data {
+            /*grid-column: 2/-1;*/
+            /*display: grid;
+            grid-template-columns: 295px 1fr;
+            border: 1px solid #729C3B !important;
+            row-gap: 12px;*/
+        }
 
         .library_docs #grid_content .grid_view_data .filter_data_ext {
             display: flex;
@@ -251,6 +300,33 @@ input[type="select"] {
         }
         /* Grid  page User Library_docs END */
 
+/* Grid  page User library_consult BEGIN */
+
+.library_consult #grid_content {
+    display: grid;
+    grid-template-columns:  auto;
+    /*grid-template-rows: 115px 1fr;*/
+    margin-top: 12px;
+    padding: 0px 0px 20px 0px;
+    max-width: 1262px;
+    width: 1262px;
+    /*width: 100vw;*/
+}
+    .library_consult #grid_content .grid_filter_data {
+        /* grid-column: 2/3;*/
+
+        background: #D9D9D9;
+        border: 1px solid #D9D9D9;
+        border-radius: 5px;
+        padding: 20px 20px 20px 20px;
+        margin-bottom:12px;
+    }
+    .library_consult #grid_content .grid_view_data {
+       
+    }
+
+/* Grid  page User library_consult END */
+
 
     /* Grid  list_orders BEGIN */
 
@@ -259,10 +335,15 @@ input[type="select"] {
     grid-template-columns: 288px auto;
     grid-template-rows: 115px 1fr;
     margin-top: 12px;
-    width: 100vw;
+    /*width: 100vw;*/
 }
 
 /* Grid  list_orders END */
+
+
+
+
+
 
 /* Grid  order BEGIN */
 

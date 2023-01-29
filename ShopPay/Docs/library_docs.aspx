@@ -122,13 +122,10 @@
                 </div>
             </div>
 
-            <div>
-                <asp:Label ID="LabelError" runat="server"></asp:Label>
-
-            </div>
+            
 
         </section>
-
+        
         <section id="data">
             <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>">
                 <SelectParameters>
@@ -146,6 +143,10 @@
                 SelectCommand="select id_section, section_name from Docs_DocSections"></asp:SqlDataSource>
 
         </section>
+        <div>
+            <asp:Label ID="LabelError" runat="server"></asp:Label>
+
+        </div>
     </div>
        
     

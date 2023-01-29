@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="admin_consult">
+    <div class="admin_doc">
         <section id="header">
             <div class="container-fluid text-center">
                 <h3>Администрирование. Справочник консультаций</h3>

@@ -61,10 +61,10 @@
                                 <li><a runat="server" href="~/Docs/library_docs.aspx">Все Документы</a></li>
                                 <li><a runat="server" href="~/Default.aspx">Мои документы</a></li>
                                 <li><a runat="server" href="~/Docs/library_consults.aspx">Консультации</a></li>
-                                <li><a runat="server" href="~/#">Договора</a></li>
+                               <%-- <li><a runat="server" href="~/#">Договора</a></li>
                                 <li><a runat="server" href="~/#">Архив</a></li>
                                 <li><a runat="server" href="~/#">Отложено</a></li>
-                                <li><a runat="server" href="~/#">Товары</a></li>
+                                <li><a runat="server" href="~/#">Товары</a></li>--%>
                                 <li><a runat="server" href="~/Docs/listOrders.aspx">Заказы</a></li>
                             </ul>
                         </div>

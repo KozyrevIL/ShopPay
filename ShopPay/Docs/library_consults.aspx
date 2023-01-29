@@ -10,10 +10,10 @@
     </script>
 
 
-    <div class="library_docs">
+    <div class="library_consult">
         <section id="header">
             <div class="container-fluid text-center">
-                <h3>Мои документы</h3>
+                <h3>Консультации</h3>
             </div>
         </section>
       
@@ -22,7 +22,7 @@
 
          
             <div class="grid_view_data">
-                <div class="filter_data_ext" name="Filter">
+                <div class="grid_filter_data" name="Filter">
 
                     <div class="input-group">
                         <h3>Поиск по маске</h3>
@@ -57,7 +57,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Действие">
                                 <ItemTemplate>
-                                    <asp:Button ID="ButtonComand" runat="server" CommandName='pay' Text='Заказать' CommandArgument='<%# Eval("id_doc").ToString() %>' OnCommand="ButtonComand_Command" />
+                                    <asp:Button ID="ButtonComand" runat="server" CssClass="btn btn-success" CommandName='pay' Text='Заказать' CommandArgument='<%# Eval("id_doc").ToString() %>' OnCommand="ButtonComand_Command" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

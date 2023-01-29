@@ -78,15 +78,6 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.GridView GridViewDocs;
 
         /// <summary>
-        /// LabelError элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LabelError;
-
-        /// <summary>
         /// SqlDataSourceDocs элемент управления.
         /// </summary>
         /// <remarks>
@@ -112,5 +103,14 @@ namespace ShopPay.Admin
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceSections;
+
+        /// <summary>
+        /// LabelError элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelError;
     }
 }
