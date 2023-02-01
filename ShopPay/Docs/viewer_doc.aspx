@@ -18,8 +18,8 @@
         </section>
         <section id="grid_content">
 
-            <div runat="server" id="divImage" class="grid_view_img">
-                <asp:Image ID="ImageCover" runat="server" ImageUrl="" />
+            <div runat="server" id="divImage" class="grid_view_img" style="width:173px">
+                <asp:Image ID="ImageCover" runat="server" ImageUrl=""  Width="173" />
             </div>
             <div class="grid_view_data">
                 <h2>

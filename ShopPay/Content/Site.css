@@ -349,10 +349,10 @@ input[type="select"] {
 
 .order #grid_content {
     display: grid;
-    grid-template-columns: 288px auto;
-    grid-template-rows: 115px 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: 30px 1fr;
     margin-top: 12px;
-    width: 100vw;
+    /*width: 100vw;*/
 }
 
 /* Grid  order END */
@@ -362,7 +362,7 @@ input[type="select"] {
 
 .viewer_doc #grid_content {
     display: grid;
-    grid-template-columns: 200px auto;
+    grid-template-columns: 200px 500px;
     grid-template-rows: auto 20px;
     margin-top: 12px;
     gap:12px;

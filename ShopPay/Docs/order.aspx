@@ -8,7 +8,9 @@
             let text = await response.text(); // прочитать тело ответа как текст
         }
     </script>
-    <div id="order">
+
+
+    <div id="order" class="order">
         
         <section id="header">
             <div class="container-fluid text-center">
@@ -16,16 +18,18 @@
             </div>
         </section>
 
-        <asp:Label ID="LabelNumOrder" runat="server"></asp:Label> 
-        <asp:Label ID="LabelDateOrder" runat="server"></asp:Label> 
+        <section id="grid_content">
 
-        <div runat="server" id="orderDocs">
-            Документы
+            <asp:Label ID="LabelNumOrder" runat="server"></asp:Label>
+            <asp:Label ID="LabelDateOrder" runat="server"></asp:Label>
+
+            <div runat="server" id="orderDocs">
+                Документы
     <asp:GridView runat="server" ID="GridViewDocs" CssClass="table table-bordered table-hover" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
-                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' />
+                    <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' Width="173" />
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField>
@@ -55,8 +59,8 @@
         <HeaderStyle BackColor="#729C3B" ForeColor="White" />
     </asp:GridView>
             </div>
-        <div runat="server" id="orderConsults">
-            Консультации
+            <div runat="server" id="orderConsults">
+                Консультации
     <asp:GridView runat="server" ID="GridViewConsults" CssClass="table table-bordered table-hover" DataKeyNames="id_order" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
@@ -77,7 +81,10 @@
         <HeaderStyle BackColor="#729C3B" ForeColor="White" />
     </asp:GridView>
             </div>
+
+        </section>
     </div>
+
 
     <div>
         Стоимость 
