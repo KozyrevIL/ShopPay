@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using ShopPay.App_Code;
+using ShopPay.Models;
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Owin;
-using ShopPay.Models;
 
 namespace ShopPay.Account
 {
@@ -48,6 +48,13 @@ namespace ShopPay.Account
                 //string code = manager.GenerateEmailConfirmationToken(user.Id);
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
                 //manager.SendEmail(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>.");
+
+                // Запишем дополнительные данные пользователя
+                ClassCustomer classCustomer = new ClassCustomer(Email.Text,Context);
+                classCustomer.customerInfo.FIO = TextBoxNameCustomer.Text;
+                classCustomer.customerInfo.phone = TextBoxPhone.Text;
+                classCustomer.customerInfo.Info = TextBoxInfo.Text;
+                classCustomer.customerInfo.UpdateCustomerInfo(Email.Text);
 
                 signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
                 IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);

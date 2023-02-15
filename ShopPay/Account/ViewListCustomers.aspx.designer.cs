@@ -7,74 +7,66 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
+
 namespace ShopPay.Account
 {
 
 
-    public partial class Register
+    public partial class ViewListCustomers
     {
 
         /// <summary>
-        /// Email элемент управления.
+        /// FiltrMask элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox FiltrMask;
 
         /// <summary>
-        /// Password элемент управления.
+        /// ButtonSearch элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Password;
+        protected global::System.Web.UI.WebControls.Button ButtonSearch;
 
         /// <summary>
-        /// ConfirmPassword элемент управления.
+        /// ButtonFilterClear элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
+        protected global::System.Web.UI.WebControls.Button ButtonFilterClear;
 
         /// <summary>
-        /// TextBoxNameCustomer элемент управления.
+        /// GridViewCustomers элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxNameCustomer;
+        protected global::System.Web.UI.WebControls.GridView GridViewCustomers;
 
         /// <summary>
-        /// TextBoxInfo элемент управления.
+        /// SqlDataSourceCustomers элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxInfo;
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSourceCustomers;
 
         /// <summary>
-        /// TextBoxPhone элемент управления.
+        /// LabelError элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически созданное поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBoxPhone;
-
-        /// <summary>
-        /// ErrorMessage элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal ErrorMessage;
+        protected global::System.Web.UI.WebControls.Label LabelError;
     }
 }

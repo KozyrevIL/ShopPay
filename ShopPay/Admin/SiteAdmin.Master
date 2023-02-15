@@ -76,6 +76,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="../Roles/UsersAndRoles.aspx">Добавить роль</a><br />
                                         <a class="dropdown-item" href="../Roles/ManageRoles.aspx">Управление ролями</a><br />
+                                        <a class="dropdown-item" href="../Account/ViewListCustomers.aspx">Список пользователей</a><br />
                                         <a class="dropdown-item" href="../Account/Register.aspx">Регистрация пользователя</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_docs.aspx">Библиотека документов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_tags.aspx">Справочник меток документов</a><br />
@@ -109,9 +110,10 @@
                                 </AnonymousTemplate>
                                 <LoggedInTemplate>
                                     <ul class="nav navbar-nav navbar-right">
-                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+<%--                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: Context.User.Identity.GetUserName()  %> !</a></li>--%>
+                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: (new ClassCustomer(Context.User.Identity.GetUserName(),Context)).appealTo  %> !</a></li>
                                         <li>
-                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                         </li>
                                     </ul>
                                 </LoggedInTemplate>

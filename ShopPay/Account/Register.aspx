@@ -16,24 +16,24 @@
                 <div class="form-horizontal">
                     <asp:ValidationSummary runat="server" CssClass="text-danger" />
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-2 control-label">Адрес электронной почты</asp:Label>
-                        <div class="col-md-10">
+                        <asp:Label runat="server" AssociatedControlID="Email" CssClass="col-md-3 control-label">Адрес электронной почты</asp:Label>
+                        <div class="col-md-9">
                             <asp:TextBox runat="server" ID="Email" CssClass="form-control" TextMode="Email" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Email"
                                 CssClass="text-danger" ErrorMessage="Поле адреса электронной почты заполнять обязательно." />
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-2 control-label">Пароль</asp:Label>
-                        <div class="col-md-10">
+                        <asp:Label runat="server" AssociatedControlID="Password" CssClass="col-md-3 control-label">Пароль</asp:Label>
+                        <div class="col-md-9">
                             <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                                 CssClass="text-danger" ErrorMessage="Поле пароля заполнять обязательно." />
                         </div>
                     </div>
                     <div class="form-group">
-                        <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-2 control-label">Подтверждение пароля</asp:Label>
-                        <div class="col-md-10">
+                        <asp:Label runat="server" AssociatedControlID="ConfirmPassword" CssClass="col-md-3 control-label">Подтверждение пароля</asp:Label>
+                        <div class="col-md-9">
                             <asp:TextBox runat="server" ID="ConfirmPassword" TextMode="Password" CssClass="form-control" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="ConfirmPassword"
                                 CssClass="text-danger" Display="Dynamic" ErrorMessage="Поле подтверждения пароля заполнять обязательно." />
@@ -42,7 +42,25 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-md-offset-2 col-md-10">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxNameCustomer" CssClass="col-md-3 control-label">Как к Вам обрашаться (ФИО, ник и т.п.) </asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox runat="server" ID="TextBoxNameCustomer"  CssClass="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxInfo" CssClass="col-md-3 control-label">Дополнительная информация (организация и т.п.) </asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox runat="server" ID="TextBoxInfo"  CssClass="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="TextBoxNameCustomer" CssClass="col-md-3 control-label">Телефон для связи </asp:Label>
+                        <div class="col-md-9">
+                            <asp:TextBox runat="server" ID="TextBoxPhone"  CssClass="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-3 col-md-9">
                             <asp:Button runat="server" OnClick="CreateUser_Click" Text="Регистрация" CssClass="btn btn-success" />
                         </div>
                     </div>
