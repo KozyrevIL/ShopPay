@@ -22,11 +22,12 @@
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Изменить]" Visible="false" ID="ChangePassword" runat="server" />
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[Создать]" Visible="false" ID="CreatePassword" runat="server" />
                     </dd>
-                    <dt>Внешние имена входа:</dt>
+                    <%-- %><dt>Внешние имена входа:</dt>
                     <dd><%: LoginsCount %>
                         <asp:HyperLink NavigateUrl="/Account/ManageLogins" Text="[Управление]" runat="server" />
 
                     </dd>
+                    --%>
                     <%--
                         Phone Numbers can used as a second factor of verification in a two-factor authentication system.
                         See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
@@ -50,31 +51,23 @@
                     </dd>
                     <% } %>
                     --%>
-
-                    <dt>Двухфакторная проверка подлинности:</dt>
+                    <dt>Дополнительные сведения</dt>
                     <dd>
-                        <p>
-                            Поставщики двухфакторной аутентификации не настроены. В <a href="https://go.microsoft.com/fwlink/?LinkId=403804">этой статье</a>
-                можно узнать, как настроить двухфакторную аутентификацию для этого приложения ASP.NET.
-                        </p>
-                        <% if (TwoFactorEnabled)
-                          { %> 
-                        <%--
-                        Enabled
-                        <asp:LinkButton Text="[Disable]" runat="server" CommandArgument="false" OnClick="TwoFactorDisable_Click" />
-                        --%>
-                        <% }
-                          else
-                          { %> 
-                        <%--
-                        Disabled
-                        <asp:LinkButton Text="[Enable]" CommandArgument="true" OnClick="TwoFactorEnable_Click" runat="server" />
-                        --%>
-                        <% } %>
+                        <asp:Label ID="labelFIO" runat="server" Text="Обращение"></asp:Label>
+                        <asp:TextBox ID="TextFIO" runat="server"></asp:TextBox>
+                        <asp:Label ID="label1" runat="server" Text="Телефон"></asp:Label>
+                        <asp:TextBox ID="TextPhone" runat="server"></asp:TextBox>
+                        <asp:Label ID="label2" runat="server" Text="Дополнительная информация"></asp:Label>
+                        <asp:TextBox ID="TextInfo" runat="server"></asp:TextBox>
+                        <asp:Button ID="SaveInfo" runat="server" Text="Записать" OnClick="SaveInfo_Click" />
                     </dd>
                 </dl>
             </div>
         </div>
+    </div>
+    <div>
+        <asp:Label ID="LabelError" runat="server"></asp:Label>
+
     </div>
 
 </asp:Content>

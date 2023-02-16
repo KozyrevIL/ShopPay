@@ -249,6 +249,7 @@
     <Content Include="fonts\Inter\static\Inter-Thin.ttf" />
     <Content Include="Roles\Web.config" />
     <Content Include="libman.json" />
+    <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Roles\UsersAndRoles.aspx" />
     <Content Include="Scripts\bootstrap.js" />

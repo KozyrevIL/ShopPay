@@ -38,12 +38,12 @@ namespace ShopPay.Account
         {
             var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
+            //HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
 
             // Включите после настройки двухфакторной проверки подлинности
             //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
 
-            TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
+            //TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
 
             LoginsCount = manager.GetLogins(User.Identity.GetUserId()).Count;
 
@@ -78,7 +78,15 @@ namespace ShopPay.Account
                         : String.Empty;
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
                 }
+
+                ClassCustomer cc = new ClassCustomer(Context.User.Identity.GetUserName(),Context);
+                TextFIO.Text = cc.customerInfo.FIO;
+                TextPhone.Text = cc.customerInfo.phone;
+                TextInfo.Text = cc.customerInfo.Info;
             }
+            LabelError.Text = string.Empty;
+            LabelError.Visible = false;
+
         }
 
 
@@ -124,6 +132,25 @@ namespace ShopPay.Account
             manager.SetTwoFactorEnabled(User.Identity.GetUserId(), true);
 
             Response.Redirect("/Account/Manage");
+        }
+
+        protected void SaveInfo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string customer = Context.User.Identity.GetUserName();
+                ClassCustomer cc = new ClassCustomer();
+                cc.customerInfo.FIO = TextFIO.Text;
+                cc.customerInfo.phone = TextPhone.Text;
+                cc.customerInfo.Info = TextInfo.Text;
+                cc.customerInfo.UpdateCustomerInfo(customer);
+            }
+            catch
+            {
+                LabelError.Text = "Ошибка сохранения данных!";
+                LabelError.Visible = true;
+            }
+
         }
     }
 }
