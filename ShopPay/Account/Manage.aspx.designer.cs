@@ -15,15 +15,6 @@ namespace ShopPay.Account
     {
 
         /// <summary>
-        /// successMessage элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически созданное поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder successMessage;
-
-        /// <summary>
         /// ChangePassword элемент управления.
         /// </summary>
         /// <remarks>
@@ -112,5 +103,14 @@ namespace ShopPay.Account
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelError;
+
+        /// <summary>
+        /// successMessage элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder successMessage;
     }
 }

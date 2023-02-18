@@ -2,18 +2,19 @@
     font-family: 'inter-black';
     src: url('../fonts/inter/static/inter-black.ttf') format('truetype') local('inter-black');
 }
+
 @font-face {
     font-family: 'inter-bold';
     src: url('../fonts/inter/static/inter-bold.ttf') format('truetype');
 }
+
 @font-face {
     font-family: 'inter-regular';
     src: url('../fonts/inter/static/inter-regular.ttf') format('truetype');
 }
 
 .badge {
-    display: inline; 
-    
+    display: inline;
 }
 
 /* Move down content because we have a fixed navbar that is 50px tall */
@@ -26,6 +27,7 @@ html, body {
     display: flex;
     height: 100%;
 }
+
 .global-container {
     display: flex;
     flex-direction: column;
@@ -33,21 +35,21 @@ html, body {
     height: 780px;
 }
 
-.banner{
+.banner {
     flex: 0 0 auto;
 }
-.banner-menu
-{
+
+.banner-menu {
     flex: 0 0 auto;
-    align-items:center;
+    align-items: center;
 }
+
 .body-content {
     /*padding-left: 15px;
     padding-right: 15px;
     min-height:605px;*/
     padding: 0;
     flex: 1 0 780px;
-    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -72,9 +74,8 @@ input[type="select"] {
     border: 1px solid #E6B308;
     border-radius: 5px;
     width: 100%;
-    padding:10px 0px 10px 0px;
-
-    color:white;
+    padding: 10px 0px 10px 0px;
+    color: white;
 }
 
     #header h3 {
@@ -85,7 +86,6 @@ input[type="select"] {
 
 /*Меню*/
 .navbar {
-   
     min-height: 50px;
     margin-bottom: 12px;
     border: 1px solid transparent;
@@ -95,18 +95,22 @@ input[type="select"] {
     background-color: #0192AC;
     border-color: #0192AC;
 }
+
     .navbar-inverse .navbar-brand {
         color: #ffffff;
     }
+
     .navbar-inverse .navbar-nav > li > a {
         color: #ffffff;
     }
+
     .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
         color: #0192AC;
         background-color: #fff;
     }
+
 .navbar-nav > li > .dropdown-menu {
-    padding:15px;
+    padding: 15px;
 }
 /* Grid For ALL BEGIN */
 #grid_content grid_form_imput {
@@ -119,7 +123,7 @@ input[type="select"] {
 .login #grid_content {
     background: #D9D9D9;
     border: 1px solid #B4B4B4;
-    padding:20px;
+    padding: 20px;
 }
 /* Grid login END */
 
@@ -131,21 +135,23 @@ input[type="select"] {
     margin-top: 12px;
     row-gap: 12px;
 }
+
     .admin_doc #grid_content .grid_input_data {
         display: grid;
         grid-template-columns: 295px 1fr;
-        column-gap:12px;
-        row-gap:12px;
+        column-gap: 12px;
+        row-gap: 12px;
     }
+
         .admin_doc #grid_content .grid_input_data .item1 {
             border: 1px solid #B4B4B4;
             border-radius: 0px 5px 5px 0px;
             padding: 25px;
         }
+
         .admin_doc #grid_content .grid_input_data .item2 {
             display: grid;
             grid-template-columns: repeat(6,1fr);
-            
             gap: 20px;
             border: 1px solid #B4B4B4;
             border-radius: 0px 5px 5px 0px;
@@ -153,20 +159,20 @@ input[type="select"] {
             padding: 25px;
         }
 
-    .admin_doc grid_form_imput {
-        grid-area: form_imput;
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        /*width: 960px;*/
-        box-sizing: border-box;
-        /*height: 367px;*/
-        margin-top: 12px;
-        margin-bottom: 12px;
-        background: #D9D9D9;
-        border: 1px solid #B4B4B4;
-        border-radius: 5px;
-        padding: 30px;
-    }
+.admin_doc grid_form_imput {
+    grid-area: form_imput;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    /*width: 960px;*/
+    box-sizing: border-box;
+    /*height: 367px;*/
+    margin-top: 12px;
+    margin-bottom: 12px;
+    background: #D9D9D9;
+    border: 1px solid #B4B4B4;
+    border-radius: 5px;
+    padding: 30px;
+}
 
 .admin_doc #grid_content .grid_filter_data {
     display: flex;
@@ -174,9 +180,7 @@ input[type="select"] {
     background-color: #D4EDDA;
     align-items: center;
     padding: 0px 25px;
-
-    margin-top:12px;
-   
+    margin-top: 12px;
 }
 
 .admin_doc #grid_content .grid_view_data {
@@ -197,7 +201,7 @@ input[type="select"] {
     }
 
     .admin_doc #grid_content .grid_view_data .filter_data_ext {
-       padding:25px;
+        padding: 25px;
     }
 
 /* Grid  page Admin Doc Add  end */
@@ -211,13 +215,14 @@ input[type="select"] {
     margin-top: 12px;
     row-gap: 12px;
 }
-    
+
     .admin_consult #grid_content .grid_input_data {
         display: grid;
         grid-template-columns: 295px 1fr;
         column-gap: 12px;
         row-gap: 12px;
     }
+
         .admin_consult #grid_content .grid_input_data .item1 {
             border: 1px solid #B4B4B4;
             border-radius: 0px 5px 5px 0px;
@@ -248,9 +253,9 @@ input[type="select"] {
 
 /* Grid  page User Library_docs BEGIN */
 .library_docs {
-  /*  display: grid;
+    /*  display: grid;
     grid-template-columns:auto;*/
-/*max-height:780px;*/
+    /*max-height:780px;*/
 }
 
     .library_docs #grid_content {
@@ -258,13 +263,11 @@ input[type="select"] {
         grid-template-columns: 288px auto;
         /*grid-template-rows: 115px 1fr;*/
         margin-top: 12px;
-        padding:0px 0px 20px 0px;
+        padding: 0px 0px 20px 0px;
         /*width: 100vw;*/
-        
     }
 
         .library_docs #grid_content h3 {
-            
             font-style: normal;
             font-weight: 700;
             font-size: 16px;
@@ -279,8 +282,8 @@ input[type="select"] {
             border: 1px solid #D9D9D9;
             border-radius: 5px;
             padding: 20px 20px 20px 20px;
-            
         }
+
         .library_docs #grid_content .grid_view_data {
             /*grid-column: 2/-1;*/
             /*display: grid;
@@ -289,22 +292,21 @@ input[type="select"] {
             row-gap: 12px;*/
         }
 
-        .library_docs #grid_content .grid_view_data .filter_data_ext {
-            display: flex;
-            justify-content: space-between;
-            align-items:center;
-
-            background: #D9D9D9;
-            border-radius: 5px;
-            padding: 10px 40px 20px 20px;
-        }
-        /* Grid  page User Library_docs END */
+            .library_docs #grid_content .grid_view_data .filter_data_ext {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: #D9D9D9;
+                border-radius: 5px;
+                padding: 10px 40px 20px 20px;
+            }
+/* Grid  page User Library_docs END */
 
 /* Grid  page User library_consult BEGIN */
 
 .library_consult #grid_content {
     display: grid;
-    grid-template-columns:  auto;
+    grid-template-columns: auto;
     /*grid-template-rows: 115px 1fr;*/
     margin-top: 12px;
     padding: 0px 0px 20px 0px;
@@ -312,6 +314,7 @@ input[type="select"] {
     width: 1262px;
     /*width: 100vw;*/
 }
+
     .library_consult #grid_content .grid_filter_data {
         /* grid-column: 2/3;*/
 
@@ -319,16 +322,16 @@ input[type="select"] {
         border: 1px solid #D9D9D9;
         border-radius: 5px;
         padding: 20px 20px 20px 20px;
-        margin-bottom:12px;
+        margin-bottom: 12px;
     }
+
     .library_consult #grid_content .grid_view_data {
-       
     }
 
 /* Grid  page User library_consult END */
 
 
-    /* Grid  list_orders BEGIN */
+/* Grid  list_orders BEGIN */
 
 .list_orders #grid_content {
     display: grid;
@@ -365,13 +368,14 @@ input[type="select"] {
     grid-template-columns: 200px 500px;
     grid-template-rows: auto 20px;
     margin-top: 12px;
-    gap:12px;
+    gap: 12px;
 }
+
     .viewer_doc #grid_content .grid_view_img {
-        grid-row:1/-1;
+        grid-row: 1/-1;
     }
 
-    /* Grid  page User viewer_doc END */
+/* Grid  page User viewer_doc END */
 
 /* Grid  page User cart BEGIN */
 
@@ -383,13 +387,13 @@ input[type="select"] {
     gap: 12px;
 }
 
-   
+
 
 /* Grid  page User cart END */
 
 
-    /* Grid  page Admin TAG Add begin alter_row_style */
-    .tags #grid_content {
+/* Grid  page Admin TAG Add begin alter_row_style */
+.tags #grid_content {
     height: 100%;
     display: grid;
     grid-template-columns: auto;
@@ -426,32 +430,60 @@ input[type="select"] {
         .tags #grid_content grid_form_imput .grid_view_data .table {
             border: 1px solid #B4B4B4 !important;
         }
-    /* Grid  page Admin TAG Add  end */
+/* Grid  page Admin TAG Add  end */
 
-    /* Grid  page Admin REGISTER  begin */
-    .register_user #grid_content {
-        height: 100%;
+/* Grid  page Admin REGISTER  begin */
+.register_user #grid_content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "form_imput";
+    justify-content: center;
+}
+
+    .register_user #grid_content grid_form_imput {
+        grid-area: form_imput;
         display: grid;
         grid-template-columns: auto;
-        grid-template-rows: auto;
-        grid-template-areas: "form_imput";
-        justify-content: center;
+        width: 960px;
+        box-sizing: border-box;
+        /*height: 367px;*/
+        margin-top: 12px;
+        margin-bottom: 12px;
+        background: #D9D9D9;
+        border: 1px solid #B4B4B4;
+        border-radius: 5px;
+        padding: 30px;
     }
-        .register_user #grid_content grid_form_imput {
-            grid-area: form_imput;
-            display: grid;
-            grid-template-columns: auto;
-            width: 960px;
-            box-sizing: border-box;
-            height: 367px;
-            margin-top: 12px;
-            margin-bottom: 12px;
-            background: #D9D9D9;
-            border: 1px solid #B4B4B4;
-            border-radius: 5px;
-            padding: 30px;
-        }
 /* Grid  page Admin REGISTER  end */
+
+/* Grid  page Manage begin */
+.manager_user #grid_content {
+    height: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: "form_imput";
+    justify-content: center;
+}
+
+    .manager_user #grid_content grid_form_imput {
+        grid-area: form_imput;
+        display: grid;
+        grid-template-columns: auto;
+        width: 960px;
+        box-sizing: border-box;
+        /*height: 367px;*/
+        margin-top: 12px;
+        margin-bottom: 12px;
+        background: #D9D9D9;
+        border: 1px solid #B4B4B4;
+        border-radius: 5px;
+        padding: 30px;
+    }
+/* Grid  page Manage  end */
+
 
 /* Grid  page Admin ManageRoles  begin */
 .manage_roles #grid_content {
@@ -488,9 +520,9 @@ input[type="select"] {
         padding: 30px;
     }
 
-        .manage_roles #grid_content .grid_input_data .btn {
-            margin-top: 22px;
-        }
+    .manage_roles #grid_content .grid_input_data .btn {
+        margin-top: 22px;
+    }
 /* Grid  page Admin ManageRoles  end */
 
 /* Grid  page Admin Users_And_Roles  begin */
@@ -527,22 +559,24 @@ input[type="select"] {
         border-radius: 5px;
         padding: 10px 30px 10px 30px;
     }
+
         .users_and_roles #grid_content grid_form_imput .grid_input_data {
             display: grid;
             grid-template-columns: auto;
             /*grid-template-rows: auto;*/
             align-items: start;
-            justify-items:start;
-             grid-template-rows: repeat(2, 45px);
+            justify-items: start;
+            grid-template-rows: repeat(2, 45px);
             grid-row-gap: 10px;
         }
+
         .users_and_roles #grid_content grid_form_imput .grid_view_data {
             display: grid;
             grid-template-columns: auto;
             /*grid-template-rows: auto;*/
             /*grid-template-rows: repeat(3, auto-fit);*/
             grid-template-rows: 48px 54px 210px 45px;
-              /*  grid-auto-rows: minmax(45px,auto);*/
+            /*  grid-auto-rows: minmax(45px,auto);*/
             grid-row-gap: 10px;
             align-items: start;
         }
@@ -591,4 +625,3 @@ footer {
         padding: 0;
     }*/
 }
-
