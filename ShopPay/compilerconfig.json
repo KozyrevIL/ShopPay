@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "sass/ShopPay.css",
+    "inputFile": "sass/ShopPay.scss"
+  },
+  {
+    "outputFile": "sass/ShopPayScss.css",
+    "inputFile": "sass/ShopPayScss.scss"
+  }
+]

@@ -11,7 +11,7 @@ namespace ShopPay
 {
 
 
-    public partial class SiteMasterAdmin
+    public partial class SiteDefault
     {
 
         /// <summary>

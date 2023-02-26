@@ -29,7 +29,7 @@
                             <asp:TemplateField ShowHeader="True" HeaderText="Действие">
                                 <ItemTemplate>
                                     <div class="btn-group">
-                                        <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-success">
+                                        <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-info">
                                 <i class="glyphicon glyphicon-pencil"></i>
                                         </asp:LinkButton>
                                         <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись?');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">

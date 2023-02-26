@@ -1,29 +1,26 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin.Master.cs" Inherits="ShopPay.SiteMasterAdmin" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteDefault.master.cs" Inherits="ShopPay.SiteDefault" %>
 
 <%@ Register Src="~/UC/footer.ascx" TagPrefix="uc1" TagName="footer" %>
 
 
 <!DOCTYPE html>
 
-<html lang="ru">
+<html>
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - shop.rostot.ru</title>
-
-    <link href="../sass/normalize.css" rel="stylesheet" />
-    <link href="../sass/reset.css" rel="stylesheet" />
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link href="../sass/ShopPayScss.css" rel="stylesheet" />
+    <link href="sass/ShopPayScss.css" rel="stylesheet" />
 </head>
 <body>
-    <form runat="server">
+   <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -72,7 +69,7 @@
                                 <li><a runat="server" href="~/#">Отложено</a></li>
                                 <li><a runat="server" href="~/#">Товары</a></li>--%>
                                 <li><a runat="server" href="~/Docs/listOrders.aspx">Заказы</a></li>
-                                <li><a runat="server" href="./../desc.aspx">Контакты</a></li>
+                                 <li><a runat="server" href="desc.aspx">Контакты</a></li>
                             </ul>
                         </div>
                         <div>
@@ -83,7 +80,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="../Roles/UsersAndRoles.aspx">Добавить роль</a><br />
                                         <a class="dropdown-item" href="../Roles/ManageRoles.aspx">Управление ролями</a><br />
-                                        <a class="dropdown-item" href="../Admin/ViewListCustomers.aspx">Список пользователей</a><br />
+                                        <a class="dropdown-item" href="../Account/ViewListCustomers.aspx">Список пользователей</a><br />
                                         <a class="dropdown-item" href="../Account/Register.aspx">Регистрация пользователя</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_docs.aspx">Библиотека документов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_tags.aspx">Справочник меток документов</a><br />
@@ -108,7 +105,7 @@
                             </ul>
                         </div>
                         <div>
-                            <asp:LoginView runat="server" ViewStateMode="Disabled">
+                          <%--  <asp:LoginView runat="server" ViewStateMode="Disabled">
                                 <AnonymousTemplate>
                                     <ul class="nav navbar-nav navbar-right">
                                         <li><a runat="server" href="~/Account/Register">Регистрация</a></li>
@@ -117,14 +114,14 @@
                                 </AnonymousTemplate>
                                 <LoggedInTemplate>
                                     <ul class="nav navbar-nav navbar-right">
-<%--                                        <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: Context.User.Identity.GetUserName()  %> !</a></li>--%>
+
                                         <li><a runat="server" href="~/Account/Manage" title="Manage your account">Здравствуйте, <%: (new ClassCustomer(Context.User.Identity.GetUserName(),Context)).appealTo  %> !</a></li>
                                         <li>
                                             <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                         </li>
                                     </ul>
                                 </LoggedInTemplate>
-                            </asp:LoginView>
+                            </asp:LoginView>--%>
                         </div>
                     </div>
                 </div>
@@ -134,7 +131,14 @@
                 <asp:ContentPlaceHolder ID="MainContent" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
+
             <uc1:footer runat="server" ID="footer" />
+
+
+            <%-- <footer>
+                <img src="../Images/Temp_img/temp_footer_full.jpg" width="100%" />
+               <p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>
+            </footer>--%>
         </div>
     </form>
     <script>

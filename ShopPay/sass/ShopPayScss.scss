@@ -1,0 +1,60 @@
+﻿@import "_vars.scss";
+@import "_fonts.scss";
+@import "_reset.scss";
+/*@import "normalize.css";
+@import "reset.css";*/
+
+.grid {
+    display: grid;
+}
+.dropdown-menu {
+    min-width: 267px;
+    
+}
+
+footer {
+    flex: 0 0 auto;
+
+    .footer_content {
+        text-align: center;
+
+        .footer_menu {
+            background: $dark;
+            padding: 18px 0px;
+
+            .menu_text {
+                width: 990px;
+                margin: 0 auto;
+                text-align: center;
+
+                ul li {
+                    list-style-type: none;
+                    display: inline;
+                    margin-right: 21px;
+
+                    a {
+                        font-weight: 700;
+                        font-size: 16px;
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .footer_politics {
+            background-color: $gray;
+            padding: 15px 0px;
+
+            h2 {
+                font-size: $h2;
+            }
+        }
+
+        .footer_copyright {
+            padding: 6px 0px;
+        }
+    }
+}
+
+
+@import "_media.scss";

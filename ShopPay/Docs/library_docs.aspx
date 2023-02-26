@@ -54,7 +54,7 @@
                         <asp:TextBox ID="DocMask" runat="server" CssClass="form-control"></asp:TextBox>
                         <div class="input-group-btn bottom ">
                             <h3> &nbsp</h3>
-                        <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-success" OnClick="ButtonSearch_Click" Text="Применить" />  
+                        <asp:Button ID="ButtonSearch" runat="server" CssClass="btn btn-info" OnClick="ButtonSearch_Click" Text="Применить" />  
                         <asp:Button ID="ButtonFilterClear" runat="server" OnClick="ButtonFilterClear_Click" Text="Сбросить" CssClass="btn btn-danger"  /></div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Действие">
                                 <ItemTemplate>
-                                    <asp:Button ID="ButtonComand" runat="server" CommandName='<%# Eval("DocisAvailable").ToString()=="False"?"pay":"archive" %>' Text='<%# Eval("DocisAvailable").ToString()=="False"?"Купить":"Убрать в архив" %>' CommandArgument='<%# Eval("id_doc").ToString() %>' OnCommand="ButtonComand_Command" />
+                                    <asp:Button ID="ButtonComand" runat="server" CommandName='<%# Eval("DocisAvailable").ToString()=="False"?"pay":"archive" %>' Text='<%# Eval("DocisAvailable").ToString()=="False"?"Купить":"Убрать в архив" %>' CommandArgument='<%# Eval("id_doc").ToString() %>' OnCommand="ButtonComand_Command" CssClass="btn btn-success" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

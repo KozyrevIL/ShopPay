@@ -1,0 +1,67 @@
+﻿@font-face {
+  font-family: "inter-black";
+  src: url("../fonts/inter/static/inter-black.ttf") format("truetype") local("inter-black");
+}
+@font-face {
+  font-family: "inter-bold";
+  src: url("../fonts/inter/static/inter-bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "inter-regular";
+  src: url("../fonts/inter/static/inter-regular.ttf") format("truetype");
+}
+ul, ol, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+} /*@import "normalize.css";
+@import "reset.css";*/
+.grid {
+  display: grid;
+}
+
+.dropdown-menu {
+  min-width: 267px;
+}
+
+footer {
+  flex: 0 0 auto;
+}
+footer .footer_content {
+  text-align: center;
+}
+footer .footer_content .footer_menu {
+  background: #555555;
+  padding: 18px 0px;
+}
+footer .footer_content .footer_menu .menu_text {
+  width: 990px;
+  margin: 0 auto;
+  text-align: center;
+}
+footer .footer_content .footer_menu .menu_text ul li {
+  list-style-type: none;
+  display: inline;
+  margin-right: 21px;
+}
+footer .footer_content .footer_menu .menu_text ul li a {
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+}
+footer .footer_content .footer_politics {
+  background-color: #D9D9D9;
+  padding: 15px 0px;
+}
+footer .footer_content .footer_politics h2 {
+  font-size: 16px;
+}
+footer .footer_content .footer_copyright {
+  padding: 6px 0px;
+}
+
+/* Large desktops and laptops */
+/* Portrait tablets and medium desktops */
+/* Portrait tablets and small desktops */
+/* Landscape phones and portrait tablets */
+/* Landscape phones and smaller */
+/* Small phones */

@@ -58,7 +58,7 @@
                                     <asp:TemplateField ShowHeader="True" HeaderText="Действие">
                                         <ItemTemplate>
                                             <div class="btn-group">
-                                                <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-success">
+                                                <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-info">
                                 <i class="glyphicon glyphicon-pencil"></i>
                                                 </asp:LinkButton>
                                                 <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись?');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">
@@ -69,7 +69,7 @@
                                         </ItemTemplate>
                                         <EditItemTemplate>
                                             <div class="btn-group">
-                                                <asp:LinkButton ID="LinkButtonUpdate" runat="server" ToolTip="Обновить" CommandName="Update" CausesValidation="false" CssClass="btn btn-success">
+                                                <asp:LinkButton ID="LinkButtonUpdate" runat="server" ToolTip="Обновить" CommandName="Update" CausesValidation="false" CssClass="btn btn-info">
                                 <i class="glyphicon glyphicon-ok"></i>
                                                 </asp:LinkButton>
                                                 <asp:LinkButton ID="LinkButtonCancel" runat="server" ToolTip="Отменить" CommandName="Cancel" CausesValidation="false" CssClass="btn btn-warning">
