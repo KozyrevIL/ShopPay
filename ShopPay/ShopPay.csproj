@@ -167,6 +167,7 @@
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
     <Content Include="Admin\admin_orders.aspx" />
+    <Content Include="library_all_docs.aspx" />
     <Content Include="sass\normalize.css" />
     <Content Include="Default.aspx" />
     <Content Include="Default_primary.aspx" />
@@ -460,6 +461,13 @@
     </Compile>
     <Compile Include="InfoHandler.ashx.cs">
       <DependentUpon>InfoHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="library_all_docs.aspx.cs">
+      <DependentUpon>library_all_docs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="library_all_docs.aspx.designer.cs">
+      <DependentUpon>library_all_docs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Roles\ManageRoles.aspx.cs">
       <DependentUpon>ManageRoles.aspx</DependentUpon>
