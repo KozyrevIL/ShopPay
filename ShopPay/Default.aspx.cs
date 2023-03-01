@@ -11,7 +11,7 @@ namespace ShopPay
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Response.Redirect("~/Docs/library_docs.aspx?filter=mine");
+            Response.Redirect("~/library_all_docs.aspx");
         }
     }
 }

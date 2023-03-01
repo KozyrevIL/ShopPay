@@ -2,18 +2,11 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <script>
-        async function updateFavorite(flag, id_doc) {
-            let response = await fetch('./../updateFavorite.ashx?check='+flag+'&doc='+id_doc);
-            let text = await response.text(); // прочитать тело ответа как текст
-        }
-    </script>
-
 
     <div class="library_docs">
         <section id="header">
             <div class="container-fluid text-center">
-                <h3>Мои документы</h3>
+                <h3>Библиотека документов</h3>
             </div>
         </section>
       
@@ -90,30 +83,14 @@
                                     <asp:Label ID="LabelActual" runat="server" Text='<%# Eval("isActual").ToString()=="True"?"Актуален":"Неактуален" %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Статус">
-                                <ItemTemplate>
-                                    <asp:Label ID="LabelStatus" runat="server" Text='<%# Eval("DocisAvailable").ToString()=="True"?"Оплачен":"Не доступен" %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Цена">
                                 <ItemTemplate>
                                     <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Избранное">
-                                <ItemTemplate>
-                                    <asp:CheckBox ID="CheckFavorite" runat="server" Checked='<%# Eval("favorite") %>' OnClick='<%# "updateFavorite(this.checked,"+Eval("id_doc").ToString()+");" %>'></asp:CheckBox>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:TemplateField HeaderText="Документ">
-                                <ItemTemplate>
-                                    <asp:HyperLink ID="DocImage" runat="server" NavigateUrl='<%# "~/ImageHandler.ashx?fn="+Eval("items") %>' Visible='<%# Eval("DocisAvailable") %>'>Образ документа</asp:HyperLink>
-                                </ItemTemplate>
-                            </asp:TemplateField>
                             <asp:TemplateField HeaderText="Действие">
                                 <ItemTemplate>
-                                    <asp:Button ID="ButtonComand" runat="server" CommandName='<%# Eval("DocisAvailable").ToString()=="False"?"pay":"archive" %>' Text='<%# Eval("DocisAvailable").ToString()=="False"?"Купить":"Убрать в архив" %>' CommandArgument='<%# Eval("id_doc").ToString() %>' OnCommand="ButtonComand_Command" CssClass="btn btn-success" />
+                                    <asp:LinkButton ID="ButtonComand" runat="server" Text="Перейти в магазин" CssClass="btn btn-success" PostBackUrl="~/Docs/library_docs.aspx?filter=mine" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -127,9 +104,16 @@
         </section>
         
         <section id="data">
-            <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>">
+            <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
+                SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,isnull(dd.cover,'empty.jpg') cover,dd.doc_content, ds.section_name
+        ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
+        from Docs_docs dd, Docs_DocSections ds 
+        where  dd.id_typeProduct=1 and
+        dd.id_section=ds.id_section and
+        (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
+        and (@section ='-1' or dd.id_section=@section)
+        and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))">
                 <SelectParameters>
-                    <asp:Parameter Name="customer" />
                     <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />
                     <asp:ControlParameter ControlID="DropDownSections" Name="section" PropertyName="SelectedValue" DefaultValue="-1" />
                     <asp:Parameter Name="tags" DefaultValue="," />
