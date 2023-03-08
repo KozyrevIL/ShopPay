@@ -49,7 +49,7 @@ html, body {
     padding-right: 15px;
     min-height:605px;*/
     padding: 0;
-    flex: 1 0 780px;
+    flex: 1 0 630px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -211,7 +211,7 @@ input[type="select"] {
 .admin_consult #grid_content {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 258px 64px 1fr;
+   /* grid-template-rows: 258px 64px 1fr;*/
     margin-top: 12px;
     row-gap: 12px;
 }
@@ -363,17 +363,17 @@ input[type="select"] {
 
 /* Grid  page User viewer_doc BEGIN */
 
-.viewer_doc #grid_content {
+/*.viewer_doc #grid_content {
     display: grid;
     grid-template-columns: 200px 500px;
     grid-template-rows: auto 20px;
     margin-top: 12px;
     gap: 12px;
-}
+}*/
 
-    .viewer_doc #grid_content .grid_view_img {
+    /*.viewer_doc #grid_content .grid_view_img {
         grid-row: 1/-1;
-    }
+    }*/
 
 /* Grid  page User viewer_doc END */
 

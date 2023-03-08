@@ -161,7 +161,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Тэги">
                                 <ItemTemplate>
-                                    <asp:TextBox ID="TagsList" runat="server" Text='<%# Eval("tags") %>' TextMode="MultiLine" ReadOnly="true" Enabled="false"> </asp:TextBox>
+                                    <asp:TextBox ID="TagsList" runat="server" Text='<%# Eval("tags") %>' TextMode="MultiLine" ReadOnly="true" Enabled="false" > </asp:TextBox>
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:GridView ID="GridViewEditTags" runat="server" AutoGenerateColumns="false" ShowHeader="false">
@@ -183,7 +183,7 @@
                                     <asp:Label ID="LabelSectionDoc" runat="server" Text='<%# Eval("section_name") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:DropDownList ID="DropDownSection" runat="server" DataSourceID="SqlDataSourceSections" DataTextField="section_name" DataValueField="id_section" SelectedValue='<%# Bind("id_section") %>'></asp:DropDownList>
+                                    <asp:DropDownList ID="DropDownSection" runat="server" CssClass="form-control" DataSourceID="SqlDataSourceSections" DataTextField="section_name" DataValueField="id_section" SelectedValue='<%# Bind("id_section") %>'></asp:DropDownList>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Актуальность">
@@ -191,15 +191,15 @@
                                     <asp:Label ID="LabelActual" runat="server" Text='<%# Eval("isActual").ToString()=="True"?"Актуален":"Неактуален" %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:CheckBox ID="CheckisAsctual" runat="server" Checked='<%# Bind("isActual") %>' />
+                                    <asp:CheckBox ID="CheckisAsctual" runat="server"  Checked='<%# Bind("isActual") %>' />
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Дата документа">
                                 <ItemTemplate>
-                                    <asp:Label ID="LabelDateDoc" runat="server" Text='<%# Eval("date_doc") %>'></asp:Label>
+                                    <asp:Label ID="LabelDateDoc" runat="server" Text='<%# Eval("date_doc") %>' ></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="EditDateDoc" runat="server" Text='<%# Bind("date_doc") %>'></asp:TextBox>
+                                    <asp:TextBox ID="EditDateDoc" runat="server" CssClass="form-control datepick" Width="100px" Text='<%# Bind("date_doc") %>'></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Наименование">
@@ -207,7 +207,7 @@
                                     <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="EditNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:TextBox>
+                                    <asp:TextBox ID="EditNameDoc" runat="server" CssClass="form-control" Height="185px" TextMode="MultiLine" Text='<%# Bind("name_doc") %>'></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Описание документа">
@@ -215,7 +215,7 @@
                                     <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="EditDescDoc" runat="server" Text='<%# Bind("description") %>' TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="EditDescDoc" runat="server" Height="185px"   CssClass="form-control" Text='<%# Bind("description") %>' TextMode="MultiLine"></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Содержание документа">
@@ -223,7 +223,7 @@
                                     <asp:Label ID="LabelContentDoc" runat="server" Text='<%# Bind("doc_content") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="EditContentDoc" runat="server" Text='<%# Bind("doc_content") %>' TextMode="MultiLine"></asp:TextBox>
+                                    <asp:TextBox ID="EditContentDoc" Height="185px"   CssClass="form-control" runat="server" Text='<%# Bind("doc_content") %>' TextMode="MultiLine"></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Цена">
@@ -231,7 +231,7 @@
                                     <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Bind("doc_price") %>'></asp:Label>
                                 </ItemTemplate>
                                 <EditItemTemplate>
-                                    <asp:TextBox ID="EditPriceDoc" runat="server" Text='<%# Bind("doc_price") %>'></asp:TextBox>
+                                    <asp:TextBox ID="EditPriceDoc" CssClass="form-control" runat="server" Width="185px" Text='<%# Bind("doc_price") %>'></asp:TextBox>
                                 </EditItemTemplate>
                             </asp:TemplateField>
                         </Columns>

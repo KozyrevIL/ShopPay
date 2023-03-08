@@ -71,7 +71,7 @@ namespace ShopPay.Admin
                     ActualDoc.Text = actualDoc;
                     DescrDoc.Text = descDoc;
                     ContentDoc.Text = contentDoc;
-                    PriceDoc.Text = priceDoc;
+                    PriceDoc.Text =  String.Format("{0} руб/мес",priceDoc); 
 
                     switch (id_typeProduct)
                     {
@@ -81,7 +81,7 @@ namespace ShopPay.Admin
                             LabelDataDoc.Visible = false;
                             DateDoc.Visible= false;
                             HeadLabel.Text = "Консультация";
-                            divImage.Visible = false;
+                           // divImage.Visible = true;
                             ButtonFavortite.Visible= false;
                             break;
 

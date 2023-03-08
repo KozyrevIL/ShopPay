@@ -4,13 +4,93 @@
 /*@import "normalize.css";
 @import "reset.css";*/
 
+
+
 .grid {
     display: grid;
 }
+
 .dropdown-menu {
     min-width: 267px;
     
 }
+
+
+/*.viewer_doc {
+    font-size: $base_text_font;
+
+    h2 {
+        font-size: $header_text_font;
+    }
+
+    #grid_content {
+        display: grid;
+        grid-template-columns: 200px 900px;
+        grid-template-rows: auto 20px;
+        margin-top: 12px;
+        gap: 12px;
+
+        .grid_view_img {
+           
+        }
+    }
+}*/
+.viewer_doc {
+    .container_global {
+        grid-auto-flow: row;
+        grid-gap: 20px;
+        width: $width_user_container;
+
+        .header {
+            padding: 10px;
+            background-color: $heeder_user;
+            text-align: center;
+            color: $white;
+            font-size: $header_text_size;
+            border-radius: $border_radius_block;
+        }
+
+        .container_data {
+            grid-template-columns: 1fr 4fr 300px;
+            grid-gap: 24px;
+        }
+
+        .item_text {
+            background: $white;
+            border: 1px solid #585858;
+            border-radius: $border_radius_block;
+            padding: $padding_text_block;
+        }
+
+
+        .item_price {
+            font-size: $pay_text_size;
+            color: $white;
+            padding: $padding_text_block;
+            align-items: start;
+            background-color: $pay_block;
+            border-radius: $border_radius_block;
+
+            .container_item_price {
+                .text_pay{
+                    display:block;
+                    margin-bottom:20px;
+                } 
+                .btn_pay {
+                    background: $white;
+                    border-radius: $border_radius_block;
+                    padding: 5px;
+                    font-size: $btn_text_size;
+                    color: $blue;
+                    font-style: normal;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
+
+
 
 footer {
     flex: 0 0 auto;
