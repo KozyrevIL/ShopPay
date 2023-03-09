@@ -25,7 +25,8 @@ namespace ShopPay
             switch (_checked)
             {
                 case "true":
-                    SqlText = "insert into Docs_Favorits (id_doc,customer) values (@id_doc, @customer)";
+                    SqlText = @"IF NOT EXISTS (SELECT * FROM Docs_Favorits WHERE id_doc=@id_doc and customer=@customer)
+ insert into Docs_Favorits (id_doc,customer) values (@id_doc, @customer)";
                     result = " Добавлено в Избранное";
                     break;
                 case "false":
