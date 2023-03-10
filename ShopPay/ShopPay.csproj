@@ -167,6 +167,7 @@
     <Content Include="Admin\admin_docs.aspx" />
     <Content Include="Admin\admin_tags.aspx" />
     <Content Include="Admin\admin_orders.aspx" />
+    <Content Include="Images\empty.png" />
     <Content Include="library_all_docs.aspx" />
     <Content Include="sass\normalize.css" />
     <Content Include="Default.aspx" />

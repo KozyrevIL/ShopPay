@@ -379,14 +379,26 @@ input[type="select"] {
 
 /* Grid  page User cart BEGIN */
 
-.cart #grid_content {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto 20px;
-    margin-top: 12px;
-    gap: 12px;
+/*.cart{
+    padding-bottom:20px;
 }
 
+    .cart #grid_content {
+        display: grid;
+        grid-template-columns: auto;*/
+        /* grid-template-rows: auto 20px;*/
+        /*margin-top: 12px;
+        gap: 12px;
+    }
+
+    .cart #UserList {
+        margin-bottom: 20px;
+    }
+
+    .cart #CreateOrder {
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+    }*/
 
 
 /* Grid  page User cart END */

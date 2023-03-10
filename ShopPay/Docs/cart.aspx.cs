@@ -77,7 +77,7 @@ namespace ShopPay.Admin
                 if (GridViewDocs.Rows.Count == 0) divCartDocs.Visible = false;
                 if (GridViewConsult.Rows.Count == 0) divCartConsults.Visible = false;
             }
-            AllPrice.Text = CalculateAllPrice().ToString();
+            AllPrice.Text = $"{CalculateAllPrice().ToString()} руб/мес";
         }
 
 

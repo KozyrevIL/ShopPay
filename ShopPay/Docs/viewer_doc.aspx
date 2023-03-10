@@ -21,32 +21,32 @@
                     <asp:Image ID="ImageCover" runat="server" ImageUrl="" Width="173" />
                 </div>
                 <div class="item_text">
+
                     <h3><b>Наименование:</b>
                     </h3>
-                    <br />
-                    <asp:Label ID="NameDoc" runat="server"></asp:Label>
-                    <br />
-                    <br />
+                    <p><asp:Label ID="NameDoc" runat="server"></asp:Label></p>
                    
-                    <asp:Label ID="LabelDataDoc" runat="server"><b>Дата документа:</b></asp:Label>
-                    <asp:Label ID="DateDoc" runat="server"></asp:Label>
-                    <br />
+                    <p>
+                        <asp:Label ID="LabelDataDoc" runat="server"><b>Дата документа:</b></asp:Label>
+                        <asp:Label ID="DateDoc" runat="server"></asp:Label>
+                    </p>
+                    
                     <b>Статус:</b>
                     <asp:Label ID="ActualDoc" runat="server"></asp:Label>
-                    <br />
-                    <br />
-                    <br />
-                    <h3><b>Описание:</b>
-                    </h3>
-                    <br />
-                    <h4>
-                        <asp:Label ID="ContentDoc" runat="server"></asp:Label>
-                        <asp:Label ID="DescrDoc" runat="server" class="card-text"></asp:Label>
-                    </h4>
+                   
+                    <div class="item_text_2">
+                        <h3><b>Описание:</b>
+                        </h3>
+                        <p>
+                            <asp:Label ID="ContentDoc" runat="server"></asp:Label>
+                            <asp:Label ID="DescrDoc" runat="server" class="card-text"></asp:Label>
+                        </p>
+                    </div>
+                   
                 </div>
                 <div class="item_price grid">
                     <div class="container_item_price">
-                        <b>ИТОГО:</b><br />
+                        <h3>ИТОГО:</h3><br />
                         <asp:Label ID="PriceDoc" runat="server" CssClass="text_pay"></asp:Label> 
                         <asp:Button ID="ButtonCart" runat="server" Text="В корзину" CssClass="btn btn-default btn-block btn_pay" />
                         <asp:Button ID="ButtonFavortite" runat="server" CssClass="btn btn-default btn-block btn_pay" Text="В избранное" />
