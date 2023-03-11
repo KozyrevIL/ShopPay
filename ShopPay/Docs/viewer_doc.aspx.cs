@@ -71,7 +71,7 @@ namespace ShopPay.Admin
                     ActualDoc.Text = actualDoc;
                     DescrDoc.Text = descDoc;
                     ContentDoc.Text = contentDoc;
-                    PriceDoc.Text =  String.Format("{0} руб/мес",priceDoc); 
+                    PriceDoc.Text =  String.Format("{0}",priceDoc); 
 
                     switch (id_typeProduct)
                     {

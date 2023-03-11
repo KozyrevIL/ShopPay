@@ -31,17 +31,15 @@
             </section>
 
             <section class="container_data grid">
-                <div class="item_gridview" id="grid_content" >
-                    <div id="divCartDocs" runat="server">
-                        <h3>Библиотека документов</h3>
+                <div class="item_gridview" id="grid_content">
+                    <div class="grid_1" id="divCartDocs" runat="server">
+                        <h4>Библиотека документов</h4>
 
-                        <asp:GridView runat="server" ID="GridViewDocs" Width="100%" DataKeyNames="id" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
+                        <asp:GridView runat="server" ID="GridViewDocs" Width="100%" CssClass="table table-secondary table-bordered table-hover table-striped gridview_global"  DataKeyNames="id" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
                             <Columns>
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <div style="padding: 20px">
-                                            <asp:Image ID="ImageCover" runat="server" Height="200px" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' />
-                                        </div>
+                                        <asp:Image ID="ImageCover" runat="server" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+Eval("cover") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField Visible="false">
@@ -52,35 +50,38 @@
 
                                 <asp:TemplateField>
                                     <ItemTemplate>
-                                        <div style="padding: 20px">
-                                            <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
-                                            <br />
-                                            Краткое описание
-                    <br />
+                                        <h4><b>Наименование:</b>
+                                        </h4>
+                                        <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
+                                        <p>
+                                            <h4><b>Краткое описание:</b></h4>
+
                                             <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
-                                            <br />
-                                            Дата документа:
-                    <asp:Label ID="LabelDateDoc" runat="server" Text='<%# Eval("date_doc") %>'></asp:Label>
-                                            <br />
-                                            Статус:
-                    <asp:Label ID="LabelActual" runat="server" Text='<%# Eval("isActual").ToString()=="True"?"Актуален":"Неактуален" %>'></asp:Label>
-                                            <br />
-                                            Вид раздела:
-                    <asp:Label ID="LabelSection" runat="server" Text='<%# Eval("section_name") %>'></asp:Label>
-                                        </div>
+                                        </p>
+                                        <b>Дата документа:</b>
+                                        <asp:Label ID="LabelDateDoc" runat="server" Text='<%# Eval("date_doc") %>'></asp:Label>
+                                        <p>
+                                            <b>Статус:</b>
+
+                                            <asp:Label ID="LabelActual" runat="server" Text='<%# Eval("isActual").ToString()=="True"?"Актуален":"Неактуален" %>'></asp:Label>
+                                        </p>
+                  
+                                        
+                                        <b>Вид раздела:</b>
+
+                                        <asp:Label ID="LabelSection" runat="server" Text='<%# Eval("section_name") %>'></asp:Label>
+
                                     </ItemTemplate>
-                                    <ItemStyle Width="100%" />
+                                    <%--<ItemStyle Width="100%" />--%>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Цена">
                                     <ItemTemplate>
-                                        <div style="padding: 20px">
-                                            <div style="font-size: 24px">
+                                       
                                                 <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
                                                 руб.
-                                            </div>
-                                        </div>
+                                       
                                     </ItemTemplate>
-                                    <ItemStyle Width="300px" />
+                                    <ItemStyle Width="100px" />
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Количество">
                                     <ItemTemplate>
@@ -88,7 +89,7 @@
                                         <asp:Label ID="qtyItem" runat="server" Text='<%# Eval("qty_time") %>'></asp:Label>
                                         <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />
                                     </ItemTemplate>
-
+                                    <ItemStyle Width="120px" />
                                 </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="">
@@ -99,69 +100,68 @@
                                 </asp:TemplateField>
 
                             </Columns>
-                            <HeaderStyle BackColor="#729C3B" ForeColor="White" />
+                            <HeaderStyle CssClass="gridview_header" />
                         </asp:GridView>
                     </div>
-                    <div id="divCartConsults" runat="server">
-                        <h3>Консультации</h3>
-                        
-            <asp:GridView runat="server" ID="GridViewConsult" Width="100%" DataKeyNames="id" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false">
-                <Columns>
-                    <asp:TemplateField Visible="false">
-                        <ItemTemplate>
-                            <asp:Label ID="id_cart" runat="server" Text='<%# Eval("id") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField>
-                        <ItemTemplate>
-                            <div style="padding: 20px">
-                                <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
-                                <br />
-                                Краткое описание
-                    <br />
-                                <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
-                                <br />
-                        </ItemTemplate>
-                        <ItemStyle Width="100%" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Цена">
-                        <ItemTemplate>
-                            <div style="padding: 20px">
-                                <div style="font-size: 24px">
-                                    <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
-                                    руб.
-                                </div>
-                                <br />
-                            </div>
-                        </ItemTemplate>
-                        <ItemStyle Width="300px" />
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Количество">
-                        <ItemTemplate>
-                            <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click" />
-                            <asp:Label ID="qtyItem" runat="server" Text='<%# Eval("qty_time") %>'></asp:Label>
-                            <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />
-                        </ItemTemplate>
+                    <div class="grid_2" id="divCartConsults" runat="server">
+                        <h4>Консультации</h4>
 
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="">
-                        <ItemTemplate>
-                            <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить заказ консультации из корзины?');" />
-                        </ItemTemplate>
+                        <asp:GridView runat="server" ID="GridViewConsult" Width="100%" CssClass="table table-secondary table-bordered table-hover table-striped gridview_global" DataKeyNames="id" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false">
+                            <Columns>
+                                <asp:TemplateField Visible="false">
+                                    <ItemTemplate>
+                                        <asp:Label ID="id_cart" runat="server" Text='<%# Eval("id") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                         <h4><b>Наименование:</b>
+                                        </h4>
+                                        <asp:Label ID="LabelNameDoc" runat="server" Text='<%# Bind("name_doc") %>'></asp:Label>
+                                        <p><h4><b>Краткое описание:</b></h4>
+                                            <asp:Label ID="LabelDescDoc" runat="server" Text='<%# Bind("description") %>'></asp:Label>
 
-                    </asp:TemplateField>
+                                        </p>
+                                      
+                                        
+                   
+                                        
+                                    </ItemTemplate>
+                                  
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Цена">
+                                    <ItemTemplate>
+                                                <asp:Label ID="LabelPriceDoc" runat="server" Text='<%# Eval("doc_price") %>'></asp:Label>
+                                                руб.
+                                    </ItemTemplate>
+                                    <ItemStyle Width="100px" />
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Количество">
+                                    <ItemTemplate>
+                                        <asp:Button ID="minusMonth" runat="server" CssClass="btn btn-info" Text="-" OnClick="minusMonth_Click" />
+                                        <asp:Label ID="qtyItem" runat="server" Text='<%# Eval("qty_time") %>'></asp:Label>
+                                        <asp:Button ID="plusMonth" runat="server" CssClass="btn btn-info" Text="+" OnClick="plusMonth_Click" />
+                                    </ItemTemplate>
+                                    <ItemStyle Width="120px" />
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="">
+                                    <ItemTemplate>
+                                        <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить заказ консультации из корзины?');" />
+                                    </ItemTemplate>
+
+                                </asp:TemplateField>
 
 
-                </Columns>
-                <HeaderStyle BackColor="#729C3B" ForeColor="White" />
-            </asp:GridView>
+                            </Columns>
+                            <HeaderStyle  CssClass="gridview_header"/>
+                        </asp:GridView>
                     </div>
                 </div>
                 <div class="item_price">
                     <div class="container_item_price">
                         <h3>ИТОГО:</h3>
-                        <br />
-                        <asp:Label ID="AllPrice" runat="server" CssClass="text_pay"></asp:Label>
+                        <p><asp:Label ID="AllPrice" runat="server" CssClass="text_pay"></asp:Label> руб/мес</p>
+                        
 
                         <div runat="server" id="selectCustomer">
                             <h3>Заказ для клиента:</h3>

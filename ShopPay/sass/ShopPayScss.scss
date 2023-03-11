@@ -14,8 +14,23 @@
     min-width: 267px;
     
 }
+.item_gridview {
+    td {
+        vertical-align: top;
+        padding: $padding_cell_table;
+    }
+}
 
+.gridview_global {
+    border: 1px solid $gray_type_2;
+}
 
+.gridview_header {
+
+    td, th {
+        padding: $padding_header_block 0px;
+    }
+}
 /*.viewer_doc {
     font-size: $base_text_font;
 
@@ -53,6 +68,17 @@
             grid-template-columns: 3fr 1fr;
             grid-gap: 24px;
 
+            .item_gridview {
+                img {
+                    width: $img_width;
+                }
+
+                .gridview_header {
+                    color: $white;
+                    background-color: $green;
+                }
+            }
+
             .item_price {
                 align-self: start;
                 font-size: $pay_text_size;
@@ -63,8 +89,12 @@
                 line-height: 19px;
 
                 .container_item_price {
+                    p {
+                        margin-top:15px;
+                        margin-bottom: 35px;
+                    }
+
                     .text_pay {
-                        display: block;
                         margin-bottom: 35px;
                     }
 
@@ -111,6 +141,10 @@
         .container_data {
             grid-template-columns: 1fr 4fr 300px;
             grid-gap: 24px;
+
+            img {
+                width: $img_present_width;
+            }
         }
 
         .item_text {
@@ -147,8 +181,13 @@
             line-height: 19px;
 
             .container_item_price {
+                p {
+                    margin-top: 15px;
+                    margin-bottom: 35px;
+                }
+
                 .text_pay {
-                    display: block;
+                    
                     margin-bottom: 35px;
                 }
 

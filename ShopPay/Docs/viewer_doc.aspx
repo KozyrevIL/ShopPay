@@ -18,7 +18,7 @@
             </section>
             <section class="container_data grid">
                 <div class="item_img">
-                    <asp:Image ID="ImageCover" runat="server" ImageUrl="" Width="173" />
+                    <asp:Image ID="ImageCover" runat="server" ImageUrl=""  />
                 </div>
                 <div class="item_text">
 
@@ -46,8 +46,9 @@
                 </div>
                 <div class="item_price grid">
                     <div class="container_item_price">
-                        <h3>ИТОГО:</h3><br />
-                        <asp:Label ID="PriceDoc" runat="server" CssClass="text_pay"></asp:Label> 
+                        <h3>ИТОГО:</h3>
+                        <p><asp:Label ID="PriceDoc" runat="server" CssClass="text_pay"></asp:Label> руб/мес</p>
+                        
                         <asp:Button ID="ButtonCart" runat="server" Text="В корзину" CssClass="btn btn-default btn-block btn_pay" />
                         <asp:Button ID="ButtonFavortite" runat="server" CssClass="btn btn-default btn-block btn_pay" Text="В избранное" />
                     </div>

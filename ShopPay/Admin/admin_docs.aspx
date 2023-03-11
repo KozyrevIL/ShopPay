@@ -145,7 +145,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Обложка">
                                 <ItemTemplate>
-                                    <asp:Image ID="ImageCover" runat="server" Height="106" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+(Eval("cover").ToString()!=""?Eval("cover").ToString():"empty.jpg") %>' />
+                                    <asp:Image ID="ImageCover" runat="server" width="75" ImageUrl='<%# "~/ImageHandler.ashx?tp=cover&fn="+(Eval("cover").ToString()!=""?Eval("cover").ToString():"empty.jpg") %>' />
                                 </ItemTemplate>
                                 <EditItemTemplate>
                                     <asp:FileUpload ID="FileCover" runat="server" />
