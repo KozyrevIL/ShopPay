@@ -36,32 +36,14 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   padding: 10px 0px;
 }
 
-/*.viewer_doc {
-    font-size: $base_text_font;
-
-    h2 {
-        font-size: $header_text_font;
-    }
-
-    #grid_content {
-        display: grid;
-        grid-template-columns: 200px 900px;
-        grid-template-rows: auto 20px;
-        margin-top: 12px;
-        gap: 12px;
-
-        .grid_view_img {
-
-        }
-    }
-}*/
 .cart .container_global {
   grid-gap: 20px;
   width: 1262px;
 }
-.cart .container_global .header {
+.cart .container_global #header {
   padding: 10px;
   background-color: #729C3B;
+  border: 1px solid #729C3B;
   text-align: center;
   color: #fff;
   font-size: 24px;
@@ -76,7 +58,10 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 }
 .cart .container_global .container_data .item_gridview .gridview_header {
   color: #fff;
-  background-color: #729C3B;
+  background-color: #585858;
+}
+.cart .container_global .container_data .item_gridview td {
+  border: 1px solid #585858;
 }
 .cart .container_global .container_data .item_price {
   align-self: start;
@@ -179,6 +164,57 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   background-color: #D9D9D9;
 }
 .viewer_doc .container_global .item_price .container_item_price .btn_pay:hover {
+  background-color: #D9D9D9;
+}
+
+.order .container_global {
+  grid-gap: 20px;
+  width: 1262px;
+}
+.order .container_global #header {
+  padding: 10px;
+  background-color: #729C3B;
+  border: 1px solid #729C3B;
+  text-align: center;
+  color: #fff;
+  font-size: 24px;
+  border-radius: 5px;
+}
+.order .container_global .container_data {
+  grid-template-columns: 3fr 1fr;
+  grid-gap: 24px;
+}
+.order .container_global .container_data .item_price {
+  align-self: start;
+  font-size: 32px;
+  color: #fff;
+  padding: 22px;
+  align-items: start;
+  background-color: #0192AC;
+  border-radius: 5px;
+  line-height: 19px;
+}
+.order .container_global .container_data .item_price .container_item_price p {
+  margin-top: 15px;
+  margin-bottom: 35px;
+}
+.order .container_global .container_data .item_price .container_item_price .text_pay {
+  margin-bottom: 35px;
+}
+.order .container_global .container_data .item_price .container_item_price .btn_pay {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 24px;
+  color: #0192AC;
+  font-style: normal;
+  font-weight: 700;
+  margin-top: 20px;
+}
+.order .container_global .container_data .item_price .container_item_price .btn_pay:focus {
+  background-color: #D9D9D9;
+}
+.order .container_global .container_data .item_price .container_item_price .btn_pay:hover {
   background-color: #D9D9D9;
 }
 

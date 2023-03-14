@@ -350,13 +350,13 @@ input[type="select"] {
 
 /* Grid  order BEGIN */
 
-.order #grid_content {
+/*.order #grid_content {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 30px 1fr;
-    margin-top: 12px;
+    margin-top: 12px;*/
     /*width: 100vw;*/
-}
+/*}*/
 
 /* Grid  order END */
 

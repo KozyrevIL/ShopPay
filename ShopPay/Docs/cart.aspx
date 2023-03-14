@@ -92,11 +92,12 @@
                                     <ItemStyle Width="120px" />
                                 </asp:TemplateField>
 
-                                <asp:TemplateField HeaderText="">
+                                <asp:TemplateField HeaderText="Действие">
                                     <ItemTemplate>
                                         <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить документ из корзины?');" />
                                         <asp:Button ID="ButtonComand2" runat="server" CommandName="delCart" Text="Отложить" CssClass="btn btn-warning" OnCommand="ButtonComand_Command" />
                                     </ItemTemplate>
+                                    <ItemStyle Width="271px" />
                                 </asp:TemplateField>
 
                             </Columns>
@@ -144,7 +145,7 @@
                                     </ItemTemplate>
                                     <ItemStyle Width="120px" />
                                 </asp:TemplateField>
-                                <asp:TemplateField HeaderText="">
+                                <asp:TemplateField HeaderText="Действие">
                                     <ItemTemplate>
                                         <asp:Button ID="ButtonComand1" runat="server" CommandName="Delete" Text="Убрать из корзины" CssClass="btn btn-danger" OnClientClick="return confirm('Удалить заказ консультации из корзины?');" />
                                     </ItemTemplate>
