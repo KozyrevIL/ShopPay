@@ -56,7 +56,7 @@
                                                 <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-success">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                                 </asp:LinkButton>
-                                                <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись?');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">
+                                                <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись? Консультация будет удалена из корзин и неоплаченных заказов пользователей портала!');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">
                                     <i class="glyphicon glyphicon-trash"></i>
                                                 </asp:LinkButton>
                                             </div>
@@ -130,7 +130,7 @@
             <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
                 SelectCommand="select dd.id_doc,dd.name_doc,isnull(dd.isActual,0) isActual,dd.description,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price from Docs_docs dd where dd.id_typeProduct=2 and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')"
                 UpdateCommand="update Docs_docs set name_doc=@name_doc where id_doc=@id_doc"
-                DeleteCommand="delete from Docs_docs where id_doc=@id_doc">
+                DeleteCommand="update Docs_docs set deleted=1 where id_doc=@id_doc; delete from Docs_Cart where id_doc=@id_doc; EXEC [dbo].[Docs_DeleteFromUnPaidOrders]  @id_doc = 10">
                 <SelectParameters>
                     <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />
                 </SelectParameters>

@@ -75,7 +75,7 @@
 
         <section id="data">
             <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
-                SelectCommand="select dd.id_doc,dd.name_doc,isnull(dd.isActual,0) isActual,dd.description,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price from Docs_docs dd where  dd.id_typeProduct=2 and isActual=1 and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')"
+                SelectCommand="select dd.id_doc,dd.name_doc,isnull(dd.isActual,0) isActual,dd.description,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price from Docs_docs dd where dd.deleted is null and dd.id_typeProduct=2 and isActual=1 and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')"
                 >
                 <SelectParameters>
                     <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />

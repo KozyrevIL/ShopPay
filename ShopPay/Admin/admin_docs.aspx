@@ -117,7 +117,7 @@
                                         <asp:LinkButton ID="LinkButtonEdit" runat="server" ToolTip="Редактировать" CommandName="Edit" CausesValidation="false" CssClass="btn btn-success">
                                     <i class="glyphicon glyphicon-pencil"></i>
                                         </asp:LinkButton>
-                                        <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись?');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">
+                                        <asp:LinkButton ID="LinkButtonDelete" runat="server" OnClientClick="return confirm('Удалить запись? Документ будет удален из корзин и неоплаченных заказов пользователей портала!');" ToolTip="Удалить" CommandName="Delete" CausesValidation="false" CssClass="btn  btn-danger">
                                     <i class="glyphicon glyphicon-trash"></i>
                                         </asp:LinkButton>
                                     </div>
@@ -252,13 +252,15 @@
                 SelectCommand="select dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items,dd.cover,dd.doc_content,ds.section_name,(SELECT STRING_AGG(t.tag_name,CHAR(10)) 
                 FROM Docs_DocTags dt, docs_tags t where dt.id_doc=dd.id_doc and t.id_tag=dt.id_tag) tags,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price
             from Docs_docs dd, Docs_DocSections ds 
-            where dd.id_typeProduct=1 
+            where 
+                dd.deleted is null 
+            and dd.id_typeProduct=1 
             and dd.id_section=ds.id_section 
             and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
             and (@section ='-1' or dd.id_section=@section)
             and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))"
             UpdateCommand="update Docs_docs set name_doc=@name_doc where id_doc=@id_doc"
-            DeleteCommand="delete from Docs_docs where id_doc=@id_doc">
+            DeleteCommand="update Docs_docs set deleted=1 where id_doc=@id_doc; delete from Docs_Cart where id_doc=@id_doc; EXEC [dbo].[Docs_DeleteFromUnPaidOrders]  @id_doc = 10">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />
                 <asp:ControlParameter ControlID="DropDownSections" Name="section" PropertyName="SelectedValue" DefaultValue="-1" />

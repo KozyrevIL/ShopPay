@@ -16,7 +16,8 @@ dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc,dd.num_doc,isnull(d
         ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
         ,isnull((select CONVERT(BIT,1) from Docs_Favorits df where df.id_doc=dd.id_doc and df.customer=@customer),CONVERT(BIT,0)) favorite
 from  Docs_docs dd, Docs_DocSections ds  
-where dd.id_typeProduct=1 and
+where 
+dd.id_typeProduct=1 and
 [dbo].[Docs_DocIsAvailable](dd.id_doc,@customer) =1 and
 dd.id_section = ds.id_section 
 and  (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
@@ -29,7 +30,9 @@ and  (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@ma
         ,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price        
         ,isnull((select CONVERT(BIT,1) from Docs_Favorits df where df.id_doc=dd.id_doc and df.customer=@customer),CONVERT(BIT,0)) favorite
         from Docs_docs dd, Docs_DocSections ds 
-        where  dd.id_typeProduct=1 and
+        where  
+        dd.deleted is null and
+        dd.id_typeProduct=1 and
         dd.id_section=ds.id_section and
         (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')
         and (@section ='-1' or dd.id_section=@section)

@@ -171,7 +171,6 @@
     <Content Include="library_all_docs.aspx" />
     <Content Include="sass\normalize.css" />
     <Content Include="Default.aspx" />
-    <Content Include="Default_primary.aspx" />
     <Content Include="desc.aspx" />
     <Content Include="Docs\library_consults.aspx" />
     <Content Include="Docs\listOrders.aspx" />
@@ -224,7 +223,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default_old.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -401,13 +399,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default_primary.aspx.cs">
-      <DependentUpon>Default_primary.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default_primary.aspx.designer.cs">
-      <DependentUpon>Default_primary.aspx</DependentUpon>
-    </Compile>
     <Compile Include="desc.aspx.cs">
       <DependentUpon>desc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -557,13 +548,6 @@
     </Compile>
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default_old.aspx.cs">
-      <DependentUpon>Default_old.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Default_old.aspx.designer.cs">
-      <DependentUpon>Default_old.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
