@@ -260,18 +260,18 @@
             and (@section ='-1' or dd.id_section=@section)
             and (@tags=',' or exists (select 'x' from Docs_DocTags where Docs_DocTags.id_doc=dd.id_doc and charindex(','+CONVERT(nvarchar,Docs_DocTags.id_tag)+',',@tags)>0))"
             UpdateCommand="update Docs_docs set name_doc=@name_doc where id_doc=@id_doc"
-            DeleteCommand="update Docs_docs set deleted=1 where id_doc=@id_doc; delete from Docs_Cart where id_doc=@id_doc; EXEC [dbo].[Docs_DeleteFromUnPaidOrders]  @id_doc = 10">
+            DeleteCommand="Docs_DeleteDocs" DeleteCommandType="StoredProcedure">
             <SelectParameters>
                 <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />
                 <asp:ControlParameter ControlID="DropDownSections" Name="section" PropertyName="SelectedValue" DefaultValue="-1" />
                 <asp:Parameter Name="tags" DefaultValue=","/>
             </SelectParameters>
             <UpdateParameters>
-                <asp:Parameter Name="@name_doc" />
-                <asp:Parameter Name="@id_doc" />
+                <asp:Parameter Name="name_doc" />
+                <asp:Parameter Name="id_doc" />
             </UpdateParameters>
             <DeleteParameters>
-                <asp:Parameter Name="@id_doc" />
+                <asp:Parameter Name="id_doc" Type="Int32" />
             </DeleteParameters>
         </asp:SqlDataSource>
 

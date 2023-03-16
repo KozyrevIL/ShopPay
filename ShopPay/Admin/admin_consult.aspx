@@ -130,7 +130,7 @@
             <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
                 SelectCommand="select dd.id_doc,dd.name_doc,isnull(dd.isActual,0) isActual,dd.description,[dbo].[Docs_GetPrice](dd.id_doc,GETDATE()) doc_price from Docs_docs dd where dd.id_typeProduct=2 and (@mask=' ' or dd.name_doc like '%'+@mask+'%' or dd.description like '%'+@mask+'%')"
                 UpdateCommand="update Docs_docs set name_doc=@name_doc where id_doc=@id_doc"
-                DeleteCommand="update Docs_docs set deleted=1 where id_doc=@id_doc; delete from Docs_Cart where id_doc=@id_doc; EXEC [dbo].[Docs_DeleteFromUnPaidOrders]  @id_doc = 10">
+                DeleteCommand="Docs_DeleteDocs" DeleteCommandType="StoredProcedure"> 
                 <SelectParameters>
                     <asp:ControlParameter ControlID="DocMask" Name="mask" PropertyName="Text" DefaultValue=" " />
                 </SelectParameters>
