@@ -1,6 +1,7 @@
 ﻿@import "_vars.scss";
 @import "_fonts.scss";
 @import "_reset.scss";
+@import "mixins";
 /*@import "normalize.css";
 @import "reset.css";*/
 
@@ -34,17 +35,12 @@
 
 .cart {
     .container_global {
-        grid-gap: 20px;
+        grid-gap: $grid_gap_global;
         width: $width_user_container;
 
         #header {
             padding: 10px;
-            background-color: $header_user;
-            border: 1px solid $header_user;
-            text-align: center;
-            color: $white;
-            font-size: $header_text_size;
-            border-radius: $border_radius_block;
+            @include mix_header($color_header_user);
         }
 
         .container_data {
@@ -67,43 +63,7 @@
             }
 
             .item_price {
-                align-self: start;
-                font-size: $pay_text_size;
-                color: $white;
-                padding: $padding_text_block;
-                background-color: $blue;
-                border-radius: $border_radius_block;
-                line-height: 19px;
-
-                .container_item_price {
-                    p {
-                        margin-top: 15px;
-                        margin-bottom: 35px;
-                    }
-
-                    .text_pay {
-                        margin-bottom: 35px;
-                    }
-
-                    .btn_pay {
-                        background-color: $white;
-                        border-radius: $border_radius_block;
-                        padding: 5px;
-                        font-size: $btn_text_size;
-                        color: $blue;
-                        font-style: normal;
-                        font-weight: 700;
-                        margin-top: 20px;
-
-                        &:focus {
-                            background-color: $gray;
-                        }
-
-                        &:hover {
-                            background-color: $gray;
-                        }
-                    }
-                }
+                @include block_price;
             }
         }
     }
@@ -113,16 +73,12 @@
 .viewer_doc {
     .container_global {
         grid-auto-flow: row;
-        grid-gap: 20px;
+        grid-gap: $grid_gap_global;
         width: $width_user_container;
 
         .header {
             padding: 10px;
-            background-color: $header_user;
-            text-align: center;
-            color: $white;
-            font-size: $header_text_size;
-            border-radius: $border_radius_block;
+            @include mix_header($color_header_user);
         }
 
         .container_data {
@@ -158,61 +114,19 @@
 
 
         .item_price {
-            align-self: start;
-            font-size: $pay_text_size;
-            color: $white;
-            padding: $padding_text_block;
-            align-items: start;
-            background-color: $blue;
-            border-radius: $border_radius_block;
-            line-height: 19px;
-
-            .container_item_price {
-                p {
-                    margin-top: 15px;
-                    margin-bottom: 35px;
-                }
-
-                .text_pay {
-                    margin-bottom: 35px;
-                }
-
-                .btn_pay {
-                    background-color: $white;
-                    border-radius: $border_radius_block;
-                    padding: 5px;
-                    font-size: $btn_text_size;
-                    color: $blue;
-                    font-style: normal;
-                    font-weight: 700;
-                    margin-top: 20px;
-
-                    &:focus {
-                        background-color: $gray;
-                    }
-
-                    &:hover {
-                        background-color: $gray;
-                    }
-                }
-            }
+            @include block_price;
         }
     }
 }
 
 .order {
     .container_global {
-        grid-gap: 20px;
+        grid-gap: $grid_gap_global;
         width: $width_user_container;
 
         #header {
             padding: 10px;
-            background-color: $header_user;
-            border: 1px solid $header_user;
-            text-align: center;
-            color: $white;
-            font-size: $header_text_size;
-            border-radius: $border_radius_block;
+            @include mix_header($color_header_user);
         }
 
         .container_data {
@@ -220,44 +134,7 @@
             grid-gap: 24px;
 
             .item_price {
-                align-self: start;
-                font-size: $pay_text_size;
-                color: $white;
-                padding: $padding_text_block;
-                align-items: start;
-                background-color: $blue;
-                border-radius: $border_radius_block;
-                line-height: 19px;
-
-                .container_item_price {
-                    p {
-                        margin-top: 15px;
-                        margin-bottom: 35px;
-                    }
-
-                    .text_pay {
-                        margin-bottom: 35px;
-                    }
-
-                    .btn_pay {
-                        background-color: $white;
-                        border-radius: $border_radius_block;
-                        padding: 5px;
-                        font-size: $btn_text_size;
-                        color: $blue;
-                        font-style: normal;
-                        font-weight: 700;
-                        margin-top: 20px;
-
-                        &:focus {
-                            background-color: $gray;
-                        }
-
-                        &:hover {
-                            background-color: $gray;
-                        }
-                    }
-                }
+                @include block_price;
             }
         }
     }

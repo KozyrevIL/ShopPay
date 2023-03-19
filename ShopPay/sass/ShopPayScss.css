@@ -13,7 +13,9 @@
 ul, ol, h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
-} /*@import "normalize.css";
+}
+
+/*@import "normalize.css";
 @import "reset.css";*/
 .grid {
   display: grid;
@@ -68,6 +70,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   font-size: 32px;
   color: #fff;
   padding: 22px;
+  align-items: start;
   background-color: #0192AC;
   border-radius: 5px;
   line-height: 19px;
@@ -80,6 +83,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 35px;
 }
 .cart .container_global .container_data .item_price .container_item_price .btn_pay {
+  margin-top: 20px;
   background-color: #fff;
   border-radius: 5px;
   padding: 5px;
@@ -87,7 +91,6 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   color: #0192AC;
   font-style: normal;
   font-weight: 700;
-  margin-top: 20px;
 }
 .cart .container_global .container_data .item_price .container_item_price .btn_pay:focus {
   background-color: #D9D9D9;
@@ -104,6 +107,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 .viewer_doc .container_global .header {
   padding: 10px;
   background-color: #729C3B;
+  border: 1px solid #729C3B;
   text-align: center;
   color: #fff;
   font-size: 24px;
@@ -151,6 +155,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 35px;
 }
 .viewer_doc .container_global .item_price .container_item_price .btn_pay {
+  margin-top: 20px;
   background-color: #fff;
   border-radius: 5px;
   padding: 5px;
@@ -158,7 +163,6 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   color: #0192AC;
   font-style: normal;
   font-weight: 700;
-  margin-top: 20px;
 }
 .viewer_doc .container_global .item_price .container_item_price .btn_pay:focus {
   background-color: #D9D9D9;
@@ -202,6 +206,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   margin-bottom: 35px;
 }
 .order .container_global .container_data .item_price .container_item_price .btn_pay {
+  margin-top: 20px;
   background-color: #fff;
   border-radius: 5px;
   padding: 5px;
@@ -209,7 +214,6 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   color: #0192AC;
   font-style: normal;
   font-weight: 700;
-  margin-top: 20px;
 }
 .order .container_global .container_data .item_price .container_item_price .btn_pay:focus {
   background-color: #D9D9D9;

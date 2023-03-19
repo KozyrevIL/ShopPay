@@ -1,0 +1,56 @@
+﻿@import "vars";
+
+@mixin mix_header ($back_color: $color_header_user) {
+    background-color: $back_color;
+    border: 1px solid $back_color;
+    text-align: center;
+    color: $white;
+    font-size: $header_text_size;
+    border-radius: $border_radius_block;
+}
+
+@mixin btn_type1 ($back_color: $white, $text_color: $blue, $color_back_event: $gray) {
+    background-color: $white;
+    border-radius: $border_radius_block;
+    padding: 5px;
+    font-size: $btn_text_size;
+    color: $text_color;
+    font-style: normal;
+    font-weight: 700;
+
+    &:focus {
+        background-color: $color_back_event;
+    }
+
+    &:hover {
+        background-color: $color_back_event;
+    }
+}
+
+@mixin block_price {
+    align-self: start;
+    font-size: $pay_text_size;
+    color: $white;
+    padding: $padding_text_block;
+    align-items: start;
+    background-color: $blue;
+    border-radius: $border_radius_block;
+    line-height: 19px;
+
+    .container_item_price {
+        p {
+            margin-top: 15px;
+            margin-bottom: 35px;
+        }
+
+        .text_pay {
+            margin-bottom: 35px;
+        }
+
+        .btn_pay {
+            margin-top: 20px;
+            @include btn_type1;
+        }
+    }
+}
+
