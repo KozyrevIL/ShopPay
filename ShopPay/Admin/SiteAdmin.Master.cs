@@ -70,7 +70,8 @@ namespace ShopPay
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
+            section_admin.Visible= (new ClassCustomer(Context.User.Identity.GetUserName(), Context)).ExistsRole("Administrator");
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

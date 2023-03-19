@@ -76,15 +76,16 @@
                             </ul>
                         </div>
                         <div>
-                            <ul class="nav navbar-nav">
+                            <ul class="nav navbar-nav" id="section_admin" runat="server" >
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Администрирование
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="../Roles/UsersAndRoles.aspx">Добавить роль</a><br />
-                                        <a class="dropdown-item" href="../Roles/ManageRoles.aspx">Управление ролями</a><br />
-                                        <a class="dropdown-item" href="../Admin/ViewListCustomers.aspx">Список пользователей</a><br />
                                         <a class="dropdown-item" href="../Account/Register.aspx">Регистрация пользователя</a><br />
+                                        <a class="dropdown-item" href="../Roles/UsersAndRoles.aspx">Роли пользователей</a><br />
+                                        <a class="dropdown-item" href="../Roles/ManageRoles.aspx">Управление ролями</a><br />
+                                        <br />
+                                        <a class="dropdown-item" href="../Admin/ViewListCustomers.aspx">Список клиентов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_docs.aspx">Библиотека документов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_tags.aspx">Справочник меток документов</a><br />
                                         <a class="dropdown-item" href="../Admin/admin_consult.aspx">Список консультация</a><br />

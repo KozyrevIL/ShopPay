@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
+using ShopPay.Models;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -98,7 +100,11 @@ public class ClassCustomer
     {
         customer = _customer;
         var manager = _context.GetOwinContext().GetUserManager<ShopPay.ApplicationUserManager>();
-        IList<string> roles = manager.GetRoles(manager.FindByName(customer).Id);
+        try
+        {
+            roles = manager.GetRoles(manager.FindByName(customer).Id);
+        }
+        catch { }
         customerInfo = new CustomerInfo(customer);
     }
     private string getAppeal()
@@ -106,5 +112,12 @@ public class ClassCustomer
         if (customerInfo.FIO == string.Empty) return customer;
         return customerInfo.FIO;
     }
+    public bool ExistsRole(string roleName)
+    { 
+        if (roles!=null)
+            if (roles.Contains(roleName)) return true;
+        return false;
+    }
+
 
 }
