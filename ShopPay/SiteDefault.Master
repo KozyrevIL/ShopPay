@@ -73,7 +73,7 @@
                             </ul>
                         </div>
                         <div>
-                    <ul class="nav navbar-nav" id="section_admin" runat="server" visible= '<%= (new ClassCustomer(Context.User.Identity.GetUserName(),Context)).ExistsRole("Administrator")) %>' >
+                    <ul class="nav navbar-nav" id="section_admin" runat="server" >
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Администрирование
                                     </a>
