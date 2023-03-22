@@ -38,6 +38,19 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   padding: 10px 0px;
 }
 
+.container_banner {
+  height: 88px;
+  width: 100vw;
+  grid-template-columns: 222px 386px auto 222px;
+  align-items: center;
+}
+.container_banner div:nth-child(2) {
+  justify-self: end;
+}
+.container_banner div:nth-child(4) {
+  transform: rotate(180deg);
+}
+
 .cart .container_global {
   grid-gap: 20px;
   width: 1262px;
@@ -84,7 +97,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 }
 .cart .container_global .container_data .item_price .container_item_price .btn_pay {
   margin-top: 20px;
-  background-color: #fff;
+  background-color: #ade3ed;
   border-radius: 5px;
   padding: 5px;
   font-size: 24px;
@@ -93,10 +106,12 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 .cart .container_global .container_data .item_price .container_item_price .btn_pay:focus {
-  background-color: #D9D9D9;
+  background-color: #6ecedf;
+  color: #fff;
 }
 .cart .container_global .container_data .item_price .container_item_price .btn_pay:hover {
-  background-color: #D9D9D9;
+  background-color: #6ecedf;
+  color: #fff;
 }
 
 .viewer_doc .container_global {
@@ -156,7 +171,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 }
 .viewer_doc .container_global .item_price .container_item_price .btn_pay {
   margin-top: 20px;
-  background-color: #fff;
+  background-color: #ade3ed;
   border-radius: 5px;
   padding: 5px;
   font-size: 24px;
@@ -165,10 +180,12 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 .viewer_doc .container_global .item_price .container_item_price .btn_pay:focus {
-  background-color: #D9D9D9;
+  background-color: #6ecedf;
+  color: #fff;
 }
 .viewer_doc .container_global .item_price .container_item_price .btn_pay:hover {
-  background-color: #D9D9D9;
+  background-color: #6ecedf;
+  color: #fff;
 }
 
 .order .container_global {
@@ -207,7 +224,7 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
 }
 .order .container_global .container_data .item_price .container_item_price .btn_pay {
   margin-top: 20px;
-  background-color: #fff;
+  background-color: #ade3ed;
   border-radius: 5px;
   padding: 5px;
   font-size: 24px;
@@ -216,10 +233,12 @@ ul, ol, h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
 }
 .order .container_global .container_data .item_price .container_item_price .btn_pay:focus {
-  background-color: #D9D9D9;
+  background-color: #6ecedf;
+  color: #fff;
 }
 .order .container_global .container_data .item_price .container_item_price .btn_pay:hover {
-  background-color: #D9D9D9;
+  background-color: #6ecedf;
+  color: #fff;
 }
 
 footer {

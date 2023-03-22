@@ -1,6 +1,8 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SiteAdmin.Master.cs" Inherits="ShopPay.SiteMasterAdmin" %>
 
 <%@ Register Src="~/UC/footer.ascx" TagPrefix="uc1" TagName="footer" %>
+<%@ Register Src="~/UC/banner.ascx" TagPrefix="uc1" TagName="banner" %>
+
 
 
 <!DOCTYPE html>
@@ -48,7 +50,7 @@
         <div class="global-container">
             <div class="container-fluid banner">
                 <div class="row">
-                    <img src="../Images/Temp_img/temp_banner_small.jpg" width="100%" />
+                    <uc1:banner runat="server" id="banner" />
                 </div>
             </div>
             <div class="navbar navbar-inverse banner-menu">

@@ -33,6 +33,22 @@
     }
 }
 
+.container_banner {
+    height: 88px;
+    width: 100vw;
+    grid-template-columns: 222px 386px auto 222px;
+    align-items: center;
+
+    div:nth-child(2)
+    {
+        justify-self:end;
+    }
+
+    div:nth-child(4) {
+        transform: rotate(180deg);
+    }
+}
+
 .cart {
     .container_global {
         grid-gap: $grid_gap_global;

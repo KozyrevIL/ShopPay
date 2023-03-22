@@ -10,7 +10,7 @@
 }
 
 @mixin btn_type1 ($back_color: $white, $text_color: $blue, $color_back_event: $gray) {
-    background-color: $white;
+    background-color: $color_button;
     border-radius: $border_radius_block;
     padding: 5px;
     font-size: $btn_text_size;
@@ -19,11 +19,13 @@
     font-weight: 700;
 
     &:focus {
-        background-color: $color_back_event;
+        background-color: darken($color_button, 15%);
+        color: $white;
     }
 
     &:hover {
-        background-color: $color_back_event;
+        background-color: darken($color_button, 15%);
+        color: $white;
     }
 }
 

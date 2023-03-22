@@ -168,6 +168,8 @@
     <Content Include="Admin\admin_tags.aspx" />
     <Content Include="Admin\admin_orders.aspx" />
     <Content Include="Images\empty.png" />
+    <Content Include="Images\banner_line.png" />
+    <Content Include="Images\logo_full.png" />
     <Content Include="library_all_docs.aspx" />
     <Content Include="sass\normalize.css" />
     <Content Include="Default.aspx" />
@@ -300,6 +302,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="UC\banner.ascx" />
     <Content Include="UC\footer.ascx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -584,6 +587,13 @@
       <DependentUpon>SiteDefault.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="UC\banner.ascx.cs">
+      <DependentUpon>banner.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UC\banner.ascx.designer.cs">
+      <DependentUpon>banner.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UC\footer.ascx.cs">
       <DependentUpon>footer.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

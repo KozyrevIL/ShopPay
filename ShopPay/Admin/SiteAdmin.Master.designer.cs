@@ -15,6 +15,15 @@ namespace ShopPay
     {
 
         /// <summary>
+        /// banner элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::ShopPay.UC.banner banner;
+
+        /// <summary>
         /// section_admin элемент управления.
         /// </summary>
         /// <remarks>
