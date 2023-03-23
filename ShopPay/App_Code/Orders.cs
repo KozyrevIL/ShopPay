@@ -20,6 +20,18 @@ namespace ShopPay.App_Code
 
     public class Orders
     {
+        // test
+        //private const string api_url = "https://3dsec.sberbank.ru";
+        //private string login_do = "t7203486413-api";
+        //private string password_do = "YNI1WM5w";
+
+        //prom
+        private const string api_url = "https://securepayments.sberbank.ru";
+        private const string login_do = "p7203486413-api";
+        private const string password_do = "PuTH2W7g";
+
+
+
         private string customer = string.Empty;
         public int idOrder = -1;
         public string status = string.Empty;
@@ -30,16 +42,16 @@ namespace ShopPay.App_Code
         public string formURL = string.Empty;
 
 
-        private string register_do = "https://3dsec.sberbank.ru/payment/rest/register.do";
-        private string orderStatus_do = "https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do";
-        public string urlPay = "https://3dsec.sberbank.ru/payment/merchants/test/payment_ru.html?mdOrder=";
+        private string register_do = api_url + "/payment/rest/register.do";
+        private string orderStatus_do = api_url + "/payment/rest/getOrderStatusExtended.do";
 
-        private string login_do = "t7203486413-api";
-        private string password_do = "YNI1WM5w";
+        //public string urlPay = "https://3dsec.sberbank.ru/payment/merchants/test/payment_ru.html?mdOrder=";
+
 
 
         public Orders() // Просто создаем объект
         {
+
         }
         public Orders(string customer) // создаем объект с указанием клиента
         {
@@ -47,6 +59,7 @@ namespace ShopPay.App_Code
         }
         public Orders(int idOrder) // читаем заказ по id
         {
+
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["SQLConnectionString"].ToString()))
             {
                 con.Open();
