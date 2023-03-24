@@ -21,11 +21,22 @@ namespace ShopPay.App_Code
     public class Orders
     {
         // test
+
+        // ЛК https://3dsec.sberbank.ru/mportal3/auth/login?utm_source=sendsay-kb&utm_medium=email&utm_campaign=service_ekvairing_internet-ekvairing-testovaya-sreda-testovaya-sreda&utm_content=body-text
+        // t7203486413-operator
+        // wAUb9LAz
+
         //private const string api_url = "https://3dsec.sberbank.ru";
         //private string login_do = "t7203486413-api";
         //private string password_do = "YNI1WM5w";
 
+
         //prom
+
+        // ЛК https://securepayments.sberbank.ru/mportal3/auth/login
+        // p7203486413-operator
+        // KjePCi$fhibnD-3
+
         private const string api_url = "https://securepayments.sberbank.ru";
         private const string login_do = "p7203486413-api";
         private const string password_do = "HdR56NDeskt-5$";
