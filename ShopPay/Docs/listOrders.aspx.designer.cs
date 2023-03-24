@@ -24,6 +24,24 @@ namespace ShopPay.Admin
         protected global::System.Web.UI.WebControls.GridView GridViewDocs;
 
         /// <summary>
+        /// StatusAlert элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl StatusAlert;
+
+        /// <summary>
+        /// LabelStatus элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически созданное поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelStatus;
+
+        /// <summary>
         /// SqlDataSourceDocs элемент управления.
         /// </summary>
         /// <remarks>

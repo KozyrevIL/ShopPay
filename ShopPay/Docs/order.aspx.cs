@@ -3,6 +3,7 @@ using System;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 
@@ -94,7 +95,42 @@ namespace ShopPay.Admin
             if (s == string.Empty)
                 Response.Redirect(order.formURL);
             else
-                Response.Redirect(Request.RawUrl);
+                StatusMessage("error_custom", s, null);
+                //Response.Redirect(Request.RawUrl);
         }
+        protected void StatusMessage(string type_message, string text_info, Exception ex)
+        {
+
+            switch (type_message)
+            {
+                case "info":
+                    StatusAlert.Attributes.Add("class", "alert alert-success alert-dismissible");
+                    StatusAlert.Visible = true;
+
+                    LabelStatus.CssClass = "alert alert-success";
+                    LabelStatus.Visible = true;
+                    LabelStatus.Text = text_info;
+                    break;
+                case "error":
+                    StatusAlert.Attributes.Add("class", "alert alert-danger alert-dismissible");
+                    StatusAlert.Visible = true;
+
+                    LabelStatus.CssClass = "alert alert-danger";
+                    LabelStatus.Visible = true;
+                    LabelStatus.Text = "ОШИБКА! Запись не добавлена или добавлена некорректно. " + ex.Message.ToString();
+                    break;
+                case "error_custom":
+                    StatusAlert.Attributes.Add("class", "alert alert-danger alert-dismissible");
+                    StatusAlert.Visible = true;
+
+                    LabelStatus.CssClass = "alert alert-danger";
+                    LabelStatus.Visible = true;
+                    LabelStatus.Text = text_info;
+                    break;
+            }
+
+
+        }
+
     }
 }

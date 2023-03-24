@@ -9,21 +9,21 @@
         }
     </script>
 
-<div id="order" class="order">
-    <section class="container_global grid">
-        <section class="header" id="header">
-            <div class="container-fluid text-center">
-                 <h3>Заказ
+    <div id="order" class="order">
+        <section class="container_global grid">
+            <section class="header" id="header">
+                <div class="container-fluid text-center">
+                    <h3>Заказ
                     <asp:Label ID="LabelNumOrder" runat="server"></asp:Label>
-                    <asp:Label ID="LabelDateOrder" runat="server"></asp:Label></h3>
-            </div>
-        </section>
-        <section class="container_data grid">
+                        <asp:Label ID="LabelDateOrder" runat="server"></asp:Label></h3>
+                </div>
+            </section>
+            <section class="container_data grid">
 
-            <div class="item_gridview" id="grid_content">
+                <div class="item_gridview" id="grid_content">
 
-                <div class="grid_1" runat="server" id="orderDocs">
-                    Документы
+                    <div class="grid_1" runat="server" id="orderDocs">
+                        Документы
     <asp:GridView runat="server" ID="GridViewDocs" CssClass="table table-bordered table-hover" DataKeyNames="id_order" DataSourceID="SqlDataSourceDocs" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
@@ -57,9 +57,9 @@
         </Columns>
         <HeaderStyle BackColor="#729C3B" ForeColor="White" />
     </asp:GridView>
-                </div>
-                <div class="grid_2" runat="server" id="orderConsults">
-                    Консультации
+                    </div>
+                    <div class="grid_2" runat="server" id="orderConsults">
+                        Консультации
     <asp:GridView runat="server" ID="GridViewConsults" CssClass="table table-bordered table-hover" DataKeyNames="id_order" DataSourceID="SqlDataSourceConsults" AutoGenerateColumns="false" OnRowDataBound="GridViewDocs_RowDataBound">
         <Columns>
             <asp:TemplateField>
@@ -79,33 +79,40 @@
         </Columns>
         <HeaderStyle BackColor="#729C3B" ForeColor="White" />
     </asp:GridView>
-                </div>
-
-            </div>
-             <div class="item_price">
-                    <div class="container_item_price">
-                        <h3>ИТОГО:</h3>
-                        <p><asp:Label ID="AllPrice" runat="server" CssClass="text_pay"></asp:Label> руб</p>
-                        
-<asp:Button ID="PayOrder" runat="server" Text="Оплатить заказ" CssClass="btn btn-default btn-block btn_pay" OnClick="PayOrder_Click" />
-        <asp:Label ID="PaidOrder" runat="server" Text="Заказ оплачен"></asp:Label>
-                      
                     </div>
 
                 </div>
+                <div class="item_price">
+                    <div class="container_item_price">
+                        <h3>ИТОГО:</h3>
+                        <p>
+                            <asp:Label ID="AllPrice" runat="server" CssClass="text_pay"></asp:Label>
+                            руб</p>
+
+                        <asp:Button ID="PayOrder" runat="server" Text="Оплатить заказ" CssClass="btn btn-default btn-block btn_pay" OnClick="PayOrder_Click" />
+                        <asp:Label ID="PaidOrder" runat="server" Text="Заказ оплачен"></asp:Label>
+
+                    </div>
+
+                </div>
+            </section>
+
+
+
+
         </section>
 
-      
 
 
-    </section>
+    </div>
+    <div role="alert" id="StatusAlert" style="position: absolute; top: 0px; right: 0px;" runat="server">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-
-        
+        <asp:Label ID="LabelStatus" runat="server" Visible="true" EnableViewState="false"></asp:Label>
     </div>
 
 
-    
+
     <asp:SqlDataSource ID="SqlDataSourceDocs" runat="server" ConnectionString="<%$ ConnectionStrings:SQLConnectionString %>"
         SelectCommand="select o.id_order, oi.id_item, dd.id_doc,dd.id_section,dd.name_doc,dd.date_doc,dd.issue_doc
         ,dd.num_doc,isnull(dd.isActual,0) isActual,dd.description,dd.items

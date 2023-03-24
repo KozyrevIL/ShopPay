@@ -28,7 +28,7 @@ namespace ShopPay.App_Code
         //prom
         private const string api_url = "https://securepayments.sberbank.ru";
         private const string login_do = "p7203486413-api";
-        private const string password_do = "PuTH2W7g";
+        private const string password_do = "HdR56NDeskt-5$";
 
 
 
@@ -297,8 +297,29 @@ namespace ShopPay.App_Code
                 string param = "userName=" + login_do + "&" + "password=" + password_do + "&" + "orderNumber=" + orderInternalID + "&" + "amount=" + (Cost * 100).ToString() + "&" + "returnUrl=" + callBackUrl;
                 string resp = OrderPost(register_do, param);
                 JObject jResp = JObject.Parse(resp);
-                orderID = jResp["orderId"].ToString();
-                formURL = jResp["formUrl"].ToString();
+                bool isError = false;
+                try
+                {
+                    orderID = jResp["orderId"].ToString();
+                    formURL = jResp["formUrl"].ToString();
+                }
+                catch 
+                {
+                    isError= true;
+                }
+                if (isError)
+                {
+                    string errorMessage = "Ошибка вызова формы оплаты! ";
+
+                    try
+                    {
+                        errorMessage += jResp["errorMessage"].ToString();
+                    }
+                    catch 
+                    { 
+                    }
+                    return errorMessage;
+                }
                 updateOrderInfo();
                 return string.Empty;
             }
